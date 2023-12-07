@@ -1,0 +1,78 @@
+.container {
+  background-color: #000;
+}
+
+.wrapper {
+  max-width: 1020px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 50px 0;
+  box-sizing: border-box;
+}
+
+// 푸터 왼쪽 박스
+
+.left_info_box {
+  width: 52%;
+}
+
+.logo {
+  width: 190px;
+  height: auto;
+}
+
+.title {
+  margin: 28px 0 16px;
+  color: rgb(159, 159, 159);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.info_text {
+  line-height: 2.2;
+  font-size: 14px;
+  color: rgb(159, 159, 159);
+  &:last-child {
+    margin-top: 28px;
+    color: rgb(110, 110, 110);
+  }
+}
+
+// 푸토 오른쪽 박스
+
+.right_info_box {
+  width: 42%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.nav_box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav_link {
+  text-decoration: none;
+  color: rgb(230, 230, 230);
+  border: 1px solid rgb(236, 38, 38);
+  border-radius: 16px;
+  padding: 6px 27px;
+  box-sizing: border-box;
+}
+
+.terms_box {
+  text-align: right;
+}
+
+.terms_link {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 300;
+  color: rgb(110, 110, 110);
+  &:first-child {
+    margin-right: 32px;
+  }
+}
