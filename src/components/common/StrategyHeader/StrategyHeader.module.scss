@@ -1,0 +1,67 @@
+// 타이틀 입력 부분
+
+.title_input_box {
+  position: sticky;
+  z-index: 2;
+  top: 142px;
+  width: 100%;
+  background-color: rgb(14, 14, 14);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 0;
+  box-sizing: border-box;
+}
+
+.title_input {
+  width: 68%;
+  outline: none;
+  padding: 5px 2px;
+  box-sizing: border-box;
+  border: 0;
+  border-bottom: 2px solid #fff;
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  background-color: transparent;
+  &::placeholder {
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+  }
+  &:focus::placeholder {
+    color: transparent;
+  }
+}
+
+.save_button,
+.active_save_button {
+  cursor: pointer;
+  border: 1px solid rgb(63, 62, 62);
+  border-radius: 5px;
+  background-color: rgb(14, 14, 14);
+  font-size: 16px;
+  font-weight: 300;
+  color: rgb(62, 62, 62);
+  padding: 10px 20px;
+  box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
+}
+
+.active_save_button {
+  border: 1px solid rgb(236, 97, 38);
+  color: #fff;
+}
+
+.scroll_button {
+  cursor: pointer;
+  border: 0;
+  border-radius: 5px;
+  background-color: rgb(236, 97, 38);
+  color: rgb(14, 14, 14);
+  font-size: 16px;
+  font-weight: 400;
+  padding: 10px 40px;
+  box-sizing: border-box;
+}
