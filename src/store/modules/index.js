@@ -6,7 +6,7 @@ import backTest from "./backTest";
 const persistConfig = {
   key: "root",
   storage: storageSession,
-  whitelist: ["alloc"],
+  whitelist: ["backTest"],
 };
 
 const rootReducer = combineReducers({
