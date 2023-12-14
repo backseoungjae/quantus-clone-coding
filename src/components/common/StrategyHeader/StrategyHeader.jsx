@@ -4,17 +4,13 @@ import styles from "./StrategyHeader.module.scss";
 
 const cx = classNames.bind(styles);
 
-export default function StrategyHeader({
-  strategy,
-  handleChangeStrategy,
-  title,
-}) {
+export default function StrategyHeader({ strategy, handleChangeTitle, title }) {
   return (
     <div className={cx("title_input_box")}>
       <input
         name="strategy"
         value={strategy}
-        onChange={handleChangeStrategy}
+        onChange={handleChangeTitle}
         className={cx("title_input")}
         type="text"
         placeholder="전략 이름을 입력해 주세요."
