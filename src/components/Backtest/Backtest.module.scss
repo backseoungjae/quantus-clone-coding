@@ -1,0 +1,287 @@
+// 서브 단계 링크 박스
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translateZ(0);
+  }
+}
+
+.nav_box {
+  animation: fadeInDown 1s;
+}
+
+.nav_box {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgb(30, 30, 30);
+}
+
+.nav_item,
+.active_nav_item {
+  cursor: pointer;
+  padding: 20px 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  border-bottom: 2px solid rgb(207, 207, 207);
+  color: rgb(207, 207, 207);
+  font-size: 14px;
+  font-weight: 300;
+  &::before {
+    content: ">";
+    color: rgb(62, 62, 62);
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+  &:first-child::before {
+    content: "";
+    padding: 0;
+  }
+  &:hover {
+    color: rgb(236, 97, 38);
+  }
+}
+
+.active_nav_item {
+  border-bottom: 2px solid rgb(236, 97, 38);
+  color: rgb(236, 97, 38);
+}
+
+// 설정 값 초기화 버튼
+
+.reset_button {
+  float: right;
+  position: sticky;
+  top: 290px;
+  right: 0;
+  z-index: 1;
+  cursor: pointer;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  border: 1px solid rgb(62, 62, 62);
+  border-radius: 6px;
+  color: rgb(207, 207, 207);
+  font-size: 14px;
+  font-weight: 300;
+  background-color: rgb(14, 14, 14);
+  font-family: Noto Sans KR, sans-serif;
+}
+
+.reset_img {
+  margin-right: 10px;
+}
+
+// 옵션 선택하는 부분
+
+.option_box {
+  position: relative;
+  width: 62%;
+  margin-bottom: 38px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.option_text {
+  color: rgb(252, 252, 252);
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+
+.option_input_box {
+  position: relative;
+}
+
+.option_input {
+  cursor: pointer;
+  outline: none;
+  width: 100%;
+  text-align: center;
+  background: rgb(14, 14, 14);
+  border: 1px solid rgb(159, 159, 159);
+  border-radius: 6px;
+  padding: 14px 0;
+  box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
+  color: rgb(252, 252, 252);
+  font-size: 16px;
+  font-weight: 300;
+  &::placeholder {
+    transition: all 0.3s ease-in-out;
+    color: rgb(252, 252, 252);
+    font-size: 16px;
+    font-weight: 300;
+  }
+  &:focus::placeholder {
+    color: transparent;
+  }
+  &:hover {
+    border: 1px solid rgb(252, 252, 252);
+  }
+  &:focus {
+    border: 1px solid #ec6127;
+  }
+}
+
+.option_select_arrow,
+.active_option_select_arrow {
+  position: absolute;
+  top: 35%;
+  right: 28px;
+  color: #ec6127;
+  width: 15px;
+  height: 15px;
+  transition: all 0.3s ease-in-out;
+}
+
+.active_option_select_arrow {
+  transform: rotate(180deg);
+}
+
+// 선택 박스 선택시 나오는 박스 부분
+
+.hide_box {
+  list-style: none;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  margin-top: 10px;
+  background: rgb(14, 14, 14);
+  border-radius: 6px;
+  border: 1px solid rgb(62, 62, 62);
+  max-height: 500px;
+  overflow: hidden auto;
+}
+
+.hide_input,
+.active_hide_input {
+  cursor: pointer;
+  outline: none;
+  width: 100%;
+  border-radius: 6px;
+  text-align: center;
+  padding: 15px 0;
+  box-sizing: border-box;
+  background: rgb(14, 14, 14);
+  border: 0;
+  color: rgb(230, 230, 230);
+  font-size: 16px;
+  font-weight: 300;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+.active_hide_input {
+  background: rgba(236, 97, 38, 0.3) !important;
+}
+
+// 기본 필터 부분
+
+.check_list_box {
+  width: 80%;
+  margin-top: 80px;
+}
+
+.check_list_title_box {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.check_list_title {
+  font-size: 18px;
+  font-weight: 500;
+  color: rgb(252, 252, 252);
+}
+
+//  체크 박스 부분
+
+.hide_check_box {
+  display: none;
+}
+
+.check_box_label {
+  cursor: pointer;
+  display: block;
+  display: flex;
+  align-items: center;
+}
+
+.check_box {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #3e3e3e;
+  border-radius: 5px;
+  position: relative;
+  margin-right: 10px;
+}
+
+.check_box_checked {
+  position: absolute;
+  left: 4.5px;
+  top: 2px;
+  width: 7px;
+  height: 10px;
+  border: 1px solid #3e3e3e;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.hide_check_box.checked + .check_box_label .check_box {
+  background-color: #ec6127;
+  border: 1px solid #1e1e1e;
+}
+
+.check_text {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgb(252, 252, 252);
+}
+
+// 하위 필터들
+
+.filters_list_inner {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px 0;
+}
+
+.filter_item {
+  width: calc(100% / 5);
+}
+
+// 커스텀 필터 버튼 부분
+
+.add_button_box {
+  margin-top: 100px;
+}
+
+.add_button_text {
+  margin-bottom: 30px;
+}
+
+.add_button {
+  cursor: pointer;
+  outline: 0;
+  border: 0;
+  border-radius: 6px;
+  padding: 15px 30px;
+  box-sizing: border-box;
+  color: rgb(14, 14, 14);
+  font-size: 14px;
+  font-weight: 400;
+  background-color: rgb(236, 97, 38);
+}
