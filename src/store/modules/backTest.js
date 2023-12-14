@@ -6,6 +6,12 @@ const initialState = {
 };
 
 const CHANGE_SETTING = "backTest/CHANGE_SETTING";
+const CHANGE_TITLE = "backTest/CHANGE_TITLE";
+
+export const changeBackTestTitle = (payload) => ({
+  type: CHANGE_TITLE,
+  payload,
+});
 
 export const changeUniversSettings = (payload) => ({
   type: CHANGE_SETTING,
@@ -21,6 +27,11 @@ function backTest(state = initialState, action) {
           ...state.settings,
           ...action.payload,
         },
+      };
+    case CHANGE_TITLE:
+      return {
+        ...state,
+        ...action.payload,
       };
     default:
       return state;
