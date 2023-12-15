@@ -12,6 +12,13 @@ export default function BacktestContainer() {
     handleExceptSectors,
   } = useBackTest();
 
+  // 커스텀 필터 토글 이벤트
+  const [customToggle, setCusetomToggle] = useState(false);
+
+  const handleCustomToggle = useCallback(() => {
+    setCusetomToggle((prev) => !prev);
+  }, []);
+
   // 유니버스 선택 토글 이벤트
   const [toggle, setToggle] = useState(false);
 
@@ -109,6 +116,8 @@ export default function BacktestContainer() {
       toggle={toggle}
       initialCheckList={initialCheckList}
       exceptLists={exceptLists}
+      customToggle={customToggle}
+      handleCustomToggle={handleCustomToggle}
       handleToggle={handleToggle}
       handleChagneBackTestTitle={handleChagneBackTestTitle}
       handleChangeUniversSettings={handleChangeUniversSettings}

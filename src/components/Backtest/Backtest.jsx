@@ -5,6 +5,7 @@ import StrategyHeader from "components/common/StrategyHeader";
 import { Link, useLocation } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
 import { NAV_ITEM, UNIVERS } from "mocks/subData";
+import Popup from "components/common/Popup";
 
 const cx = classNames.bind(styles);
 
@@ -13,6 +14,8 @@ export default function Backtest({
   toggle,
   initialCheckList,
   exceptLists,
+  customToggle,
+  handleCustomToggle,
   handleToggle,
   handleChagneBackTestTitle,
   handleChangeUniversSettings,
@@ -46,14 +49,31 @@ export default function Backtest({
         handleChangeTitle={handleChagneBackTestTitle}
         title="백테스트"
       />
-      <button className={cx("reset_button")}>
-        <img
-          className={cx("reset_img")}
-          src="/images/reset.svg"
-          alt="초기화 버튼 아이콘"
-        />
-        설정 값 초기화
-      </button>
+      <div className={cx("side_button_box")}>
+        <button className={cx("view_button")}>
+          <img
+            className={cx("view_img")}
+            src="/images/view.svg"
+            alt="한눈에 보기 이미지"
+          />
+          한눈에 보기
+        </button>
+        <button className={cx("reset_button")}>
+          <img
+            className={cx("reset_img")}
+            src="/images/reset.svg"
+            alt="초기화 버튼 아이콘"
+          />
+          설정 값 초기화
+        </button>
+        <div className={cx("step_box")}>
+          <p className={cx("step_number", "active_step_number")}>1</p>
+          <hr className={cx("step_line", "active_step_line")} />
+          <p className={cx("step_number")}>2</p>
+          <hr className={cx("step_line")} />
+          <p className={cx("step_number")}>3</p>
+        </div>
+      </div>
       <div className={cx("inner")}>
         <div className={cx("option_box")}>
           <p className={cx("option_text")}>유니버스 선택</p>
@@ -174,7 +194,26 @@ export default function Backtest({
           <p className={cx("check_list_title", "add_button_text")}>
             커스텀 필터
           </p>
-          <button className={cx("add_button")}>추가하기</button>
+          <button onClick={handleCustomToggle} className={cx("add_button")}>
+            추가하기
+          </button>
+          {customToggle && (
+            <Popup
+              title="사용권 미보유"
+              text={`사용권을 보유하고 있지 않습니다.\n사용권을 구매하러 가시겠어요?`}
+              handleToggle={handleCustomToggle}
+            />
+          )}
+        </div>
+        <div className={cx("button_box")}>
+          <Link to="/backtest/backtest/factors" className={cx("button")}>
+            다음
+            <img
+              className={cx("button_img")}
+              src="/images/next_button.svg"
+              alt="다음 버튼 화살표 이미지"
+            />
+          </Link>
         </div>
       </div>
     </div>
