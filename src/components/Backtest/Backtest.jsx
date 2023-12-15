@@ -189,20 +189,58 @@ export default function Backtest({
               </div>
             ))}
           </div>
-        </div>
-        <div className={cx("add_button_box")}>
-          <p className={cx("check_list_title", "add_button_text")}>
-            커스텀 필터
-          </p>
-          <button onClick={handleCustomToggle} className={cx("add_button")}>
-            추가하기
-          </button>
-          {customToggle && (
-            <Popup
-              title="사용권 미보유"
-              text={`사용권을 보유하고 있지 않습니다.\n사용권을 구매하러 가시겠어요?`}
-              handleToggle={handleCustomToggle}
-            />
+          <div className={cx("add_button_box")}>
+            <p className={cx("check_list_title", "add_button_text")}>
+              커스텀 필터
+            </p>
+            <button onClick={handleCustomToggle} className={cx("add_button")}>
+              추가하기
+            </button>
+            {customToggle && (
+              <Popup
+                title="사용권 미보유"
+                text={`사용권을 보유하고 있지 않습니다.\n사용권을 구매하러 가시겠어요?`}
+                handleToggle={handleCustomToggle}
+              />
+            )}
+          </div>
+          {initialCheckList && (
+            <div>
+              <div className={cx("check_list_title_box")}>
+                <p className={cx("check_list_title")}>필터 순위 지정</p>
+                <div className={cx("ranking_box")}>
+                  <p className={cx("ranking_text")}>순위 변경 방법</p>
+                  <span className={cx("ranking_b")}>?</span>
+                  <div className={cx("ranking_explanation_hide_box")}>
+                    <div className={cx("ranking_explanation_box")}>
+                      <img
+                        className={cx("ranking_explanation_img")}
+                        src="/images/hambargerbar.svg"
+                        alt="설명 이미지"
+                      />
+                      <p className={cx("ranking_explanation_text")}>
+                        아이콘을 잡고 원하시는 위치로 드래그해주세요.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className={cx("ranking_list_box")}>
+                {initialCheckList?.map((item, i) => (
+                  <div className={cx("ranking_item")} key={item?.id}>
+                    <p className={cx("ranking_text")}>
+                      {String(i + 1).padStart(2, "0")}
+                    </p>
+                    <img
+                      className={cx("ranking_img")}
+                      src="/images/hambargerbar.svg"
+                      alt="설명 이미지"
+                    />
+                    <p className={cx("ranking_text")}>{item?.name}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           )}
         </div>
         <div className={cx("button_box")}>

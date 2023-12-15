@@ -332,7 +332,7 @@
 
 .add_button_box {
   position: relative;
-  margin-top: 100px;
+  margin: 100px 0 80px;
 }
 
 .add_button_text {
@@ -383,4 +383,87 @@
   top: 50%;
   transform: translateY(-50%);
   right: 10px;
+}
+
+// 필터 순위 추가 부분
+
+.ranking_box {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  &:hover .ranking_explanation_hide_box {
+    display: block;
+  }
+}
+
+.ranking_explanation_hide_box {
+  display: none;
+}
+
+.ranking_box .ranking_explanation_box {
+  position: absolute;
+  width: 320px;
+  top: -50px;
+  right: 0;
+  background-color: rgb(14, 14, 14);
+  padding: 10px;
+  box-sizing: border-box;
+  border: 2px solid #ec6127;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.ranking_explanation_img {
+  margin-right: 10px;
+}
+
+.ranking_explanation_text {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgb(252, 252, 252);
+}
+
+.ranking_text {
+  color: rgb(159, 159, 159);
+  font-size: 16px;
+}
+
+.ranking_b {
+  display: block;
+  margin-left: 5px;
+  color: rgb(159, 159, 159);
+  font-size: 8px;
+  border: 1px solid rgb(159, 159, 159);
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ranking_item {
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+  background-color: rgb(30, 30, 30);
+  margin-bottom: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.ranking_text {
+  font-size: 16px;
+  color: rgb(252, 252, 252);
+}
+
+.ranking_img {
+  margin: 0 18px 0 40px;
 }
