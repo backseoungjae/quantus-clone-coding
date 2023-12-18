@@ -109,7 +109,6 @@ export default function BacktestContainer() {
   }, [handleExceptSectors, exceptLists]);
 
   console.log("backTest ", backTest);
-  console.log("initialCheckList ", initialCheckList);
 
   return (
     <Backtest
