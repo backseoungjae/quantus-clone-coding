@@ -1,5 +1,5 @@
-import { BacktestPage, StaticAllocPage } from "pages";
 import { Route, Routes } from "react-router-dom";
+import { BacktestPage, DecileBacktestPage, StaticAllocPage } from "pages";
 
 function App() {
   return (
@@ -10,6 +10,10 @@ function App() {
         element={<BacktestPage />}
       />
       <Route path="/alloc/static_alloc" element={<StaticAllocPage />} />
+      <Route
+        path="/backtest/decile/universe"
+        element={<DecileBacktestPage />}
+      />
     </Routes>
   );
 }
