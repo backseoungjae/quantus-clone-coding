@@ -1,10 +1,10 @@
 import React from "react";
 import classNames from "classnames/bind";
-import styles from "./RankingItem.module.scss";
+import styles from "./BacktestRankingItem.module.scss";
 
 const cx = classNames.bind(styles);
 
-export default function RankingItem({
+export default function BacktestRankingItem({
   item,
   index,
   dragStart,
