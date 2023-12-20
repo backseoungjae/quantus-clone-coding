@@ -1,0 +1,31 @@
+// 필터 순위 추가 부분
+
+.ranking_list_box {
+  margin-bottom: 20px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.ranking_item {
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+  background-color: rgb(30, 30, 30);
+  margin-bottom: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.ranking_text {
+  font-size: 16px;
+  color: rgb(252, 252, 252);
+}
+
+.ranking_img {
+  margin: 0 18px 0 40px;
+}

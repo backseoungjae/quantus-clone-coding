@@ -6,6 +6,9 @@ import { Link, useLocation } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
 import { NAV_ITEM, UNIVERS } from "mocks/subData";
 import Popup from "components/common/Popup";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import RankingItem from "components/RankingItem";
 
 const cx = classNames.bind(styles);
 
@@ -24,8 +27,12 @@ export default function Backtest({
   isChecked,
   onCheckedExceptItem,
   isCheckedExcept,
+  moveItemHandler,
   INITIAL_FITERS,
   EXCEPT_SECTORS,
+  dragStart,
+  dragEnter,
+  drop,
 }) {
   const location = useLocation();
 
@@ -75,6 +82,18 @@ export default function Backtest({
         </div>
       </div>
       <div className={cx("inner")}>
+        <div className={cx("inner_nav_box")}>
+          <Link
+            className={cx("active_inner_nav")}
+            to="/backtest/backtest/universe"
+          >
+            백테스트
+          </Link>
+          <Link className={cx("inner_nav")} to="/backtest/decile/universe">
+            10분위 테스트
+          </Link>
+          <hr className={cx("bottom_hr")} />
+        </div>
         <div className={cx("option_box")}>
           <p className={cx("option_text")}>유니버스 선택</p>
           <div onClick={handleToggle} className={cx("option_input_box")}>
@@ -225,21 +244,20 @@ export default function Backtest({
                   </div>
                 </div>
               </div>
-              <div className={cx("ranking_list_box")}>
-                {initialCheckList?.map((item, i) => (
-                  <div className={cx("ranking_item")} key={item?.id}>
-                    <p className={cx("ranking_text")}>
-                      {String(i + 1).padStart(2, "0")}
-                    </p>
-                    <img
-                      className={cx("ranking_img")}
-                      src="/images/hambargerbar.svg"
-                      alt="설명 이미지"
-                    />
-                    <p className={cx("ranking_text")}>{item?.name}</p>
-                  </div>
-                ))}
-              </div>
+              {/* <DndProvider backend={HTML5Backend}> */}
+              {initialCheckList?.map((item, index) => (
+                <RankingItem
+                  dragStart={dragStart}
+                  dragEnter={dragEnter}
+                  drop={drop}
+                  key={item?.id}
+                  item={item}
+                  id={item?.id}
+                  index={index}
+                  moveItemHandler={moveItemHandler}
+                />
+              ))}
+              {/* </DndProvider> */}
             </div>
           )}
         </div>

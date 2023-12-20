@@ -141,6 +141,47 @@
   height: 30px;
 }
 
+// inner nav box 부분
+
+.inner_nav_box {
+  position: relative;
+  width: 75%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+.active_inner_nav,
+.inner_nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 230px;
+  height: 72px;
+  text-decoration: none;
+  border: 1px solid rgb(236, 97, 38);
+  border-bottom: 0;
+  font-size: 18px;
+  font-weight: 300;
+  background-color: rgb(14, 14, 14);
+  color: rgb(236, 97, 38);
+}
+
+.inner_nav {
+  color: rgb(252, 252, 252);
+  border-bottom: 1px solid rgb(236, 97, 38);
+  border-color: rgb(62, 62, 62) rgb(62, 62, 62) rgb(236, 97, 38);
+  background-color: rgb(30, 30, 30);
+}
+
+.bottom_hr {
+  position: absolute;
+  width: 300px;
+  border: 0.5px solid rgb(236, 97, 38);
+  bottom: -8px;
+  right: 0;
+}
+
 // 옵션 선택하는 부분
 
 .option_box {
@@ -443,27 +484,4 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.ranking_item {
-  cursor: grab;
-  display: flex;
-  align-items: center;
-  border-radius: 6px;
-  background-color: rgb(30, 30, 30);
-  margin-bottom: 10px;
-  padding: 20px;
-  box-sizing: border-box;
-  &:last-child {
-    margin-bottom: 0;
-  }
-}
-
-.ranking_text {
-  font-size: 16px;
-  color: rgb(252, 252, 252);
-}
-
-.ranking_img {
-  margin: 0 18px 0 40px;
 }
