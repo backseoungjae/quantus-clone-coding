@@ -6,9 +6,9 @@ import { Link, useLocation } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
 import { NAV_ITEM, UNIVERS } from "mocks/subData";
 import Popup from "components/common/Popup";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
-import RankingItem from "components/RankingItem";
+import BacktestRankingItem from "components/BacktestRankingItem";
+import BacktestInitialFilter from "components/BacktestInitialFilter";
+import BacktestExceptSector from "components/BacktestExceptSector";
 
 const cx = classNames.bind(styles);
 
@@ -134,80 +134,20 @@ export default function Backtest({
             </ul>
           )}
         </div>
+        <BacktestInitialFilter
+          initialCheckList={initialCheckList}
+          INITIAL_FITERS={INITIAL_FITERS}
+          onClickCheckAll={onClickCheckAll}
+          onCheckedItem={onCheckedItem}
+          isChecked={isChecked}
+        />
         <div className={cx("check_list_box")}>
-          <div className={cx("check_list_title_box")}>
-            <p className={cx("check_list_title")}>기본 필터</p>
-            <div>
-              <input
-                type="checkbox"
-                onChange={onClickCheckAll}
-                className={cx("hide_check_box", {
-                  checked: INITIAL_FITERS.length === initialCheckList.length,
-                })}
-                id="initial_filter_all"
-              />
-              <label
-                className={cx("check_box_label")}
-                htmlFor="initial_filter_all"
-              >
-                <div className={cx("check_box")}>
-                  <div className={cx("check_box_checked")}></div>
-                </div>
-                <b className={cx("check_text")}>전체 선택</b>
-              </label>
-            </div>
-          </div>
-          <div className={cx("filters_list_inner")}>
-            {INITIAL_FITERS.map((filter) => (
-              <div key={filter.name} className={cx("filter_item")}>
-                <input
-                  type="checkbox"
-                  onChange={() => onCheckedItem(filter)}
-                  checked={isChecked(filter)}
-                  className={cx("hide_check_box", {
-                    checked: initialCheckList.filter(
-                      (el) => el?.name === filter?.name
-                    )?.length,
-                  })}
-                  id={filter.name}
-                />
-                <label className={cx("check_box_label")} htmlFor={filter.name}>
-                  <div className={cx("check_box")}>
-                    <div className={cx("check_box_checked")}></div>
-                  </div>
-                  <b className={cx("check_text")}>{filter.name}</b>
-                </label>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className={cx("check_list_box")}>
-          <div className={cx("check_list_title_box")}>
-            <p className={cx("check_list_title")}>제외할 섹터</p>
-          </div>
-          <div className={cx("filters_list_inner")}>
-            {EXCEPT_SECTORS.map((filter) => (
-              <div key={filter.name} className={cx("filter_item")}>
-                <input
-                  type="checkbox"
-                  onChange={() => onCheckedExceptItem(filter)}
-                  checked={isCheckedExcept(filter)}
-                  className={cx("hide_check_box", {
-                    checked: exceptLists.filter(
-                      (el) => el?.name === filter?.name
-                    )?.length,
-                  })}
-                  id={filter.name}
-                />
-                <label className={cx("check_box_label")} htmlFor={filter.name}>
-                  <div className={cx("check_box")}>
-                    <div className={cx("check_box_checked")}></div>
-                  </div>
-                  <b className={cx("check_text")}>{filter.name}</b>
-                </label>
-              </div>
-            ))}
-          </div>
+          <BacktestExceptSector
+            exceptLists={exceptLists}
+            EXCEPT_SECTORS={EXCEPT_SECTORS}
+            onCheckedExceptItem={onCheckedExceptItem}
+            isCheckedExcept={isCheckedExcept}
+          />
           <div className={cx("add_button_box")}>
             <p className={cx("check_list_title", "add_button_text")}>
               커스텀 필터
@@ -223,7 +163,7 @@ export default function Backtest({
               />
             )}
           </div>
-          {initialCheckList && (
+          {initialCheckList?.length && (
             <div>
               <div className={cx("check_list_title_box")}>
                 <p className={cx("check_list_title")}>필터 순위 지정</p>
@@ -244,9 +184,8 @@ export default function Backtest({
                   </div>
                 </div>
               </div>
-              {/* <DndProvider backend={HTML5Backend}> */}
               {initialCheckList?.map((item, index) => (
-                <RankingItem
+                <BacktestRankingItem
                   dragStart={dragStart}
                   dragEnter={dragEnter}
                   drop={drop}
@@ -257,7 +196,6 @@ export default function Backtest({
                   moveItemHandler={moveItemHandler}
                 />
               ))}
-              {/* </DndProvider> */}
             </div>
           )}
         </div>

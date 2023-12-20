@@ -289,86 +289,6 @@
   background: rgba(236, 97, 38, 0.3) !important;
 }
 
-// 기본 필터 부분
-
-.check_list_box {
-  width: 80%;
-  margin-top: 80px;
-}
-
-.check_list_title_box {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.check_list_title {
-  font-size: 18px;
-  font-weight: 500;
-  color: rgb(252, 252, 252);
-}
-
-//  체크 박스 부분
-
-.hide_check_box {
-  display: none;
-}
-
-.check_box_label {
-  cursor: pointer;
-  display: block;
-  display: flex;
-  align-items: center;
-}
-
-.check_box {
-  width: 20px;
-  height: 20px;
-  border: 1px solid #3e3e3e;
-  border-radius: 5px;
-  position: relative;
-  margin-right: 10px;
-}
-
-.check_box_checked {
-  position: absolute;
-  left: 4.5px;
-  top: 2px;
-  width: 7px;
-  height: 10px;
-  border: 1px solid #3e3e3e;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
-.hide_check_box.checked + .check_box_label .check_box {
-  background-color: #ec6127;
-  border: 1px solid #1e1e1e;
-}
-
-.check_text {
-  font-size: 16px;
-  font-weight: 500;
-  color: rgb(252, 252, 252);
-}
-
-// 하위 필터들
-
-.filters_list_inner {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 30px 0;
-}
-
-.filter_item {
-  width: calc(100% / 5);
-}
-
 // 커스텀 필터 버튼 부분
 
 .add_button_box {
@@ -399,7 +319,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 80px;
 }
 
 .button {
@@ -427,6 +347,25 @@
 }
 
 // 필터 순위 추가 부분
+
+.check_list_box {
+  width: 80%;
+  margin-top: 80px;
+}
+
+.check_list_title_box {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.check_list_title {
+  font-size: 18px;
+  font-weight: 500;
+  color: rgb(252, 252, 252);
+}
 
 .ranking_box {
   cursor: pointer;
