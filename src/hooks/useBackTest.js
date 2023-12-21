@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
+  chagneCalculationWeight,
   changeBackTestTitle,
   changeExceptSectors,
   changeInitialfilters,
@@ -31,11 +32,17 @@ export default function useBackTest() {
     dispatch(changeExceptSectors(payload));
   }, []);
 
+  // 팩터 비중 선택 부분
+  const handleCalculationWeight = useCallback((payload) => {
+    dispatch(chagneCalculationWeight(payload));
+  }, []);
+
   return {
     backTest,
     handleBackTestTitle,
     handleUniversSettings,
     handleInitialfilters,
     handleExceptSectors,
+    handleCalculationWeight,
   };
 }
