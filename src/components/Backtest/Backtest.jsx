@@ -34,22 +34,21 @@ export default function Backtest({
   dragEnter,
   drop,
 }) {
-  const location = useLocation();
-
   return (
     <div className={cx("container")}>
       <div className={cx("nav_box")}>
-        {NAV_ITEM.map((nav) => (
-          <Link
-            className={cx(
-              location?.pathname === nav.path ? "active_nav_item" : "nav_item"
-            )}
-            key={nav.id}
-            to={nav.path}
-          >
-            {`${nav.pathName}`}
-          </Link>
-        ))}
+        <Link
+          className={cx("active_nav_item")}
+          to="/backtest/backtest/universe"
+        >
+          유니버스 선택
+        </Link>
+        <Link className={cx("nav_item")} to="/backtest/backtest/factors">
+          팩터 선택
+        </Link>
+        <Link className={cx("nav_item")} to="/backtest/backtest/backtest">
+          백테스트 셜졍
+        </Link>
       </div>
       <StrategyHeader
         strategy={backTest?.strategy}
