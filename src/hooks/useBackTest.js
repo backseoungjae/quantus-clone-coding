@@ -6,6 +6,7 @@ import {
   changeExceptSectors,
   changeInitialfilters,
   changeUniversSettings,
+  changeValueFactors,
 } from "store/modules/backTest";
 
 export default function useBackTest() {
@@ -37,6 +38,11 @@ export default function useBackTest() {
     dispatch(chagneCalculationWeight(payload));
   }, []);
 
+  // 가치 팩터 부분
+  const handleValueFactors = useCallback((payload) => {
+    dispatch(changeValueFactors(payload));
+  }, []);
+
   return {
     backTest,
     handleBackTestTitle,
@@ -44,5 +50,6 @@ export default function useBackTest() {
     handleInitialfilters,
     handleExceptSectors,
     handleCalculationWeight,
+    handleValueFactors,
   };
 }

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import StrategyHeader from "components/common/StrategyHeader";
 import { IoIosArrowDown } from "react-icons/io";
 import { FACTORS } from "mocks/subData";
+import InputFactor from "components/common/InputFactor";
 
 const cx = classNames.bind(styles);
 
@@ -14,6 +15,10 @@ export default function BacktestFactor({
   handleToggle,
   handleChagneBackTestTitle,
   handleChangeCalculationWeight,
+  onCheckedValueFactorItem,
+  isValueFactorChecked,
+  VALUE_FACTORS,
+  valueFactorData,
 }) {
   return (
     <div className={cx("container")}>
@@ -103,6 +108,15 @@ export default function BacktestFactor({
               ))}
             </ul>
           )}
+        </div>
+        <div className={cx("input_factor_inner")}>
+          <InputFactor
+            title="가치 팩터 (Price 관련)"
+            data={VALUE_FACTORS}
+            factorData={valueFactorData}
+            onCheckedItem={onCheckedValueFactorItem}
+            isChecked={isValueFactorChecked}
+          />
         </div>
       </div>
     </div>
