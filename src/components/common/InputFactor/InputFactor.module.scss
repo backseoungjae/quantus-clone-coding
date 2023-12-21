@@ -1,0 +1,107 @@
+.title {
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 16px;
+  color: rgb(252, 252, 252);
+}
+
+//  체크 박스 부분
+
+.hide_check_box {
+  display: none;
+}
+
+.check_box_label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.check_box {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #3e3e3e;
+  border-radius: 5px;
+  position: relative;
+  margin-right: 10px;
+}
+
+.check_box_checked {
+  position: absolute;
+  left: 4.5px;
+  top: 2px;
+  width: 7px;
+  height: 10px;
+  border: 1px solid #3e3e3e;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.hide_check_box.checked + .check_box_label .check_box {
+  background-color: #ec6127;
+  border: 1px solid #1e1e1e;
+}
+
+.check_text {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgb(252, 252, 252);
+}
+
+// 하위 필터들
+
+.filters_list_inner {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px 0;
+}
+
+.filter_item {
+  position: relative;
+  width: calc(100% / 3);
+  &:hover .explanation_hide_box {
+    display: block;
+  }
+}
+
+.check_b {
+  display: block;
+  margin-left: 10px;
+  color: rgb(159, 159, 159);
+  font-size: 8px;
+  border: 1px solid rgb(159, 159, 159);
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// hover 시 나오는 문구 부분
+
+.explanation_hide_box {
+  display: none;
+}
+
+.explanation_box {
+  position: absolute;
+  top: -50px;
+  left: 0;
+  z-index: 1;
+  background-color: rgb(14, 14, 14);
+  padding: 10px;
+  box-sizing: border-box;
+  border: 2px solid #ec6127;
+  border-radius: 10px;
+}
+
+.explanation_text {
+  font-size: 12px;
+  font-weight: 300;
+  color: rgb(252, 252, 252);
+  line-height: 1.4;
+}
