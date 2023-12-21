@@ -1,5 +1,10 @@
 import { Route, Routes } from "react-router-dom";
-import { BacktestPage, DecileBacktestPage, StaticAllocPage } from "pages";
+import {
+  BacktestFactorPage,
+  BacktestPage,
+  DecileBacktestPage,
+  StaticAllocPage,
+} from "pages";
 
 function App() {
   return (
@@ -13,6 +18,10 @@ function App() {
       <Route
         path="/backtest/decile/universe"
         element={<DecileBacktestPage />}
+      />
+      <Route
+        path="/backtest/backtest/factors"
+        element={<BacktestFactorPage />}
       />
     </Routes>
   );
