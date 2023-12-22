@@ -252,8 +252,6 @@ export default function BacktestFactorContainer() {
     handleConsensusFactors([...consensusFactorsList]);
   }, [handleConsensusFactors, consensusFactorsList]);
 
-  console.log("backtest ", backTest);
-
   return (
     <BacktestFactor
       backTest={backTest}
