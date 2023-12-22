@@ -224,7 +224,7 @@ export default function BacktestFactor({
             />
             이전
           </Link>
-          <Link to="/backtest/backtest/factors" className={cx("button")}>
+          <Link to="/backtest/backtest/backtest" className={cx("button")}>
             다음
             <img
               className={cx("button_img")}

@@ -20,7 +20,7 @@ export default function InputFactor({
             <div
               key={factor.name}
               className={cx(
-                title === "컨센서스 팩터"
+                title === "컨센서스 팩터" || title === "가속 팩터"
                   ? "consensus_filter_item"
                   : "filter_item"
               )}
