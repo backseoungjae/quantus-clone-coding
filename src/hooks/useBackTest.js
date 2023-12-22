@@ -2,8 +2,14 @@ import React, { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   chagneCalculationWeight,
+  chagneConsensusFactors,
+  chagnePriceFactors,
+  chagneQualityFactors,
+  changeAccelerationFactors,
   changeBackTestTitle,
+  changeEvFactors,
   changeExceptSectors,
+  changeGrowthPotentialFactors,
   changeInitialfilters,
   changeUniversSettings,
   changeValueFactors,
@@ -43,6 +49,36 @@ export default function useBackTest() {
     dispatch(changeValueFactors(payload));
   }, []);
 
+  // ev 팩터 부분
+  const handleEvFactors = useCallback((payload) => {
+    dispatch(changeEvFactors(payload));
+  }, []);
+
+  // 퀄리티 팩터 부분
+  const handleQualityFactors = useCallback((payload) => {
+    dispatch(chagneQualityFactors(payload));
+  }, []);
+
+  // 가격 팩터 부분
+  const handlePriceFactors = useCallback((payload) => {
+    dispatch(chagnePriceFactors(payload));
+  }, []);
+
+  // 성장성 팩터 부분
+  const handleGrowthPotentialFactors = useCallback((payload) => {
+    dispatch(changeGrowthPotentialFactors(payload));
+  }, []);
+
+  // 가속 팩터 부분
+  const handleAccelerationFactors = useCallback((payload) => {
+    dispatch(changeAccelerationFactors(payload));
+  }, []);
+
+  // 컨센선스 팩터 부분
+  const handleConsensusFactors = useCallback((payload) => {
+    dispatch(chagneConsensusFactors(payload));
+  }, []);
+
   return {
     backTest,
     handleBackTestTitle,
@@ -51,5 +87,11 @@ export default function useBackTest() {
     handleExceptSectors,
     handleCalculationWeight,
     handleValueFactors,
+    handleEvFactors,
+    handleQualityFactors,
+    handlePriceFactors,
+    handleGrowthPotentialFactors,
+    handleAccelerationFactors,
+    handleConsensusFactors,
   };
 }

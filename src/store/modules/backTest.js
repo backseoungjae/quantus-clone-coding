@@ -13,6 +13,7 @@ const initialState = {
     priceFactors: [],
     growthPotentialFactors: [],
     accelerationFactors: [],
+    consensusFactors: [],
   },
 };
 
@@ -27,6 +28,13 @@ const CHANGE_EXCEPTSECTORS = "backTest/CHANGE_EXCEPTSECTORS";
 // 팩터 부분
 const CHANGE_CALCULATIONWEIGHT = "backTest/CHANGE_CALCULATIONWEIGHT";
 const CHANGE_VALUE_FACTORS = "backTest/CHANGE_VALUE_FACTORS";
+const CHANGE_EV_FACTORS = "backTest/CHANGE_EV_FACTORS";
+const CHANGE_QUALITY_FACTORS = "backTest/CHANGE_QUALITY_FACTORS";
+const CHANGE_PRICE_FACTORS = "backTest/CHANGE_PRICE_FACTORS";
+const CHANGE_GROWTH_POTENTIAL_FACTORS =
+  "backTest/CHANGE_GROWTH_POTENTIAL_FACTORS";
+const CHANGE_ACCELERATION_FACTORS = "backTest/CHANGE_ACCELERATION_FACTORS";
+const CHANGE_CONSENSUS_FACTORS = "backTest/CHANGE_CONSENSUS_FACTORS";
 
 // 백테스트 공통 제목 부분
 export const changeBackTestTitle = (payload) => ({
@@ -58,6 +66,36 @@ export const chagneCalculationWeight = (payload) => ({
 
 export const changeValueFactors = (payload) => ({
   type: CHANGE_VALUE_FACTORS,
+  payload,
+});
+
+export const changeEvFactors = (payload) => ({
+  type: CHANGE_EV_FACTORS,
+  payload,
+});
+
+export const chagneQualityFactors = (payload) => ({
+  type: CHANGE_QUALITY_FACTORS,
+  payload,
+});
+
+export const chagnePriceFactors = (payload) => ({
+  type: CHANGE_PRICE_FACTORS,
+  payload,
+});
+
+export const changeGrowthPotentialFactors = (payload) => ({
+  type: CHANGE_GROWTH_POTENTIAL_FACTORS,
+  payload,
+});
+
+export const changeAccelerationFactors = (payload) => ({
+  type: CHANGE_ACCELERATION_FACTORS,
+  payload,
+});
+
+export const chagneConsensusFactors = (payload) => ({
+  type: CHANGE_CONSENSUS_FACTORS,
   payload,
 });
 
@@ -106,6 +144,54 @@ function backTest(state = initialState, action) {
         factors: {
           ...state.factors,
           valueFactors: [...action.payload],
+        },
+      };
+    case CHANGE_EV_FACTORS:
+      return {
+        ...state,
+        factors: {
+          ...state.factors,
+          evFactors: [...action.payload],
+        },
+      };
+    case CHANGE_QUALITY_FACTORS:
+      return {
+        ...state,
+        factors: {
+          ...state.factors,
+          qualityFactors: [...action.payload],
+        },
+      };
+    case CHANGE_PRICE_FACTORS:
+      return {
+        ...state,
+        factors: {
+          ...state.factors,
+          priceFactors: [...action.payload],
+        },
+      };
+    case CHANGE_GROWTH_POTENTIAL_FACTORS:
+      return {
+        ...state,
+        factors: {
+          ...state.factors,
+          growthPotentialFactors: [...action.payload],
+        },
+      };
+    case CHANGE_ACCELERATION_FACTORS:
+      return {
+        ...state,
+        factors: {
+          ...state.factors,
+          accelerationFactors: [...action.payload],
+        },
+      };
+    case CHANGE_CONSENSUS_FACTORS:
+      return {
+        ...state,
+        factors: {
+          ...state.factors,
+          consensusFactors: [...action.payload],
         },
       };
     default:

@@ -17,7 +17,14 @@ export default function InputFactor({
       <div className={cx("check_list_box")}>
         <div className={cx("filters_list_inner")}>
           {data.map((factor) => (
-            <div key={factor.name} className={cx("filter_item")}>
+            <div
+              key={factor.name}
+              className={cx(
+                title === "컨센서스 팩터"
+                  ? "consensus_filter_item"
+                  : "filter_item"
+              )}
+            >
               <div className={cx("explanation_hide_box")}>
                 <div className={cx("explanation_box")}>
                   <p className={cx("explanation_text")}>{factor.text}</p>

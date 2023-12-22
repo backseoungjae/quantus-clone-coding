@@ -67,6 +67,14 @@
   }
 }
 
+.consensus_filter_item {
+  position: relative;
+  width: calc(100% / 2);
+  &:hover .explanation_hide_box {
+    display: block;
+  }
+}
+
 .check_b {
   display: block;
   margin-left: 10px;
@@ -89,7 +97,8 @@
 
 .explanation_box {
   position: absolute;
-  top: -50px;
+  min-width: 400px;
+  top: -60px;
   left: 0;
   z-index: 1;
   background-color: rgb(14, 14, 14);
