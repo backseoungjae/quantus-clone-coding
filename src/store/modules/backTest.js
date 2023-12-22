@@ -15,6 +15,28 @@ const initialState = {
     accelerationFactors: [],
     consensusFactors: [],
   },
+  backtestSettings: {
+    initialInvestmentAmount: "",
+    transactionFee: "",
+    rebalancingSettings: {
+      backtestRebalancing: "",
+      specificGravityControl: "",
+      rebalancingItems: "",
+      seasonalityMonthList: [],
+    },
+    stopLossSettings: {
+      stopStandard: "",
+      lossStandard: "",
+    },
+    marketTimingSettings: {
+      macroMarketTiming: "",
+      reentryMarketTiming: "",
+    },
+    period: {
+      startDate: null,
+      endDate: null,
+    },
+  },
 };
 
 // 백테스트 공통 제목 부분

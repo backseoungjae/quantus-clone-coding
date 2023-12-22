@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import {
   BacktestFactorPage,
   BacktestPage,
+  BacktestSettingPage,
   DecileBacktestPage,
   StaticAllocPage,
 } from "pages";
@@ -22,6 +23,10 @@ function App() {
       <Route
         path="/backtest/backtest/factors"
         element={<BacktestFactorPage />}
+      />
+      <Route
+        path="/backtest/backtest/backtest"
+        element={<BacktestSettingPage />}
       />
     </Routes>
   );
