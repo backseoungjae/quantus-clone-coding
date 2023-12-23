@@ -7,10 +7,13 @@ import {
   chagneQualityFactors,
   changeAccelerationFactors,
   changeBackTestTitle,
+  changeBacktestSettings,
+  changeDate,
   changeEvFactors,
   changeExceptSectors,
   changeGrowthPotentialFactors,
   changeInitialfilters,
+  changeMonthList,
   changeUniversSettings,
   changeValueFactors,
 } from "store/modules/backTest";
@@ -79,6 +82,21 @@ export default function useBackTest() {
     dispatch(chagneConsensusFactors(payload));
   }, []);
 
+  // 백테스트 설정 부분
+  const handleBacktestSettings = useCallback((payload) => {
+    dispatch(changeBacktestSettings(payload));
+  }, []);
+
+  // 백테스트 시그널리티 부분
+  const handleMonthList = useCallback((payload) => {
+    dispatch(changeMonthList(payload));
+  }, []);
+
+  // 백테스트 기간 설정 부분
+  const handleDate = useCallback((payload) => {
+    dispatch(changeDate(payload));
+  }, []);
+
   return {
     backTest,
     handleBackTestTitle,
@@ -93,5 +111,8 @@ export default function useBackTest() {
     handleGrowthPotentialFactors,
     handleAccelerationFactors,
     handleConsensusFactors,
+    handleBacktestSettings,
+    handleMonthList,
+    handleDate,
   };
 }

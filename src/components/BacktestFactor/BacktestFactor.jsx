@@ -14,7 +14,7 @@ export default function BacktestFactor({
   backTest,
   toggle,
   handleToggle,
-  handleChagneBackTestTitle,
+  handleChangeBackTestTitle,
   handleChangeCalculationWeight,
   valueFactorData,
   evFactorData,
@@ -65,7 +65,7 @@ export default function BacktestFactor({
       </div>
       <StrategyHeader
         strategy={backTest?.strategy}
-        handleChangeTitle={handleChagneBackTestTitle}
+        handleChangeTitle={handleChangeBackTestTitle}
         title="백테스트"
       />
       <div className={cx("side_button_box")}>

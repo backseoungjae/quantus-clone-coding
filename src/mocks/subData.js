@@ -897,3 +897,60 @@ export const ACCELERATION_FACTORS = [
     text: "순이익 어닝서프라이즈 성장 (YoY). 순이익 어닝서프라이즈의 전년동기 대비 증가폭을 나타냅니다.",
   },
 ];
+
+export const PERIODICBALANCINGLIST = [
+  {
+    id: 1,
+    name: "월별",
+  },
+  {
+    id: 2,
+    name: "분기별",
+  },
+  {
+    id: 3,
+    name: "반기별",
+  },
+  {
+    id: 4,
+    name: "매년",
+  },
+  {
+    id: 5,
+    name: "시즈널리티",
+  },
+];
+
+export const MONTH_LIST = [
+  { id: 1, month: "01월" },
+  { id: 2, month: "02월" },
+  { id: 3, month: "03월" },
+  { id: 4, month: "04월" },
+  { id: 5, month: "05월" },
+  { id: 6, month: "06월" },
+  { id: 7, month: "07월" },
+  { id: 8, month: "08월" },
+  { id: 9, month: "09월" },
+  { id: 10, month: "10월" },
+  { id: 11, month: "11월" },
+  { id: 12, month: "12월" },
+];
+
+export const SPECIFICGRAVITYCONTROLLIST = [
+  {
+    id: 1,
+    name: "동일 비중",
+  },
+  {
+    id: 2,
+    name: "가치 가중(지원 예정)",
+  },
+  {
+    id: 3,
+    name: "변동성 최저(지원 예정)",
+  },
+  {
+    id: 4,
+    name: "샤프 극대화(지원 예정)",
+  },
+];

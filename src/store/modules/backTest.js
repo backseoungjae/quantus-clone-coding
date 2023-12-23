@@ -16,26 +16,20 @@ const initialState = {
     consensusFactors: [],
   },
   backtestSettings: {
-    initialInvestmentAmount: "",
-    transactionFee: "",
-    rebalancingSettings: {
-      backtestRebalancing: "",
-      specificGravityControl: "",
-      rebalancingItems: "",
-      seasonalityMonthList: [],
-    },
-    stopLossSettings: {
-      stopStandard: "",
-      lossStandard: "",
-    },
-    marketTimingSettings: {
-      macroMarketTiming: "",
-      reentryMarketTiming: "",
-    },
-    period: {
-      startDate: null,
-      endDate: null,
-    },
+    initialInvestmentAmount: 0,
+    transactionFee: 0,
+    backtestRebalancing: "",
+    specificGravityControl: "동일 비중",
+    rebalancingItems: 0,
+    seasonalityMonthList: [],
+    stopStandard: 0,
+    lossStandard: 0,
+    macroMarketTiming: "",
+    reentryMarketTiming: "",
+  },
+  period: {
+    startDate: null,
+    endDate: null,
   },
 };
 
@@ -58,6 +52,10 @@ const CHANGE_GROWTH_POTENTIAL_FACTORS =
 const CHANGE_ACCELERATION_FACTORS = "backTest/CHANGE_ACCELERATION_FACTORS";
 const CHANGE_CONSENSUS_FACTORS = "backTest/CHANGE_CONSENSUS_FACTORS";
 
+// 백테스트 설정 부분
+const CHANGE_BACKTEST_SETTINGS = "backTest/CHANGE_BACKTEST_SETTINGS";
+export const CHANGE_MONTH = "backTest/CHANGE_MONTH";
+const CHANGE_DATE = "backTest/CHANGE_DATE";
 // 백테스트 공통 제목 부분
 export const changeBackTestTitle = (payload) => ({
   type: CHANGE_TITLE,
@@ -118,6 +116,22 @@ export const changeAccelerationFactors = (payload) => ({
 
 export const chagneConsensusFactors = (payload) => ({
   type: CHANGE_CONSENSUS_FACTORS,
+  payload,
+});
+
+// 백테스트 설정 부분
+export const changeBacktestSettings = (payload) => ({
+  type: CHANGE_BACKTEST_SETTINGS,
+  payload,
+});
+
+export const changeMonthList = (payload) => ({
+  type: CHANGE_MONTH,
+  payload,
+});
+
+export const changeDate = (payload) => ({
+  tpye: CHANGE_DATE,
   payload,
 });
 
@@ -214,6 +228,30 @@ function backTest(state = initialState, action) {
         factors: {
           ...state.factors,
           consensusFactors: [...action.payload],
+        },
+      };
+    case CHANGE_BACKTEST_SETTINGS:
+      return {
+        ...state,
+        backtestSettings: {
+          ...state.backtestSettings,
+          ...action.payload,
+        },
+      };
+    case CHANGE_MONTH:
+      return {
+        ...state,
+        backtestSettings: {
+          ...state.backtestSettings,
+          seasonalityMonthList: [...action.payload],
+        },
+      };
+    case CHANGE_DATE:
+      return {
+        ...state,
+        period: {
+          ...state.period,
+          ...action.payload,
         },
       };
     default:

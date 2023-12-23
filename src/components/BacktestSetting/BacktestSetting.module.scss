@@ -147,3 +147,301 @@
 .active_step_line {
   border: 0.5px solid rgb(236, 97, 38);
 }
+
+// 컨텐츠 부분
+
+.inner {
+  margin-top: 80px;
+}
+
+.sub_inner {
+  margin-bottom: 80px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.title_box {
+  margin-bottom: 28px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+}
+
+// 옵션 선택하는 부분
+
+.option_box {
+  position: relative;
+  width: 62%;
+  margin-bottom: 38px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.option_text {
+  color: rgb(252, 252, 252);
+  font-size: 16px;
+  font-weight: 300;
+  margin-bottom: 18px;
+}
+
+.option_input_box {
+  position: relative;
+}
+
+.option_input {
+  cursor: pointer;
+  outline: none;
+  width: 100%;
+  text-align: center;
+  background: rgb(14, 14, 14);
+  border: 1px solid rgb(159, 159, 159);
+  border-radius: 6px;
+  padding: 14px 0;
+  box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
+  color: rgb(252, 252, 252);
+  font-size: 16px;
+  font-weight: 300;
+  &::placeholder {
+    transition: all 0.3s ease-in-out;
+    color: rgb(252, 252, 252);
+    font-size: 16px;
+    font-weight: 300;
+  }
+  &:focus::placeholder {
+    color: transparent;
+  }
+  &:hover {
+    border: 1px solid rgb(252, 252, 252);
+  }
+  &:focus {
+    border: 1px solid #ec6127;
+  }
+}
+
+.option_select_arrow,
+.active_option_select_arrow {
+  position: absolute;
+  top: 35%;
+  right: 28px;
+  color: #ec6127;
+  width: 15px;
+  height: 15px;
+  transition: all 0.3s ease-in-out;
+}
+
+.active_option_select_arrow {
+  transform: rotate(180deg);
+}
+
+// 선택 박스 선택시 나오는 박스 부분
+
+.hide_box {
+  list-style: none;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  margin-top: 10px;
+  background: rgb(14, 14, 14);
+  border-radius: 6px;
+  border: 1px solid rgb(62, 62, 62);
+  max-height: 500px;
+  overflow: hidden auto;
+}
+
+.hide_input,
+.active_hide_input {
+  cursor: pointer;
+  outline: none;
+  width: 100%;
+  border-radius: 6px;
+  text-align: center;
+  padding: 15px 0;
+  box-sizing: border-box;
+  background: rgb(14, 14, 14);
+  border: 0;
+  color: rgb(230, 230, 230);
+  font-size: 16px;
+  font-weight: 300;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+.active_hide_input {
+  background: rgba(236, 97, 38, 0.3) !important;
+}
+
+// input창 부분
+
+.option_input_text {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 28px;
+  color: rgb(230, 230, 230);
+  font-size: 16px;
+}
+
+.option_input_percent {
+  top: 35%;
+}
+
+.warning_text {
+  color: rgb(159, 159, 159);
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+// 인풋 넘버 화살표 지우기
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+// 시즈널리티 선택 시 나오는 기간 박스
+
+.month_list_wrapper {
+  width: 100%;
+  margin-top: 18px;
+}
+
+.month_list_inner {
+  display: flex;
+  align-items: center;
+  background-color: rgb(30, 30, 30);
+  border-radius: 6px;
+}
+
+.month_list_box,
+.active_month_list_box {
+  cursor: pointer;
+  width: calc(100% / 12);
+  height: 48px;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+  border-radius: 6px;
+}
+
+.active_month_list_box {
+  background-color: rgb(236, 97, 38);
+}
+
+.month_list_text,
+.active_month_list_text {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgb(230, 230, 230);
+  transition: all 0.3s ease-in-out;
+}
+
+.active_month_list_text {
+  color: rgb(14, 14, 14);
+}
+
+.warning_box {
+  margin-top: 10px;
+}
+
+// 선택 박스 선택시 나오는 박스 부분
+
+.hide_box {
+  list-style: none;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  margin-top: 10px;
+  background: rgb(14, 14, 14);
+  border-radius: 6px;
+  border: 1px solid rgb(62, 62, 62);
+  max-height: 500px;
+  overflow: hidden auto;
+}
+
+.hide_input,
+.active_hide_input {
+  cursor: pointer;
+  outline: none;
+  width: 100%;
+  border-radius: 6px;
+  text-align: center;
+  padding: 15px 0;
+  box-sizing: border-box;
+  background: rgb(14, 14, 14);
+  border: 0;
+  color: rgb(230, 230, 230);
+  font-size: 16px;
+  font-weight: 300;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+.active_hide_input {
+  background: rgba(236, 97, 38, 0.3) !important;
+}
+
+// 시즈널리티 선택 시 나오는 기간 박스
+
+.month_list_wrapper {
+  width: 100%;
+  margin-top: 18px;
+}
+
+.month_list_inner {
+  display: flex;
+  align-items: center;
+  background-color: rgb(30, 30, 30);
+  border-radius: 6px;
+}
+
+.month_list_box,
+.active_month_list_box {
+  cursor: pointer;
+  width: calc(100% / 12);
+  height: 48px;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+  border-radius: 6px;
+}
+
+.active_month_list_box {
+  background-color: rgb(236, 97, 38);
+}
+
+.month_list_text,
+.active_month_list_text {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgb(230, 230, 230);
+  transition: all 0.3s ease-in-out;
+}
+
+.active_month_list_text {
+  color: rgb(14, 14, 14);
+}
+
+.warning_box {
+  margin-top: 10px;
+}

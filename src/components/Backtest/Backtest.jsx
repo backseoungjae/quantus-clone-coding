@@ -2,9 +2,9 @@ import React from "react";
 import classNames from "classnames/bind";
 import styles from "./Backtest.module.scss";
 import StrategyHeader from "components/common/StrategyHeader";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
-import { NAV_ITEM, UNIVERS } from "mocks/subData";
+import { UNIVERS } from "mocks/subData";
 import Popup from "components/common/Popup";
 import BacktestRankingItem from "components/BacktestRankingItem";
 import BacktestInitialFilter from "components/BacktestInitialFilter";
@@ -20,7 +20,7 @@ export default function Backtest({
   customToggle,
   handleCustomToggle,
   handleToggle,
-  handleChagneBackTestTitle,
+  handleChangeBackTestTitle,
   handleChangeUniversSettings,
   onClickCheckAll,
   onCheckedItem,
@@ -52,7 +52,7 @@ export default function Backtest({
       </div>
       <StrategyHeader
         strategy={backTest?.strategy}
-        handleChangeTitle={handleChagneBackTestTitle}
+        handleChangeTitle={handleChangeBackTestTitle}
         title="백테스트"
       />
       <div className={cx("side_button_box")}>

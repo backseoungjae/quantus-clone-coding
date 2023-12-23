@@ -26,7 +26,7 @@ export default function BacktestContainer() {
     setToggle((prev) => !prev);
   }, []);
 
-  const handleChagneBackTestTitle = useCallback(
+  const handleChangeBackTestTitle = useCallback(
     (e) => {
       handleBackTestTitle({ [e.target.name]: e.target.value });
     },
@@ -146,7 +146,7 @@ export default function BacktestContainer() {
       customToggle={customToggle}
       handleCustomToggle={handleCustomToggle}
       handleToggle={handleToggle}
-      handleChagneBackTestTitle={handleChagneBackTestTitle}
+      handleChangeBackTestTitle={handleChangeBackTestTitle}
       handleChangeUniversSettings={handleChangeUniversSettings}
       onClickCheckAll={onClickCheckAll}
       onCheckedItem={onCheckedItem}

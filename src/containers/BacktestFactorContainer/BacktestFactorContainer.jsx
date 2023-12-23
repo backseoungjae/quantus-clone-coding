@@ -39,7 +39,7 @@ export default function BacktestFactorContainer() {
     setCusetomToggle((prev) => !prev);
   }, []);
 
-  const handleChagneBackTestTitle = useCallback(
+  const handleChangeBackTestTitle = useCallback(
     (e) => {
       handleBackTestTitle({ [e.target.name]: e.target.value });
     },
@@ -257,7 +257,7 @@ export default function BacktestFactorContainer() {
       backTest={backTest}
       toggle={toggle}
       handleToggle={handleToggle}
-      handleChagneBackTestTitle={handleChagneBackTestTitle}
+      handleChangeBackTestTitle={handleChangeBackTestTitle}
       handleChangeCalculationWeight={handleChangeCalculationWeight}
       valueFactorData={valueFactorsList}
       evFactorData={evFactorsList}
