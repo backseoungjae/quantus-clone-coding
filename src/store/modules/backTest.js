@@ -24,13 +24,19 @@ const initialState = {
     seasonalityMonthList: [],
     stopStandard: 0,
     lossStandard: 0,
-    macroMarketTiming: "",
-    reentryMarketTiming: "",
+  },
+  macroMarketTiming: [
+    { marketTimingList: "", marketTimingFilter: "", marketTimingValue: "" },
+  ],
+  reentryMarketTiming: {
+    movingAverageLine: "",
+    movingAverageLineDate: 20,
   },
   period: {
     startDate: null,
     endDate: null,
   },
+  splitMode: 0,
 };
 
 // 백테스트 공통 제목 부분
@@ -54,8 +60,12 @@ const CHANGE_CONSENSUS_FACTORS = "backTest/CHANGE_CONSENSUS_FACTORS";
 
 // 백테스트 설정 부분
 const CHANGE_BACKTEST_SETTINGS = "backTest/CHANGE_BACKTEST_SETTINGS";
-export const CHANGE_MONTH = "backTest/CHANGE_MONTH";
+const CHANGE_MONTH = "backTest/CHANGE_MONTH";
+const CHANGE_MACRO_MARKET_SETTINGS = "backTest/CHANGE_MACRO_MARKET_SETTINGS";
+const CHANGE_REENTRY_MARKET_SETTINGS = "backTest/REENTRY_MARKET_SETTINGS";
 const CHANGE_DATE = "backTest/CHANGE_DATE";
+const CHANGE_SPLITMODE = "backTest/CHANGE_SPLITMODE";
+
 // 백테스트 공통 제목 부분
 export const changeBackTestTitle = (payload) => ({
   type: CHANGE_TITLE,
@@ -130,8 +140,23 @@ export const changeMonthList = (payload) => ({
   payload,
 });
 
+export const changeMacroMarketSettings = (payload) => ({
+  type: CHANGE_MACRO_MARKET_SETTINGS,
+  payload,
+});
+
+export const changeReentryMarketSettings = (payload) => ({
+  type: CHANGE_REENTRY_MARKET_SETTINGS,
+  payload,
+});
+
+export const changeSplitMode = (payload) => ({
+  type: CHANGE_SPLITMODE,
+  payload,
+});
+
 export const changeDate = (payload) => ({
-  tpye: CHANGE_DATE,
+  type: CHANGE_DATE,
   payload,
 });
 
@@ -245,6 +270,27 @@ function backTest(state = initialState, action) {
           ...state.backtestSettings,
           seasonalityMonthList: [...action.payload],
         },
+      };
+    case CHANGE_MACRO_MARKET_SETTINGS:
+      return {
+        ...state,
+        backtestSettings: {
+          ...state.backtestSettings,
+          macroMarketTiming: [...action.payload],
+        },
+      };
+    case CHANGE_REENTRY_MARKET_SETTINGS:
+      return {
+        ...state,
+        reentryMarketTiming: {
+          ...state.reentryMarketTiming,
+          ...action.payload,
+        },
+      };
+    case CHANGE_SPLITMODE:
+      return {
+        ...state,
+        splitMode: action.payload,
       };
     case CHANGE_DATE:
       return {

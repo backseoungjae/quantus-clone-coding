@@ -13,7 +13,10 @@ import {
   changeExceptSectors,
   changeGrowthPotentialFactors,
   changeInitialfilters,
+  changeMacroMarketSettings,
   changeMonthList,
+  changeReentryMarketSettings,
+  changeSplitMode,
   changeUniversSettings,
   changeValueFactors,
 } from "store/modules/backTest";
@@ -92,6 +95,21 @@ export default function useBackTest() {
     dispatch(changeMonthList(payload));
   }, []);
 
+  // 매크로 마켓 타이밍 부분
+  const handleMacroMarketSettings = useCallback((payload) => {
+    dispatch(changeMacroMarketSettings(payload));
+  }, []);
+
+  // 재진입 마켓 타이밍 부분
+  const handleReentryMarketSettings = useCallback((payload) => {
+    dispatch(changeReentryMarketSettings(payload));
+  }, []);
+
+  // 스플릿 모드
+  const handleSplitMode = useCallback((payload) => {
+    dispatch(changeSplitMode(payload));
+  }, []);
+
   // 백테스트 기간 설정 부분
   const handleDate = useCallback((payload) => {
     dispatch(changeDate(payload));
@@ -113,6 +131,9 @@ export default function useBackTest() {
     handleConsensusFactors,
     handleBacktestSettings,
     handleMonthList,
+    handleMacroMarketSettings,
+    handleReentryMarketSettings,
+    handleSplitMode,
     handleDate,
   };
 }

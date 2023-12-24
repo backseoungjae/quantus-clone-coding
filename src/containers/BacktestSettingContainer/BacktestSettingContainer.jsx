@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import BacktestSetting from "components/BacktestSetting";
 import useBackTest from "hooks/useBackTest";
 import dayjs from "dayjs";
@@ -9,6 +9,9 @@ export default function BacktestSettingContainer() {
     handleBackTestTitle,
     handleBacktestSettings,
     handleMonthList,
+    handleMacroMarketSettings,
+    handleReentryMarketSettings,
+    handleSplitMode,
     handleDate,
   } = useBackTest();
 
@@ -32,27 +35,14 @@ export default function BacktestSettingContainer() {
     [handleBackTestTitle]
   );
 
-  const { transactionFee, rebalancingItems, stopStandard, lossStandard } =
-    backTest?.backtestSettings;
-
   // 하위 백테스트 설정 변경 부분
   const handleChangeBacktestSettings = useCallback(
     (e) => {
-      if (transactionFee || rebalancingItems || stopStandard || lossStandard) {
-        handleBacktestSettings({ [e.target.name]: Number(e.target.value) });
-      } else {
-        handleBacktestSettings({ [e.target.name]: e.target.value });
-      }
+      handleBacktestSettings({ [e.target.name]: e.target.value });
       setRebalancingToggle(false);
       setSpecificControlToggle(false);
     },
-    [
-      handleBacktestSettings,
-      transactionFee,
-      rebalancingItems,
-      stopStandard,
-      lossStandard,
-    ]
+    [handleBacktestSettings]
   );
 
   // 시즈널리티 기간 선택
@@ -73,6 +63,28 @@ export default function BacktestSettingContainer() {
     },
     [handleMonthList, backTest?.backtestSettings?.seasonalityMonthList]
   );
+
+  // 마켓 타이밍 이벤트 부분
+  const [macroToggle, setMacroToggle] = useState(false);
+  const [splitMode, setSplitMode] = useState(backTest?.splitMode);
+  const handleChagneSplit = useCallback((i) => {
+    setSplitMode(i);
+  }, []);
+
+  useEffect(() => {
+    handleSplitMode(splitMode);
+  }, [splitMode, handleSplitMode]);
+
+  const handleChangeReentryMarketSettings = useCallback(
+    (e) => {
+      handleReentryMarketSettings({ [e.target.name]: e.target.value });
+    },
+    [handleReentryMarketSettings]
+  );
+
+  const handleMacroToggle = useCallback(() => {
+    setMacroToggle((prev) => !prev);
+  }, []);
 
   // 날짜 변경
   const [dateStart, setDateStart] = useState(false);
@@ -113,18 +125,32 @@ export default function BacktestSettingContainer() {
   );
 
   console.log("backtest ", backTest);
-  console.log("backTest?.period ", backTest?.period);
+
+  console.log("backTest?.reentryMarketTiming ", backTest?.reentryMarketTiming);
+
+  // 설정 값 초기화 이벤트
+  const handleReset = useCallback(() => {
+    if (window.confirm("설정 값을 초기화 하시겠습니까?")) {
+      sessionStorage.clear();
+      window.location.reload();
+    }
+  }, []);
 
   return (
     <BacktestSetting
       backTest={backTest}
       rebalancingToggle={rebalancingToggle}
       specificControlToggle={specificControlToggle}
+      splitMode={splitMode}
+      handleChagneSplit={handleChagneSplit}
       handleChangeBackTestTitle={handleChangeBackTestTitle}
       handleChangeBacktestSettings={handleChangeBacktestSettings}
       handleAddMonthList={handleAddMonthList}
       handleRebalancingToggle={handleRebalancingToggle}
       handleSpecificControlToggle={handleSpecificControlToggle}
+      handleChangeReentryMarketSettings={handleChangeReentryMarketSettings}
+      macroToggle={macroToggle}
+      handleMacroToggle={handleMacroToggle}
       // 기간설정부분
       dateStart={dateStart}
       dateEnd={dateEnd}
@@ -134,6 +160,7 @@ export default function BacktestSettingContainer() {
       handleEndDateToggle={handleEndDateToggle}
       handleChangeStartDate={handleChangeStartDate}
       handleChangeEndDate={handleChangeEndDate}
+      handleReset={handleReset}
     />
   );
 }

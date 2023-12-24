@@ -97,7 +97,7 @@
 
 .explanation_box {
   position: absolute;
-  min-width: 400px;
+  width: max-content;
   top: -60px;
   left: 0;
   z-index: 1;
