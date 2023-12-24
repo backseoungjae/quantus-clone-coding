@@ -62,6 +62,8 @@ const CHANGE_CONSENSUS_FACTORS = "backTest/CHANGE_CONSENSUS_FACTORS";
 const CHANGE_BACKTEST_SETTINGS = "backTest/CHANGE_BACKTEST_SETTINGS";
 const CHANGE_MONTH = "backTest/CHANGE_MONTH";
 const CHANGE_MACRO_MARKET_SETTINGS = "backTest/CHANGE_MACRO_MARKET_SETTINGS";
+const ADD_MACRO_MARKET_SETTINGS = "backTest/ADD_MACRO_MARKET_SETTINGS";
+const REMOVE_MACRO_MARKET_SETTINGS = "backTest/REMOVE_MACRO_MARKET_SETTINGS";
 const CHANGE_REENTRY_MARKET_SETTINGS = "backTest/REENTRY_MARKET_SETTINGS";
 const CHANGE_DATE = "backTest/CHANGE_DATE";
 const CHANGE_SPLITMODE = "backTest/CHANGE_SPLITMODE";
@@ -142,6 +144,16 @@ export const changeMonthList = (payload) => ({
 
 export const changeMacroMarketSettings = (payload) => ({
   type: CHANGE_MACRO_MARKET_SETTINGS,
+  payload,
+});
+
+export const addMacroMarketSettings = (payload) => ({
+  type: ADD_MACRO_MARKET_SETTINGS,
+  payload,
+});
+
+export const removeMacroMarketSettings = (payload) => ({
+  type: REMOVE_MACRO_MARKET_SETTINGS,
   payload,
 });
 
@@ -278,6 +290,18 @@ function backTest(state = initialState, action) {
           ...state.backtestSettings,
           macroMarketTiming: [...action.payload],
         },
+      };
+    case ADD_MACRO_MARKET_SETTINGS:
+      return {
+        ...state,
+        macroMarketTiming: [...state.macroMarketTiming, ...action.payload],
+      };
+    case REMOVE_MACRO_MARKET_SETTINGS:
+      return {
+        ...state,
+        macroMarketTiming: [...state.macroMarketTiming].filter(
+          (el) => el?.index !== action.payload.index
+        ),
       };
     case CHANGE_REENTRY_MARKET_SETTINGS:
       return {

@@ -600,7 +600,8 @@ input[type="number"] {
   width: calc(100% - 50% - 30px);
 }
 
-.macro_button {
+.macro_button,
+.active_macro_button {
   cursor: pointer;
   width: 30%;
   box-sizing: border-box;
@@ -612,7 +613,6 @@ input[type="number"] {
   position: relative;
   background-color: rgb(14, 14, 14);
   margin-right: -1px;
-  // border: 1px solid rgb(236, 97, 38);
   border: 1px solid rgb(159, 159, 159);
   &:first-child {
     border-radius: 6px 0px 0px 6px;
@@ -621,6 +621,10 @@ input[type="number"] {
     border: 1px solid rgb(159, 159, 159);
     border-radius: 0px 6px 6px 0px;
   }
+}
+
+.active_macro_button {
+  border: 1px solid rgb(236, 97, 38);
 }
 
 .value_input_box {
