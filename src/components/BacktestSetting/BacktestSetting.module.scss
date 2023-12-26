@@ -515,6 +515,16 @@ input[type="number"] {
   margin-top: 30px;
 }
 
+.split_box {
+  margin-bottom: 30px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  &:last-child .add_button {
+    display: inline-block;
+  }
+}
+
 .radio_item_box {
   display: flex;
   align-items: center;
@@ -663,19 +673,23 @@ input[type="number"] {
   margin-top: 40px;
 }
 
-.add_button_box {
+.add_button,
+.remove_button {
+  display: none;
   cursor: pointer;
   padding: 14px 20px;
   box-sizing: border-box;
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(236, 97, 38);
   border-radius: 6px;
   font-size: 14px;
-  color: rgb(252, 252, 252);
+  color: rgb(14, 14, 14);
   font-weight: 500;
   border: 0;
-  &:last-child {
-    margin-left: 32px;
-    color: rgb(14, 14, 14);
-    background-color: rgb(236, 97, 38);
-  }
+}
+
+.remove_button {
+  display: inline-block;
+  margin-right: 32px;
+  background-color: rgb(0, 0, 0);
+  color: rgb(252, 252, 252);
 }

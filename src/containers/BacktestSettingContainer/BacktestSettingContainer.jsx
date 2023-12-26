@@ -10,6 +10,8 @@ export default function BacktestSettingContainer() {
     handleBacktestSettings,
     handleMonthList,
     handleMacroMarketSettings,
+    onAddMacroMarketSettings,
+    onRemoveMacroMarketSettings,
     handleReentryMarketSettings,
     handleSplitMode,
     handleDate,
@@ -124,9 +126,25 @@ export default function BacktestSettingContainer() {
     [handleDate]
   );
 
-  console.log("backtest ", backTest);
+  // 매크로 마켓 부분
+  const handleAddMacroMarketSettings = useCallback(() => {
+    const addMacroMarket = {
+      marketTimingList: "",
+      marketTimingFilter: "",
+      marketTimingValue: "",
+    };
 
-  console.log("backTest?.reentryMarketTiming ", backTest?.reentryMarketTiming);
+    onAddMacroMarketSettings(
+      backTest?.macroMarketTiming?.concat(addMacroMarket)
+    );
+  }, [backTest?.macroMarketTiming, onAddMacroMarketSettings]);
+
+  const handleRemoveMacroMarketSettings = useCallback(
+    (i) => {
+      onRemoveMacroMarketSettings(i);
+    },
+    [onRemoveMacroMarketSettings]
+  );
 
   // 설정 값 초기화 이벤트
   const handleReset = useCallback(() => {
@@ -135,6 +153,8 @@ export default function BacktestSettingContainer() {
       window.location.reload();
     }
   }, []);
+
+  console.log("backtest ", backTest);
 
   return (
     <BacktestSetting
@@ -151,6 +171,8 @@ export default function BacktestSettingContainer() {
       handleChangeReentryMarketSettings={handleChangeReentryMarketSettings}
       macroToggle={macroToggle}
       handleMacroToggle={handleMacroToggle}
+      handleAddMacroMarketSettings={handleAddMacroMarketSettings}
+      handleRemoveMacroMarketSettings={handleRemoveMacroMarketSettings}
       // 기간설정부분
       dateStart={dateStart}
       dateEnd={dateEnd}

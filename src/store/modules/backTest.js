@@ -299,8 +299,9 @@ function backTest(state = initialState, action) {
     case REMOVE_MACRO_MARKET_SETTINGS:
       return {
         ...state,
-        macroMarketTiming: [...state.macroMarketTiming].filter(
-          (el) => el?.index !== action.payload.index
+        macroMarketTiming: [...state.macroMarketTiming].splice(
+          action.payload,
+          1
         ),
       };
     case CHANGE_REENTRY_MARKET_SETTINGS:

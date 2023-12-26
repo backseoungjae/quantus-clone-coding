@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
+  addMacroMarketSettings,
   chagneCalculationWeight,
   chagneConsensusFactors,
   chagnePriceFactors,
@@ -19,6 +20,7 @@ import {
   changeSplitMode,
   changeUniversSettings,
   changeValueFactors,
+  removeMacroMarketSettings,
 } from "store/modules/backTest";
 
 export default function useBackTest() {
@@ -105,6 +107,16 @@ export default function useBackTest() {
     dispatch(changeReentryMarketSettings(payload));
   }, []);
 
+  // 매크로 마켓 타이밍 추가 부분
+  const onAddMacroMarketSettings = useCallback((payload) => {
+    dispatch(addMacroMarketSettings(payload));
+  }, []);
+
+  // 매크로 마켓 타이밍 제거 부분
+  const onRemoveMacroMarketSettings = useCallback((payload) => {
+    dispatch(removeMacroMarketSettings(payload));
+  }, []);
+
   // 스플릿 모드
   const handleSplitMode = useCallback((payload) => {
     dispatch(changeSplitMode(payload));
@@ -134,6 +146,8 @@ export default function useBackTest() {
     handleMacroMarketSettings,
     handleReentryMarketSettings,
     handleSplitMode,
+    onAddMacroMarketSettings,
+    onRemoveMacroMarketSettings,
     handleDate,
   };
 }

@@ -46,6 +46,8 @@ export default function BacktestSetting({
   handleChangeReentryMarketSettings,
   macroToggle,
   handleMacroToggle,
+  handleAddMacroMarketSettings,
+  handleRemoveMacroMarketSettings,
   // 기간설정부분
   dateStart,
   dateEnd,
@@ -396,97 +398,111 @@ export default function BacktestSetting({
           </div>
           {splitMode === 1 && (
             <div className={cx("split_inner")}>
-              {backTest?.macroMarketTiming?.map((macro, i) => (
-                <div key={i}>
-                  <p className={cx("macro_text")}>
-                    매크로 마켓 타이밍 필터 {String(i + 1).padStart(2, "0")}
-                  </p>
-                  <div className={cx("option_box", "macro_input_box")}>
-                    <div className={cx("macro_box")}>
-                      <div
-                        className={cx(
-                          "option_input_box",
-                          "macro_option_input_box"
+              {backTest?.macroMarketTiming?.map((macro, i) => {
+                console.log("i ", i);
+
+                return (
+                  <div className={cx("split_box")} key={i}>
+                    <p className={cx("macro_text")}>
+                      매크로 마켓 타이밍 필터 {String(i + 1).padStart(2, "0")}
+                    </p>
+                    <div className={cx("option_box", "macro_input_box")}>
+                      <div className={cx("macro_box")}>
+                        <div
+                          className={cx(
+                            "option_input_box",
+                            "macro_option_input_box"
+                          )}
+                          onClick={handleMacroToggle}
+                        >
+                          <input
+                            type="text"
+                            name="specificGravityControl"
+                            value={
+                              backTest?.macroMarketTiming?.marketTimingList
+                                ? backTest?.macroMarketTiming?.marketTimingList
+                                : "미)장단기금리차 (10년-2년)"
+                            }
+                            readOnly
+                            className={cx("option_input")}
+                          />
+                          <IoIosArrowDown
+                            className={cx(
+                              macroToggle
+                                ? "active_option_select_arrow"
+                                : "option_select_arrow"
+                            )}
+                          />
+                        </div>
+                        {macroToggle && (
+                          <ul className={cx("hide_box")}>
+                            {MACRO_MARKET_LIST.map((list) => (
+                              <li key={list.id}>
+                                <input
+                                  name="specificGravityControl"
+                                  value={list.name}
+                                  onClick={handleChangeBacktestSettings}
+                                  className={cx(
+                                    list.name ===
+                                      backTest?.macroMarketTiming
+                                        ?.marketTimingList
+                                      ? "active_hide_input"
+                                      : "hide_input"
+                                  )}
+                                  type="text"
+                                  readOnly
+                                  placeholder={list.name}
+                                  disabled={list.id !== 1}
+                                />
+                              </li>
+                            ))}
+                          </ul>
                         )}
-                        onClick={handleMacroToggle}
-                      >
+                      </div>
+                      <p className={cx("text")}>을(를)</p>
+                      <div className={cx("macro_button_box")}>
+                        <button className={cx("macro_button")}>
+                          상위 {`(>)`}
+                        </button>
+                        <button className={cx("macro_button")}>
+                          하위 {`(<)`}
+                        </button>
+                        <button className={cx("macro_button")}>범위</button>
+                      </div>
+                    </div>
+                    <div className={cx("value_input_box")}>
+                      <input
+                        type="number"
+                        className={cx("value_input")}
+                        placeholder="값 입력"
+                      />
+                      <div className={cx("option_input_box")}>
                         <input
                           type="text"
-                          name="specificGravityControl"
-                          value={
-                            backTest?.macroMarketTiming?.marketTimingList
-                              ? backTest?.macroMarketTiming?.marketTimingList
-                              : "미)장단기금리차 (10년-2년)"
-                          }
+                          value="값"
                           readOnly
                           className={cx("option_input")}
                         />
-                        <IoIosArrowDown
-                          className={cx(
-                            macroToggle
-                              ? "active_option_select_arrow"
-                              : "option_select_arrow"
-                          )}
-                        />
+                        <IoIosArrowDown className={cx("option_select_arrow")} />
                       </div>
-                      {macroToggle && (
-                        <ul className={cx("hide_box")}>
-                          {MACRO_MARKET_LIST.map((list) => (
-                            <li key={list.id}>
-                              <input
-                                name="specificGravityControl"
-                                value={list.name}
-                                onClick={handleChangeBacktestSettings}
-                                className={cx(
-                                  list.name ===
-                                    backTest?.macroMarketTiming
-                                      ?.marketTimingList
-                                    ? "active_hide_input"
-                                    : "hide_input"
-                                )}
-                                type="text"
-                                readOnly
-                                placeholder={list.name}
-                                disabled={list.id !== 1}
-                              />
-                            </li>
-                          ))}
-                        </ul>
-                      )}
                     </div>
-                    <p className={cx("text")}>을(를)</p>
-                    <div className={cx("macro_button_box")}>
-                      <button className={cx("macro_button")}>
-                        상위 {`(>)`}
+                    <div className={cx("macro_add_button_box")}>
+                      <button
+                        onClick={(i) => handleRemoveMacroMarketSettings(i)}
+                        className={cx("remove_button")}
+                      >
+                        삭제하기
                       </button>
-                      <button className={cx("macro_button")}>
-                        하위 {`(<)`}
+                      <button
+                        onClick={handleAddMacroMarketSettings}
+                        className={cx("add_button")}
+                      >
+                        추가하기
                       </button>
-                      <button className={cx("macro_button")}>범위</button>
                     </div>
                   </div>
-                  <div className={cx("value_input_box")}>
-                    <input
-                      type="number"
-                      className={cx("value_input")}
-                      placeholder="값 입력"
-                    />
-                    <div className={cx("option_input_box")}>
-                      <input
-                        type="text"
-                        value="값"
-                        readOnly
-                        className={cx("option_input")}
-                      />
-                      <IoIosArrowDown className={cx("option_select_arrow")} />
-                    </div>
-                  </div>
-                  <div className={cx("macro_add_button_box")}>
-                    <button className={cx("add_button_box")}>삭제하기</button>
-                    <button className={cx("add_button_box")}>추가하기</button>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
           {splitMode === 2 && (
