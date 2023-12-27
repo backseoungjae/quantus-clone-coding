@@ -25,9 +25,7 @@ const initialState = {
     stopStandard: 0,
     lossStandard: 0,
   },
-  macroMarketTiming: [
-    { marketTimingList: "", marketTimingFilter: "", marketTimingValue: "" },
-  ],
+  macroMarketTiming: [],
   reentryMarketTiming: {
     movingAverageLine: "",
     movingAverageLineDate: 20,
@@ -286,15 +284,12 @@ function backTest(state = initialState, action) {
     case CHANGE_MACRO_MARKET_SETTINGS:
       return {
         ...state,
-        backtestSettings: {
-          ...state.backtestSettings,
-          macroMarketTiming: [...action.payload],
-        },
+        macroMarketTiming: [{ ...action.payload }],
       };
     case ADD_MACRO_MARKET_SETTINGS:
       return {
         ...state,
-        macroMarketTiming: [...state.macroMarketTiming, ...action.payload],
+        macroMarketTiming: state.macroMarketTiming.concat(action.payload),
       };
     case REMOVE_MACRO_MARKET_SETTINGS:
       return {

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import BacktestSetting from "components/BacktestSetting";
 import useBackTest from "hooks/useBackTest";
 import dayjs from "dayjs";
@@ -69,24 +69,95 @@ export default function BacktestSettingContainer() {
   // 마켓 타이밍 이벤트 부분
   const [macroToggle, setMacroToggle] = useState(false);
   const [splitMode, setSplitMode] = useState(backTest?.splitMode);
-  const handleChagneSplit = useCallback((i) => {
-    setSplitMode(i);
-  }, []);
 
   useEffect(() => {
     handleSplitMode(splitMode);
   }, [splitMode, handleSplitMode]);
 
+  // 마켓 타이밍 토글 부분
+  const handleMacroToggle = useCallback(
+    (i) => {
+      setMacroToggle({
+        ...macroToggle,
+        [i]: !macroToggle[i],
+      });
+    },
+    [macroToggle]
+  );
+
+  const handleChangeMacroMarketSettings = useCallback(
+    (e) => {
+      console.log("{ [e.target.name]: e.target.value } ", {
+        [e.target.name]: e.target.value,
+      });
+      // handleMacroMarketSettings({ [e.target.name]: e.target.value });
+      setMacroToggle(false);
+    },
+    [
+      // handleMacroMarketSettings
+    ]
+  );
+
+  // const [ex, setEx] = useState({
+  //   marketTimingList: "",
+  //   marketTimingFilter: "",
+  //   marketTimingValue: "",
+  // });
+
+  // const hadnleEx = useCallback(
+  //   (e, i) => {
+  //     console.log("i ", i);
+  //     setEx({ ...ex, [e.target.name]: e.target.value });
+  //     handleMacroMarketSettings(ex);
+  //   },
+  //   [ex, handleMacroMarketSettings]
+  // );
+
+  // 매크로 마켓 추가 삭제 부분
+  const handleAddMacroMarketSettings = useCallback(() => {
+    const addMacroMarket = {
+      marketTimingList: "",
+      marketTimingFilter: "",
+      marketTimingValue: "",
+    };
+
+    onAddMacroMarketSettings(addMacroMarket);
+  }, [onAddMacroMarketSettings]);
+
+  const handleRemoveMacroMarketSettings = useCallback(
+    (i) => {
+      onRemoveMacroMarketSettings(i);
+    },
+    [onRemoveMacroMarketSettings]
+  );
+
+  // 마켓 타이밍 재진입 부분
   const handleChangeReentryMarketSettings = useCallback(
     (e) => {
-      handleReentryMarketSettings({ [e.target.name]: e.target.value });
+      handleReentryMarketSettings({
+        [e.target.name]: e.target.value,
+      });
     },
     [handleReentryMarketSettings]
   );
 
-  const handleMacroToggle = useCallback(() => {
-    setMacroToggle((prev) => !prev);
-  }, []);
+  // 스플릿 변경
+  const handleChagneSplit = useCallback(
+    (i) => {
+      if (i === 1 && backTest?.macroMarketTiming?.length === 0) {
+        handleAddMacroMarketSettings();
+      }
+      if (i === 2) {
+        handleRemoveMacroMarketSettings();
+      }
+      setSplitMode(i);
+    },
+    [
+      handleAddMacroMarketSettings,
+      backTest?.macroMarketTiming,
+      handleRemoveMacroMarketSettings,
+    ]
+  );
 
   // 날짜 변경
   const [dateStart, setDateStart] = useState(false);
@@ -126,26 +197,6 @@ export default function BacktestSettingContainer() {
     [handleDate]
   );
 
-  // 매크로 마켓 부분
-  const handleAddMacroMarketSettings = useCallback(() => {
-    const addMacroMarket = {
-      marketTimingList: "",
-      marketTimingFilter: "",
-      marketTimingValue: "",
-    };
-
-    onAddMacroMarketSettings(
-      backTest?.macroMarketTiming?.concat(addMacroMarket)
-    );
-  }, [backTest?.macroMarketTiming, onAddMacroMarketSettings]);
-
-  const handleRemoveMacroMarketSettings = useCallback(
-    (i) => {
-      onRemoveMacroMarketSettings(i);
-    },
-    [onRemoveMacroMarketSettings]
-  );
-
   // 설정 값 초기화 이벤트
   const handleReset = useCallback(() => {
     if (window.confirm("설정 값을 초기화 하시겠습니까?")) {
@@ -171,6 +222,7 @@ export default function BacktestSettingContainer() {
       handleChangeReentryMarketSettings={handleChangeReentryMarketSettings}
       macroToggle={macroToggle}
       handleMacroToggle={handleMacroToggle}
+      handleChangeMacroMarketSettings={handleChangeMacroMarketSettings}
       handleAddMacroMarketSettings={handleAddMacroMarketSettings}
       handleRemoveMacroMarketSettings={handleRemoveMacroMarketSettings}
       // 기간설정부분
@@ -183,6 +235,8 @@ export default function BacktestSettingContainer() {
       handleChangeStartDate={handleChangeStartDate}
       handleChangeEndDate={handleChangeEndDate}
       handleReset={handleReset}
+      // ex={ex}
+      // hadnleEx={handleChangeMacroMarketSettings}
     />
   );
 }
