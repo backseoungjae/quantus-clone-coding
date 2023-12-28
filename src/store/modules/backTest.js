@@ -284,7 +284,7 @@ function backTest(state = initialState, action) {
     case CHANGE_MACRO_MARKET_SETTINGS:
       return {
         ...state,
-        macroMarketTiming: [{ ...action.payload }],
+        macroMarketTiming: [action.payload],
       };
     case ADD_MACRO_MARKET_SETTINGS:
       return {

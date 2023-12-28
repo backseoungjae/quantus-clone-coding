@@ -400,9 +400,6 @@ export default function BacktestSetting({
           {splitMode === 1 && (
             <div className={cx("split_inner")}>
               {backTest?.macroMarketTiming?.map((macro, i) => {
-                console.log("macro ", macro);
-                console.log("macro[i]", [i]);
-
                 return (
                   <div className={cx("split_box")} key={i}>
                     <p className={cx("macro_text")}>
@@ -465,7 +462,11 @@ export default function BacktestSetting({
                           name="marketTimingFilter"
                           value="상위"
                           onClick={handleChangeMacroMarketSettings}
-                          className={cx("macro_button")}
+                          className={cx(
+                            macro?.marketTimingFilter === "상위"
+                              ? "active_macro_button"
+                              : "macro_button"
+                          )}
                         >
                           상위 {`(>)`}
                         </button>
@@ -473,7 +474,11 @@ export default function BacktestSetting({
                           name="marketTimingFilter"
                           value="하위"
                           onClick={handleChangeMacroMarketSettings}
-                          className={cx("macro_button")}
+                          className={cx(
+                            macro?.marketTimingFilter === "하위"
+                              ? "active_macro_button"
+                              : "macro_button"
+                          )}
                         >
                           하위 {`(<)`}
                         </button>
@@ -481,7 +486,11 @@ export default function BacktestSetting({
                           name="marketTimingFilter"
                           value="범위"
                           onClick={handleChangeMacroMarketSettings}
-                          className={cx("macro_button")}
+                          className={cx(
+                            macro?.marketTimingFilter === "범위`"
+                              ? "active_macro_button"
+                              : "macro_button"
+                          )}
                         >
                           범위
                         </button>

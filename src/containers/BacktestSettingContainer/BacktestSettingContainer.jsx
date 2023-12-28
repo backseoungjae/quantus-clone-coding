@@ -69,6 +69,11 @@ export default function BacktestSettingContainer() {
   // 마켓 타이밍 이벤트 부분
   const [macroToggle, setMacroToggle] = useState(false);
   const [splitMode, setSplitMode] = useState(backTest?.splitMode);
+  const [macroMarket, setMacroMarket] = useState({
+    marketTimingList: "",
+    marketTimingFilter: "",
+    marketTimingValue: "",
+  });
 
   useEffect(() => {
     handleSplitMode(splitMode);
@@ -87,42 +92,21 @@ export default function BacktestSettingContainer() {
 
   const handleChangeMacroMarketSettings = useCallback(
     (e) => {
-      console.log("{ [e.target.name]: e.target.value } ", {
+      setMacroMarket({
+        ...macroMarket,
         [e.target.name]: e.target.value,
       });
-      // handleMacroMarketSettings({ [e.target.name]: e.target.value });
       setMacroToggle(false);
     },
-    [
-      // handleMacroMarketSettings
-    ]
+    [macroMarket]
   );
 
-  // const [ex, setEx] = useState({
-  //   marketTimingList: "",
-  //   marketTimingFilter: "",
-  //   marketTimingValue: "",
-  // });
-
-  // const hadnleEx = useCallback(
-  //   (e, i) => {
-  //     console.log("i ", i);
-  //     setEx({ ...ex, [e.target.name]: e.target.value });
-  //     handleMacroMarketSettings(ex);
-  //   },
-  //   [ex, handleMacroMarketSettings]
-  // );
+  console.log("macroMarket ", macroMarket);
 
   // 매크로 마켓 추가 삭제 부분
   const handleAddMacroMarketSettings = useCallback(() => {
-    const addMacroMarket = {
-      marketTimingList: "",
-      marketTimingFilter: "",
-      marketTimingValue: "",
-    };
-
-    onAddMacroMarketSettings(addMacroMarket);
-  }, [onAddMacroMarketSettings]);
+    onAddMacroMarketSettings(macroMarket);
+  }, [onAddMacroMarketSettings, macroMarket]);
 
   const handleRemoveMacroMarketSettings = useCallback(
     (i) => {
