@@ -96,17 +96,24 @@ export default function BacktestSettingContainer() {
         ...macroMarket,
         [e.target.name]: e.target.value,
       });
+      handleMacroMarketSettings(macroMarket);
       setMacroToggle(false);
     },
-    [macroMarket]
+    [handleMacroMarketSettings, macroMarket]
   );
 
   console.log("macroMarket ", macroMarket);
 
   // 매크로 마켓 추가 삭제 부분
   const handleAddMacroMarketSettings = useCallback(() => {
-    onAddMacroMarketSettings(macroMarket);
-  }, [onAddMacroMarketSettings, macroMarket]);
+    const addMacroMarket = {
+      marketTimingList: "",
+      marketTimingFilter: "",
+      marketTimingValue: "",
+    };
+
+    onAddMacroMarketSettings(addMacroMarket);
+  }, [onAddMacroMarketSettings]);
 
   const handleRemoveMacroMarketSettings = useCallback(
     (i) => {

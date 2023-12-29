@@ -400,6 +400,7 @@ export default function BacktestSetting({
           {splitMode === 1 && (
             <div className={cx("split_inner")}>
               {backTest?.macroMarketTiming?.map((macro, i) => {
+                console.log("asddsa ", macro?.marketTimingValue);
                 return (
                   <div className={cx("split_box")} key={i}>
                     <p className={cx("macro_text")}>
@@ -435,7 +436,7 @@ export default function BacktestSetting({
                         </div>
                         {macroToggle[i] && (
                           <ul className={cx("hide_box")}>
-                            {MACRO_MARKET_LIST.map((list) => {
+                            {MACRO_MARKET_LIST.map((list, i) => {
                               return (
                                 <li key={list.id}>
                                   <input
@@ -487,7 +488,7 @@ export default function BacktestSetting({
                           value="범위"
                           onClick={handleChangeMacroMarketSettings}
                           className={cx(
-                            macro?.marketTimingFilter === "범위`"
+                            macro?.marketTimingFilter === "범위"
                               ? "active_macro_button"
                               : "macro_button"
                           )}
