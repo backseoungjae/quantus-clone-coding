@@ -1,10 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 import {
+  ActualInvestmentPage,
   BacktestFactorPage,
   BacktestPage,
   BacktestSettingPage,
   DecileBacktestPage,
   StaticAllocPage,
+  StrategyExamplePage,
 } from "pages";
 
 function App() {
@@ -28,6 +30,8 @@ function App() {
         path="/backtest/backtest/backtest"
         element={<BacktestSettingPage />}
       />
+      <Route path="/invest/accounts" element={<ActualInvestmentPage />} />
+      <Route path="/strategy" element={<StrategyExamplePage />} />
     </Routes>
   );
 }
