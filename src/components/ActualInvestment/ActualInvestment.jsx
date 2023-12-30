@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
-export default function ActualInvestment({ handleDownloadClick }) {
+export default function ActualInvestment() {
   return (
     <div className={cx("container")}>
       <div className={cx("title_box")}>
