@@ -5,6 +5,7 @@ import {
   BacktestPage,
   BacktestSettingPage,
   DecileBacktestPage,
+  PurchaseLicensePage,
   StaticAllocPage,
   StrategyExamplePage,
 } from "pages";
@@ -32,6 +33,7 @@ function App() {
       />
       <Route path="/invest/accounts" element={<ActualInvestmentPage />} />
       <Route path="/strategy" element={<StrategyExamplePage />} />
+      <Route path="/products" element={<PurchaseLicensePage />} />
     </Routes>
   );
 }
