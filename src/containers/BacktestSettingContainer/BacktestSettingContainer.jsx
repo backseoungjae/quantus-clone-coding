@@ -91,12 +91,12 @@ export default function BacktestSettingContainer() {
   );
 
   const handleChangeMacroMarketSettings = useCallback(
-    (e) => {
+    (e, i) => {
       setMacroMarket({
         ...macroMarket,
         [e.target.name]: e.target.value,
       });
-      handleMacroMarketSettings(macroMarket);
+      handleMacroMarketSettings(macroMarket[i]);
       setMacroToggle(false);
     },
     [handleMacroMarketSettings, macroMarket]
@@ -198,6 +198,12 @@ export default function BacktestSettingContainer() {
 
   console.log("backtest ", backTest);
 
+  // 마지막 버튼 이벤트
+
+  const handleVerification = useCallback((text) => {
+    alert(`${text} 완료 되었습니다.`);
+  }, []);
+
   return (
     <BacktestSetting
       backTest={backTest}
@@ -216,6 +222,7 @@ export default function BacktestSettingContainer() {
       handleChangeMacroMarketSettings={handleChangeMacroMarketSettings}
       handleAddMacroMarketSettings={handleAddMacroMarketSettings}
       handleRemoveMacroMarketSettings={handleRemoveMacroMarketSettings}
+      handleVerification={handleVerification}
       // 기간설정부분
       dateStart={dateStart}
       dateEnd={dateEnd}

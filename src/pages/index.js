@@ -6,3 +6,5 @@ export { default as BacktestSettingPage } from "./BacktestSettingPage";
 export { default as ActualInvestmentPage } from "./ActualInvestmentPage";
 export { default as StrategyExamplePage } from "./StrategyExamplePage";
 export { default as PurchaseLicensePage } from "./PurchaseLicensePage";
+export { default as DecileBacktestFactorPage } from "./DecileBacktestFactorPage";
+export { default as DecileBacktestSettingPage } from "./DecileBacktestSettingPage";

@@ -2,7 +2,7 @@ import React from "react";
 import classNames from "classnames/bind";
 import styles from "./Backtest.module.scss";
 import StrategyHeader from "components/common/StrategyHeader";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
 import { UNIVERS } from "mocks/subData";
 import Popup from "components/common/Popup";
@@ -34,19 +34,39 @@ export default function Backtest({
   dragEnter,
   drop,
 }) {
+  const location = useLocation();
+
   return (
     <div className={cx("container")}>
       <div className={cx("nav_box")}>
         <Link
           className={cx("active_nav_item")}
-          to="/backtest/backtest/universe"
+          to={
+            location.pathname.includes("backtest/backtest")
+              ? "/backtest/backtest/universe"
+              : "/backtest/decile/universe"
+          }
         >
           유니버스 선택
         </Link>
-        <Link className={cx("nav_item")} to="/backtest/backtest/factors">
+        <Link
+          className={cx("nav_item")}
+          to={
+            location.pathname.includes("backtest/backtest")
+              ? "/backtest/backtest/factors"
+              : "/backtest/decile/factors"
+          }
+        >
           팩터 선택
         </Link>
-        <Link className={cx("nav_item")} to="/backtest/backtest/backtest">
+        <Link
+          className={cx("nav_item")}
+          to={
+            location.pathname.includes("backtest/backtest")
+              ? "/backtest/backtest/backtest"
+              : "/backtest/decile/backtest"
+          }
+        >
           백테스트 셜졍
         </Link>
       </div>
@@ -83,12 +103,23 @@ export default function Backtest({
       <div className={cx("inner")}>
         <div className={cx("inner_nav_box")}>
           <Link
-            className={cx("active_inner_nav")}
+            className={cx(
+              location.pathname.includes("backtest/backtest")
+                ? "active_inner_nav"
+                : "inner_nav"
+            )}
             to="/backtest/backtest/universe"
           >
             백테스트
           </Link>
-          <Link className={cx("inner_nav")} to="/backtest/decile/universe">
+          <Link
+            className={cx(
+              location.pathname.includes("backtest/decile")
+                ? "active_inner_nav"
+                : "inner_nav"
+            )}
+            to="/backtest/decile/universe"
+          >
             10분위 테스트
           </Link>
           <hr className={cx("bottom_hr")} />
@@ -199,7 +230,14 @@ export default function Backtest({
           )}
         </div>
         <div className={cx("button_box")}>
-          <Link to="/backtest/backtest/factors" className={cx("button")}>
+          <Link
+            to={
+              location.pathname.includes("backtest/backtest")
+                ? "/backtest/backtest/factors"
+                : "/backtest/decile/factors"
+            }
+            className={cx("button")}
+          >
             다음
             <img
               className={cx("button_img")}

@@ -1,6 +1,6 @@
 import React from "react";
-import DecileBacktestContainer from "containers/DecileBacktestContainer";
+import BacktestContainer from "containers/BacktestContainer";
 
 export default function DecileBacktestPage() {
-  return <DecileBacktestContainer />;
+  return <BacktestContainer />;
 }

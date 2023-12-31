@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames/bind";
 import styles from "./BacktestFactor.module.scss";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import StrategyHeader from "components/common/StrategyHeader";
 import { IoIosArrowDown } from "react-icons/io";
 import { FACTORS } from "mocks/subData";
@@ -47,19 +47,39 @@ export default function BacktestFactor({
   CONSENSUS_FACTORS,
   ACCELERATION_FACTORS,
 }) {
+  const location = useLocation();
+
   return (
     <div className={cx("container")}>
       <div className={cx("nav_box")}>
         <Link
           className={cx("active_nav_item")}
-          to="/backtest/backtest/universe"
+          to={
+            location.pathname.includes("backtest/backtest")
+              ? "/backtest/backtest/universe"
+              : "/backtest/decile/universe"
+          }
         >
           유니버스 선택
         </Link>
-        <Link className={cx("active_nav_item")} to="/backtest/backtest/factors">
+        <Link
+          className={cx("active_nav_item")}
+          to={
+            location.pathname.includes("backtest/backtest")
+              ? "/backtest/backtest/factors"
+              : "/backtest/decile/factors"
+          }
+        >
           팩터 선택
         </Link>
-        <Link className={cx("nav_item")} to="/backtest/backtest/backtest">
+        <Link
+          className={cx("nav_item")}
+          to={
+            location.pathname.includes("backtest/backtest")
+              ? "/backtest/backtest/backtest"
+              : "/backtest/decile/backtest"
+          }
+        >
           백테스트 셜졍
         </Link>
       </div>
@@ -214,7 +234,11 @@ export default function BacktestFactor({
         </div>
         <div className={cx("button_box")}>
           <Link
-            to="/backtest/backtest/universe"
+            to={
+              location.pathname.includes("backtest/backtest")
+                ? "/backtest/backtest/universe"
+                : "/backtest/decile/universe"
+            }
             className={cx("button", "prev_button")}
           >
             <img
@@ -224,7 +248,14 @@ export default function BacktestFactor({
             />
             이전
           </Link>
-          <Link to="/backtest/backtest/backtest" className={cx("button")}>
+          <Link
+            to={
+              location.pathname.includes("backtest/backtest")
+                ? "/backtest/backtest/backtest"
+                : "/backtest/decile/backtest"
+            }
+            className={cx("button")}
+          >
             다음
             <img
               className={cx("button_img")}

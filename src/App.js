@@ -4,7 +4,9 @@ import {
   BacktestFactorPage,
   BacktestPage,
   BacktestSettingPage,
+  DecileBacktestFactorPage,
   DecileBacktestPage,
+  DecileBacktestSettingPage,
   PurchaseLicensePage,
   StaticAllocPage,
   StrategyExamplePage,
@@ -22,6 +24,14 @@ function App() {
       <Route
         path="/backtest/decile/universe"
         element={<DecileBacktestPage />}
+      />
+      <Route
+        path="/backtest/decile/factors"
+        element={<DecileBacktestFactorPage />}
+      />
+      <Route
+        path="/backtest/decile/backtest"
+        element={<DecileBacktestSettingPage />}
       />
       <Route
         path="/backtest/backtest/factors"
