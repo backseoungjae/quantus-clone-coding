@@ -1,0 +1,161 @@
+.container {
+  padding: 20px 0;
+  box-sizing: border-box;
+}
+
+.button_inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.button_box {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(236, 97, 38);
+  border-radius: 0px 24px;
+}
+
+.button,
+.active_button {
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  width: 50%;
+  padding: 10px 26px;
+  box-sizing: border-box;
+  border-radius: 0px 22px;
+  background: transparent;
+  color: rgb(230, 230, 230);
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.active_button {
+  background: rgb(236, 97, 38);
+  color: rgb(14, 14, 14);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.foreign_button_box {
+  position: absolute;
+  right: 0;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgb(62, 62, 62);
+  border-radius: 22px;
+}
+
+.foreign_button,
+.active_foreign_button {
+  cursor: pointer;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  color: rgb(230, 230, 230);
+  font-size: 16px;
+  font-weight: 300;
+  background-color: rgb(14, 14, 14);
+  border: 0;
+  border-radius: 20px;
+}
+
+.active_foreign_button {
+  color: rgb(255, 255, 255);
+  font-weight: 500;
+  background: rgb(110, 110, 110);
+}
+
+// 하단 아이템 부분
+
+.item_inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.item_box {
+  width: 30%;
+  padding: 28px;
+  box-sizing: border-box;
+  background: radial-gradient(
+    at 5% -10%,
+    rgba(236, 97, 38, 0.4),
+    rgb(0, 0, 0),
+    rgb(0, 0, 0),
+    rgb(0, 0, 0),
+    rgb(0, 0, 0)
+  );
+  border-radius: 0px 22px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 500;
+  color: rgb(252, 252, 252);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  &:last-child {
+    text-align: right;
+  }
+}
+
+.text {
+  font-size: 16px;
+  color: rgb(207, 207, 207);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.list_text {
+  font-size: 16px;
+  color: rgb(252, 252, 252);
+  line-height: 1.7;
+  display: flex;
+  align-items: center;
+}
+
+.img {
+  margin-right: 10px;
+}
+
+.price_box {
+  margin: 20px 0;
+}
+
+.purchase_button {
+  cursor: pointer;
+  border: 0;
+  width: 100%;
+  padding: 10px 0;
+  box-sizing: border-box;
+  font-weight: 500;
+  border-radius: 0px 22px;
+  background-color: rgb(236, 97, 38);
+  color: rgb(14, 14, 14);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.refund_box {
+  margin-top: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.refund,
+.refund_b {
+  font-weight: 400;
+  line-height: 1.5;
+  font-size: 14px;
+  color: rgb(159, 159, 159);
+}
+
+.refund_b {
+  text-decoration: underline;
+}
