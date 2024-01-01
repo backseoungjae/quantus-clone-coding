@@ -1,34 +1,37 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import PurchaseLicense from "components/PurchaseLicense";
-import { useTab } from "hooks/useTab";
 import Product from "components/Product";
 
 const TAB_BUTTONS = [
   {
-    id: "subscription",
+    id: 1,
     name: "구독권",
     content: <Product />,
   },
   {
-    id: "investment",
+    id: 2,
     name: "실전 투자권",
     content: <Product />,
   },
-  // {
-  //   id: "package",
-  //   name: "패키지",
-  //   content: <Product />,
-  // },
+  {
+    id: "package",
+    name: "패키지",
+    content: <Product />,
+  },
 ];
 
 export default function PurchaseLicenseContainer() {
-  const { currentItem, changeItem } = useTab(0, TAB_BUTTONS);
+  const [tabType, setTabType] = useState("구독권");
+
+  const handleTabType = useCallback((tab) => {
+    setTabType(tab);
+  }, []);
 
   return (
     <PurchaseLicense
       TAB_BUTTONS={TAB_BUTTONS}
-      currentItem={currentItem}
-      changeItem={changeItem}
+      tabType={tabType}
+      handleTabType={handleTabType}
     />
   );
 }
