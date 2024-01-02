@@ -8,3 +8,5 @@ export { default as StrategyExamplePage } from "./StrategyExamplePage";
 export { default as PurchaseLicensePage } from "./PurchaseLicensePage";
 export { default as DecileBacktestFactorPage } from "./DecileBacktestFactorPage";
 export { default as DecileBacktestSettingPage } from "./DecileBacktestSettingPage";
+export { default as PartnershipMagicSplitPage } from "./PartnershipMagicSplitPage";
+export { default as PartnershipPage } from "./PartnershipPage";

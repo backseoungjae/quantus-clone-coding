@@ -7,6 +7,8 @@ import {
   DecileBacktestFactorPage,
   DecileBacktestPage,
   DecileBacktestSettingPage,
+  PartnershipMagicSplitPage,
+  PartnershipPage,
   PurchaseLicensePage,
   StaticAllocPage,
   StrategyExamplePage,
@@ -44,6 +46,11 @@ function App() {
       <Route path="/invest/accounts" element={<ActualInvestmentPage />} />
       <Route path="/strategy" element={<StrategyExamplePage />} />
       <Route path="/products" element={<PurchaseLicensePage />} />
+      <Route path="/partnership" element={<PartnershipPage />} />
+      <Route
+        path="/partnership/magic_split"
+        element={<PartnershipMagicSplitPage />}
+      />
     </Routes>
   );
 }

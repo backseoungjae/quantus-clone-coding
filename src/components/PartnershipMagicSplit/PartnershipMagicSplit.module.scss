@@ -1,0 +1,352 @@
+// 설정 값 초기화 버튼
+
+.reset_button {
+  float: right;
+  position: sticky;
+  top: 290px;
+  right: 0;
+  z-index: 1;
+  cursor: pointer;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  border: 1px solid rgb(62, 62, 62);
+  border-radius: 6px;
+  color: rgb(207, 207, 207);
+  font-size: 14px;
+  font-weight: 300;
+  background-color: rgb(14, 14, 14);
+  font-family: Noto Sans KR, sans-serif;
+}
+
+.reset_img {
+  margin-right: 10px;
+}
+
+// 자산배분 설정 부분
+
+.wrapper {
+  position: relative;
+  margin-top: 50px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 28px;
+}
+
+// 전체 환율 반영 체크 박스 부분
+
+.exchange_rate_box {
+  display: flex;
+  align-items: center;
+  > div {
+    margin-right: 8%;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.hide_check_box {
+  display: none;
+}
+
+.check_box_label {
+  cursor: pointer;
+  display: block;
+  display: flex;
+  align-items: center;
+}
+
+.check_box {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #3e3e3e;
+  border-radius: 5px;
+  position: relative;
+  margin-right: 10px;
+}
+
+.check_box_checked {
+  position: absolute;
+  left: 4.5px;
+  top: 2px;
+  width: 7px;
+  height: 10px;
+  border: 1px solid #3e3e3e;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.hide_check_box.checked + .check_box_label .check_box {
+  background-color: #ec6127;
+  border: 1px solid #1e1e1e;
+}
+
+.check_text {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgb(252, 252, 252);
+}
+
+// 옵션 선택 박스
+
+.option_wrapper {
+  margin-top: 50px;
+}
+
+.option_box {
+  position: relative;
+  width: 62%;
+  margin-bottom: 38px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.option_text {
+  color: rgb(252, 252, 252);
+  font-size: 16px;
+  font-weight: 300;
+  margin-bottom: 18px;
+}
+
+.option_input_box {
+  position: relative;
+}
+
+.option_input {
+  outline: none;
+  width: 100%;
+  text-align: center;
+  background: rgb(14, 14, 14);
+  border: 1px solid rgb(159, 159, 159);
+  border-radius: 6px;
+  padding: 14px 0;
+  box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
+  color: rgb(252, 252, 252);
+  font-size: 16px;
+  font-weight: 300;
+  &::placeholder {
+    transition: all 0.3s ease-in-out;
+    color: rgb(252, 252, 252);
+    font-size: 16px;
+    font-weight: 300;
+  }
+  &:focus::placeholder {
+    color: transparent;
+  }
+  &:hover {
+    border: 1px solid rgb(252, 252, 252);
+  }
+  &:focus {
+    border: 1px solid #ec6127;
+  }
+}
+
+.option_select_arrow,
+.active_option_select_arrow {
+  position: absolute;
+  top: 35%;
+  right: 28px;
+  color: #ec6127;
+  width: 15px;
+  height: 15px;
+  transition: all 0.3s ease-in-out;
+}
+
+.active_option_select_arrow {
+  transform: rotate(180deg);
+}
+
+// input창 부분
+
+.option_input_text {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 28px;
+  color: rgb(230, 230, 230);
+  font-size: 16px;
+}
+
+.option_input_percent {
+  top: 35%;
+}
+
+.warning_text {
+  color: rgb(159, 159, 159);
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+// 인풋 넘버 화살표 지우기
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+// 자산군
+
+.asset_class_wrapper {
+  margin-top: 80px;
+  width: 34%;
+}
+
+.asset_class_box {
+  padding: 20px;
+  box-sizing: border-box;
+  min-height: 200px;
+  background-color: rgb(14, 14, 14);
+  border: 1px solid rgb(159, 159, 159);
+  color: rgb(252, 252, 252);
+  border-radius: 12px;
+}
+
+.open_arrow,
+.active_open_arrow {
+  color: #ec6127;
+  width: 15px;
+  height: 15px;
+  transition: all 0.3s ease-in-out;
+}
+
+.active_open_arrow {
+  transform: rotate(180deg);
+}
+
+.asset_class_option_box {
+  margin-bottom: 30px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.asset_class_name_box {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.asset_class_name {
+  color: rgb(252, 252, 252);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.asset_class_option {
+  margin-bottom: 20px;
+  color: rgb(252, 252, 252);
+  font-size: 16px;
+  font-weight: 300;
+}
+
+// 마지막 버튼 부분
+
+.button_box {
+  margin-top: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button,
+.invest_button {
+  position: relative;
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+  width: 20%;
+  padding: 15px 0;
+  box-sizing: border-box;
+  border-radius: 6px;
+  color: rgb(14, 14, 14);
+  font-size: 18px;
+  font-weight: 600;
+  background: linear-gradient(to right, rgb(236, 97, 38), rgb(236, 38, 38));
+  &:last-child {
+    margin-left: 64px;
+  }
+}
+
+.invest_button {
+  color: #fff;
+  background: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0));
+  border: 1px solid #ec6127;
+}
+
+// .active_button {
+//   color: #fff;
+//   background: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0));
+// }
+
+// 옵션박스 split 2 부분
+
+.option_inner {
+  width: 90%;
+}
+
+.option_item_inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.option_item_left_box {
+  width: 60%;
+}
+
+.option_item_right_box {
+  width: 33%;
+}
+
+.option_item_box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.option_item {
+  position: relative;
+  width: 45%;
+}
+
+.option_interval_item {
+  position: relative;
+  width: 80%;
+}
+
+.option_item_label {
+  margin-bottom: 18px;
+  color: rgb(252, 252, 252);
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.option_item_space {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  font-weight: 300;
+  color: rgb(252, 252, 252);
+}
+
+.option_item_input {
+  width: 100%;
+}
