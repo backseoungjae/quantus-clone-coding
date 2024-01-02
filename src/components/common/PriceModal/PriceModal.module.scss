@@ -1,0 +1,271 @@
+// 구매하기 토글 박스
+
+.modal_inner {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal_bg {
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.modal_box {
+  max-width: 500px;
+  width: 100%;
+  background-color: rgb(30, 30, 30);
+  border-radius: 12px;
+}
+
+.modal_header {
+  width: 100%;
+  position: relative;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.modal_title {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgb(252, 252, 252);
+}
+
+.step_text {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 14px;
+  color: rgb(207, 207, 207);
+}
+
+.select_inner {
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.select_box {
+  margin-bottom: 30px;
+  padding: 0 68px;
+  &:last-child {
+    margin-bottom: 0;
+    padding-bottom: 30px;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgb(62, 62, 62);
+  }
+}
+
+.select_text {
+  margin-bottom: 12px;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgb(252, 252, 252);
+}
+
+//  체크 박스 부분
+
+.check_box_inner {
+  display: flex;
+  align-items: center;
+}
+
+.check_box_item {
+  margin-right: 30px;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.hide_check_box {
+  display: none;
+}
+
+.check_box_label {
+  cursor: pointer;
+  display: block;
+  display: flex;
+  align-items: center;
+}
+
+.check_box {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #3e3e3e;
+  border-radius: 5px;
+  position: relative;
+  margin-right: 10px;
+}
+
+.check_box_checked {
+  position: absolute;
+  left: 4.5px;
+  top: 2px;
+  width: 7px;
+  height: 10px;
+  border: 1px solid #3e3e3e;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.hide_check_box.checked + .check_box_label .check_box {
+  background-color: #ec6127;
+  border: 1px solid #1e1e1e;
+}
+
+.check_text {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgb(252, 252, 252);
+}
+
+.info_box {
+  padding: 20px 68px 40px;
+  box-sizing: border-box;
+}
+
+.info_text {
+  white-space: nowrap;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgb(255, 255, 255);
+  margin-bottom: 20px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.info_text_b {
+  color: rgb(236, 38, 38);
+  font-weight: 500;
+}
+
+.select_button_box {
+  border-top: 1px solid rgb(14, 14, 14);
+  padding: 15px 0;
+  box-sizing: border-box;
+}
+
+.select_button {
+  cursor: pointer;
+  width: 100%;
+  outline: 0;
+  border: 0;
+  background-color: transparent;
+  font-weight: 400;
+  color: rgb(236, 97, 38);
+}
+
+// 2번째 스탭
+
+.modal_second_inner {
+  padding-bottom: 48px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.modal_second_box {
+  width: 80%;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.modal_text {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgb(252, 252, 252);
+}
+
+.modal_input {
+  outline: 0;
+  width: 100%;
+  font-size: 14px;
+  border: 0;
+  padding: 5px;
+  box-sizing: border-box;
+  color: rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(159, 159, 159);
+  background-color: transparent;
+  &::placeholder {
+    font-size: 14px;
+    transition: all 0.3s ease-in-out;
+  }
+  &:focus::placeholder {
+    color: transparent;
+  }
+}
+
+.modal_info_text {
+  font-size: 12px;
+  font-weight: 300;
+  color: rgb(159, 159, 159);
+}
+
+.modal_info_text_b {
+  font-weight: 500;
+  color: rgb(236, 97, 38);
+  text-decoration: underline rgb(236, 97, 38);
+}
+
+.select_second_button_box {
+  display: flex;
+  align-items: center;
+}
+
+.select_prev_button,
+.select_next_button,
+.disabled_select_next_button {
+  cursor: pointer;
+  width: 50%;
+  outline: 0;
+  border: 0;
+  background-color: transparent;
+  font-weight: 400;
+  color: rgb(236, 97, 38);
+}
+
+.disabled_select_next_button {
+  color: rgb(62, 62, 62);
+}
+
+.select_prev_button {
+  color: rgb(252, 252, 252);
+}
+
+.modal_third_box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.bank_transfer_box {
+  padding: 0 130px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+.warning_text_box {
+  padding: 0 130px;
+  box-sizing: border-box;
+  margin-bottom: 50px;
+}
+
+.warning_text {
+  color: rgb(236, 38, 38);
+  font-size: 12px;
+}

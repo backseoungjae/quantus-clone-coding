@@ -11,7 +11,8 @@
   margin-bottom: 50px;
 }
 
-.button_box {
+.button_box,
+.active_button_box {
   width: 30%;
   display: flex;
   align-items: center;
@@ -20,8 +21,13 @@
   border-radius: 0px 24px;
 }
 
+.active_button_box {
+  border: 1px solid rgb(236, 200, 38);
+}
+
 .button,
-.active_button {
+.active_button,
+.active_investment_button {
   cursor: pointer;
   outline: none;
   border: 0;
@@ -35,11 +41,16 @@
   font-weight: 300;
 }
 
-.active_button {
+.active_button,
+.active_investment_button {
   background: rgb(236, 97, 38);
   color: rgb(14, 14, 14);
   font-size: 18px;
   font-weight: 700;
+}
+
+.active_investment_button {
+  background-color: rgb(236, 200, 38);
 }
 
 .foreign_button_box {
@@ -78,7 +89,8 @@
   justify-content: space-between;
 }
 
-.item_box {
+.item_box,
+.active_item_box {
   width: 30%;
   padding: 20px;
   box-sizing: border-box;
@@ -91,6 +103,17 @@
     rgb(0, 0, 0)
   );
   border-radius: 0px 22px;
+}
+
+.active_item_box {
+  background: radial-gradient(
+    at 5% -10%,
+    rgba(236, 200, 38, 0.4),
+    rgb(0, 0, 0),
+    rgb(0, 0, 0),
+    rgb(0, 0, 0),
+    rgb(0, 0, 0)
+  );
 }
 
 .title {
@@ -127,7 +150,8 @@
   margin: 20px 0;
 }
 
-.purchase_button {
+.purchase_button,
+.active_purchase_button {
   cursor: pointer;
   border: 0;
   width: 100%;
@@ -139,6 +163,10 @@
   color: rgb(14, 14, 14);
   font-size: 18px;
   font-weight: 700;
+}
+
+.active_purchase_button {
+  background-color: rgb(236, 200, 38);
 }
 
 .refund_box {
