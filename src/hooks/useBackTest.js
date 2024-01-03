@@ -22,13 +22,7 @@ import {
   changeUniversSettings,
   checkedValueFactors,
   removeMacroMarketSettings,
-  changeValueFactors,
-  changeConsensusFactors,
-  changeAccelerationFactors,
-  changeGrowthFactors,
-  changePriceFactors,
-  changeQualityFactors,
-  changeEvFactors,
+  changeFactors,
 } from "store/modules/backTest";
 
 export default function useBackTest() {
@@ -96,32 +90,32 @@ export default function useBackTest() {
   }, []);
 
   // 팩터 아래 추가 되는 부분
-  const handleChangeValueFactors = useCallback((index, name, value) => {
-    dispatch(changeValueFactors(index, name, value));
+  const changeValueFactors = useCallback((index, name, value) => {
+    dispatch(changeFactors("valueFactors", index, name, value));
   }, []);
 
-  const handleChangeEvFactors = useCallback((index, name, value) => {
-    dispatch(changeEvFactors(index, name, value));
+  const changeEvFactors = useCallback((index, name, value) => {
+    dispatch(changeFactors("evFactors", index, name, value));
   }, []);
 
-  const handleChangeQualityFactors = useCallback((index, name, value) => {
-    dispatch(changeQualityFactors(index, name, value));
+  const changeQualityFactors = useCallback((index, name, value) => {
+    dispatch(changeFactors("qualityFactors", index, name, value));
   }, []);
 
-  const handleChangePriceFactors = useCallback((index, name, value) => {
-    dispatch(changePriceFactors(index, name, value));
+  const changePriceFactors = useCallback((index, name, value) => {
+    dispatch(changeFactors("priceFactors", index, name, value));
   }, []);
 
-  const handleChangeGrowthFactors = useCallback((index, name, value) => {
-    dispatch(changeGrowthFactors(index, name, value));
+  const changeGrowthFactors = useCallback((index, name, value) => {
+    dispatch(changeFactors("growthPotentialFactors", index, name, value));
   }, []);
 
-  const handleChangeAccelerationFactors = useCallback((index, name, value) => {
-    dispatch(changeAccelerationFactors(index, name, value));
+  const changeAccelerationFactors = useCallback((index, name, value) => {
+    dispatch(changeFactors("accelerationFactors", index, name, value));
   }, []);
 
-  const handleChangeConsensusFactors = useCallback((index, name, value) => {
-    dispatch(changeConsensusFactors(index, name, value));
+  const changeConsensusFactors = useCallback((index, name, value) => {
+    dispatch(changeFactors("consensusFactors", index, name, value));
   }, []);
 
   // 백테스트 설정 부분
@@ -191,13 +185,13 @@ export default function useBackTest() {
     onAddMacroMarketSettings,
     onRemoveMacroMarketSettings,
     onAllRemoveMacroMarketSettings,
-    handleChangeValueFactors,
-    handleChangeEvFactors,
-    handleChangeQualityFactors,
-    handleChangePriceFactors,
-    handleChangeGrowthFactors,
-    handleChangeAccelerationFactors,
-    handleChangeConsensusFactors,
+    changeValueFactors,
+    changeEvFactors,
+    changeQualityFactors,
+    changePriceFactors,
+    changeGrowthFactors,
+    changeAccelerationFactors,
+    changeConsensusFactors,
     handleDate,
   };
 }

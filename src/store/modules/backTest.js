@@ -47,6 +47,7 @@ const CHANGE_EXCEPTSECTORS = "backTest/CHANGE_EXCEPTSECTORS";
 
 // 팩터 부분
 const CHANGE_CALCULATIONWEIGHT = "backTest/CHANGE_CALCULATIONWEIGHT";
+const CHANGE_FACTORS = "backTest/CHANGE_FACTORS";
 const CHECKED_VALUE_FACTORS = "backTest/CHECKED_VALUE_FACTORS";
 const CHANGE_VALUE_FACTORS = "backTest/CHANGE_VALUE_FACTORS";
 const CHECKED_EV_FACTORS = "backTest/CHECKED_EV_FACTORS";
@@ -202,6 +203,16 @@ export const changeConsensusFactors = (index, name, value) => ({
   },
 });
 
+export const changeFactors = (factorType, index, name, value) => ({
+  type: CHANGE_FACTORS,
+  payload: {
+    factorType,
+    index,
+    name,
+    value,
+  },
+});
+
 // 백테스트 설정 부분
 export const changeBacktestSettings = (payload) => ({
   type: CHANGE_BACKTEST_SETTINGS,
@@ -346,6 +357,24 @@ function backTest(state = initialState, action) {
           consensusFactors: [...action.payload],
         },
       };
+    case CHANGE_FACTORS: {
+      const { factorType, index, name, value } = action.payload;
+      return {
+        ...state,
+        factors: {
+          ...state.factors,
+          [factorType]: state.factors[factorType].map((item, i) => {
+            if (i === index) {
+              return {
+                ...item,
+                [name]: value,
+              };
+            }
+            return item;
+          }),
+        },
+      };
+    }
     case CHANGE_VALUE_FACTORS: {
       const { index, name, value } = action.payload;
       return {

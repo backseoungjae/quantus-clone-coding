@@ -23,13 +23,13 @@ export default function BacktestFactorContainer() {
     handleGrowthPotentialFactors,
     handleAccelerationFactors,
     handleConsensusFactors,
-    handleChangeValueFactors,
-    handleChangeEvFactors,
-    handleChangeQualityFactors,
-    handleChangePriceFactors,
-    handleChangeGrowthFactors,
-    handleChangeAccelerationFactors,
-    handleChangeConsensusFactors,
+    changeValueFactors,
+    changeEvFactors,
+    changeQualityFactors,
+    changePriceFactors,
+    changeGrowthFactors,
+    changeAccelerationFactors,
+    changeConsensusFactors,
   } = useBackTest();
 
   // 팩터 선택 셀럭터 토글 이벤트
@@ -260,60 +260,61 @@ export default function BacktestFactorContainer() {
   }, [handleConsensusFactors, consensusFactorsList]);
 
   // 팩터 하단에 나오는 리스트 이벤트
+
   const handleOnChangeValueFactor = useCallback(
     (e, index) => {
       const { name, value } = e.target;
-      handleChangeValueFactors(index, name, value);
+      changeValueFactors(index, name, value);
     },
-    [handleChangeValueFactors]
+    [changeValueFactors]
   );
 
   const handleOnChangeEvFactors = useCallback(
     (e, index) => {
       const { name, value } = e.target;
-      handleChangeEvFactors(index, name, value);
+      changeEvFactors(index, name, value);
     },
-    [handleChangeEvFactors]
+    [changeEvFactors]
   );
 
   const handleOnChangeQualityFactors = useCallback(
     (e, index) => {
       const { name, value } = e.target;
-      handleChangeQualityFactors(index, name, value);
+      changeQualityFactors(index, name, value);
     },
-    [handleChangeQualityFactors]
+    [changeQualityFactors]
   );
 
   const handleOnChangePriceFactors = useCallback(
     (e, index) => {
       const { name, value } = e.target;
-      handleChangePriceFactors(index, name, value);
+      changePriceFactors(index, name, value);
     },
-    [handleChangePriceFactors]
+    [changePriceFactors]
   );
 
   const handleOnChangeGrowthFactors = useCallback(
     (e, index) => {
       const { name, value } = e.target;
-      handleChangeGrowthFactors(index, name, value);
+      changeGrowthFactors(index, name, value);
     },
-    [handleChangeGrowthFactors]
+    [changeGrowthFactors]
   );
 
   const handleOnChangeAccelerationFactors = useCallback(
     (e, index) => {
       const { name, value } = e.target;
-      handleChangeAccelerationFactors(index, name, value);
+      changeAccelerationFactors(index, name, value);
     },
-    [handleChangeAccelerationFactors]
+    [changeAccelerationFactors]
   );
 
   const handleOnChangeConsensusFactors = useCallback(
     (e, index) => {
       const { name, value } = e.target;
-      handleChangeConsensusFactors(index, name, value);
+      changeConsensusFactors(index, name, value);
     },
-    [handleChangeConsensusFactors]
+    [changeConsensusFactors]
   );
 
   console.log("backTest ", backTest?.factors);
