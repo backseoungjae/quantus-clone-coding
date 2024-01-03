@@ -436,7 +436,6 @@ export default function BacktestSetting({
             {splitMode === 1 && (
               <div className={cx("split_inner")}>
                 {backTest?.macroMarketTiming?.map((macro, i) => {
-                  console.log("asddsa ", macro?.marketTimingValue);
                   return (
                     <div className={cx("split_box")} key={i}>
                       <p className={cx("macro_text")}>
@@ -472,15 +471,15 @@ export default function BacktestSetting({
                           </div>
                           {macroToggle[i] && (
                             <ul className={cx("hide_box")}>
-                              {MACRO_MARKET_LIST.map((list, i) => {
+                              {MACRO_MARKET_LIST.map((list) => {
                                 return (
                                   <li key={list.id}>
                                     <input
                                       type="text"
                                       name="marketTimingList"
                                       value={list.name}
-                                      onClick={() =>
-                                        handleChangeMacroMarketSettings(i)
+                                      onClick={(e) =>
+                                        handleChangeMacroMarketSettings(e, i)
                                       }
                                       className={cx(
                                         list.name === macro?.marketTimingList
@@ -500,7 +499,9 @@ export default function BacktestSetting({
                           <button
                             name="marketTimingFilter"
                             value="상위"
-                            onClick={handleChangeMacroMarketSettings}
+                            onClick={(e) =>
+                              handleChangeMacroMarketSettings(e, i)
+                            }
                             className={cx(
                               macro?.marketTimingFilter === "상위"
                                 ? "active_macro_button"
@@ -512,7 +513,9 @@ export default function BacktestSetting({
                           <button
                             name="marketTimingFilter"
                             value="하위"
-                            onClick={handleChangeMacroMarketSettings}
+                            onClick={(e) =>
+                              handleChangeMacroMarketSettings(e, i)
+                            }
                             className={cx(
                               macro?.marketTimingFilter === "하위"
                                 ? "active_macro_button"
@@ -524,7 +527,9 @@ export default function BacktestSetting({
                           <button
                             name="marketTimingFilter"
                             value="범위"
-                            onClick={handleChangeMacroMarketSettings}
+                            onClick={(e) =>
+                              handleChangeMacroMarketSettings(e, i)
+                            }
                             className={cx(
                               macro?.marketTimingFilter === "범위"
                                 ? "active_macro_button"
@@ -540,7 +545,9 @@ export default function BacktestSetting({
                           type="number"
                           name="marketTimingValue"
                           value={macro?.marketTimingValue || ""}
-                          onChange={handleChangeMacroMarketSettings}
+                          onChange={(e) =>
+                            handleChangeMacroMarketSettings(e, i)
+                          }
                           className={cx("value_input")}
                           placeholder="값 입력"
                         />

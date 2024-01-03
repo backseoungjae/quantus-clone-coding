@@ -62,6 +62,8 @@ const CHANGE_MONTH = "backTest/CHANGE_MONTH";
 const CHANGE_MACRO_MARKET_SETTINGS = "backTest/CHANGE_MACRO_MARKET_SETTINGS";
 const ADD_MACRO_MARKET_SETTINGS = "backTest/ADD_MACRO_MARKET_SETTINGS";
 const REMOVE_MACRO_MARKET_SETTINGS = "backTest/REMOVE_MACRO_MARKET_SETTINGS";
+const ALL_REMOVE_MACRO_MARKET_SETTINGS =
+  "backTest/ALL_REMOVE_MACRO_MARKET_SETTINGS";
 const CHANGE_REENTRY_MARKET_SETTINGS = "backTest/REENTRY_MARKET_SETTINGS";
 const CHANGE_DATE = "backTest/CHANGE_DATE";
 const CHANGE_SPLITMODE = "backTest/CHANGE_SPLITMODE";
@@ -140,9 +142,13 @@ export const changeMonthList = (payload) => ({
   payload,
 });
 
-export const changeMacroMarketSettings = (payload) => ({
+export const changeMacroMarketSettings = (index, name, value) => ({
   type: CHANGE_MACRO_MARKET_SETTINGS,
-  payload,
+  payload: {
+    index,
+    name,
+    value,
+  },
 });
 
 export const addMacroMarketSettings = (payload) => ({
@@ -153,6 +159,10 @@ export const addMacroMarketSettings = (payload) => ({
 export const removeMacroMarketSettings = (payload) => ({
   type: REMOVE_MACRO_MARKET_SETTINGS,
   payload,
+});
+
+export const allRemoveMacroMarketSettings = () => ({
+  type: ALL_REMOVE_MACRO_MARKET_SETTINGS,
 });
 
 export const changeReentryMarketSettings = (payload) => ({
@@ -282,9 +292,18 @@ function backTest(state = initialState, action) {
         },
       };
     case CHANGE_MACRO_MARKET_SETTINGS:
+      const { index, name, value } = action.payload;
       return {
         ...state,
-        macroMarketTiming: [{ ...action.payload }],
+        macroMarketTiming: state.macroMarketTiming.map((item, i) => {
+          if (i === index) {
+            return {
+              ...item,
+              [name]: value,
+            };
+          }
+          return item;
+        }),
       };
     case ADD_MACRO_MARKET_SETTINGS:
       return {
@@ -294,10 +313,14 @@ function backTest(state = initialState, action) {
     case REMOVE_MACRO_MARKET_SETTINGS:
       return {
         ...state,
-        macroMarketTiming: [...state.macroMarketTiming].splice(
-          action.payload,
-          1
+        macroMarketTiming: state.macroMarketTiming.filter(
+          (item, i) => i !== action.payload
         ),
+      };
+    case ALL_REMOVE_MACRO_MARKET_SETTINGS:
+      return {
+        ...state,
+        macroMarketTiming: [],
       };
     case CHANGE_REENTRY_MARKET_SETTINGS:
       return {

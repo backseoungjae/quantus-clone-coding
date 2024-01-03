@@ -2,6 +2,7 @@ import React, { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   addMacroMarketSettings,
+  allRemoveMacroMarketSettings,
   chagneCalculationWeight,
   chagneConsensusFactors,
   chagnePriceFactors,
@@ -98,8 +99,8 @@ export default function useBackTest() {
   }, []);
 
   // 매크로 마켓 타이밍 부분
-  const handleMacroMarketSettings = useCallback((payload) => {
-    dispatch(changeMacroMarketSettings(payload));
+  const handleMacroMarketSettings = useCallback((index, name, value) => {
+    dispatch(changeMacroMarketSettings(index, name, value));
   }, []);
 
   // 재진입 마켓 타이밍 부분
@@ -115,6 +116,11 @@ export default function useBackTest() {
   // 매크로 마켓 타이밍 제거 부분
   const onRemoveMacroMarketSettings = useCallback((payload) => {
     dispatch(removeMacroMarketSettings(payload));
+  }, []);
+
+  // 매크로 마켓 타이밍 전체 제거 부분
+  const onAllRemoveMacroMarketSettings = useCallback(() => {
+    dispatch(allRemoveMacroMarketSettings());
   }, []);
 
   // 스플릿 모드
@@ -148,6 +154,7 @@ export default function useBackTest() {
     handleSplitMode,
     onAddMacroMarketSettings,
     onRemoveMacroMarketSettings,
+    onAllRemoveMacroMarketSettings,
     handleDate,
   };
 }

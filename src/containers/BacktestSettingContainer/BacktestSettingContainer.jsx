@@ -12,6 +12,7 @@ export default function BacktestSettingContainer() {
     handleMacroMarketSettings,
     onAddMacroMarketSettings,
     onRemoveMacroMarketSettings,
+    onAllRemoveMacroMarketSettings,
     handleReentryMarketSettings,
     handleSplitMode,
     handleDate,
@@ -69,15 +70,13 @@ export default function BacktestSettingContainer() {
   // 마켓 타이밍 이벤트 부분
   const [macroToggle, setMacroToggle] = useState(false);
   const [splitMode, setSplitMode] = useState(backTest?.splitMode);
-  const [macroMarket, setMacroMarket] = useState({
-    marketTimingList: "",
-    marketTimingFilter: "",
-    marketTimingValue: "",
-  });
 
   useEffect(() => {
+    if (splitMode !== 2 && backTest?.macroMarketTiming?.length === 0) {
+      setSplitMode(0);
+    }
     handleSplitMode(splitMode);
-  }, [splitMode, handleSplitMode]);
+  }, [splitMode, handleSplitMode, backTest?.macroMarketTiming]);
 
   // 마켓 타이밍 토글 부분
   const handleMacroToggle = useCallback(
@@ -91,18 +90,13 @@ export default function BacktestSettingContainer() {
   );
 
   const handleChangeMacroMarketSettings = useCallback(
-    (e, i) => {
-      setMacroMarket({
-        ...macroMarket,
-        [e.target.name]: e.target.value,
-      });
-      handleMacroMarketSettings(macroMarket[i]);
+    (e, index) => {
+      const { name, value } = e.target;
+      handleMacroMarketSettings(index, name, value);
       setMacroToggle(false);
     },
-    [handleMacroMarketSettings, macroMarket]
+    [handleMacroMarketSettings]
   );
-
-  console.log("macroMarket ", macroMarket);
 
   // 매크로 마켓 추가 삭제 부분
   const handleAddMacroMarketSettings = useCallback(() => {
@@ -135,19 +129,15 @@ export default function BacktestSettingContainer() {
   // 스플릿 변경
   const handleChagneSplit = useCallback(
     (i) => {
-      if (i === 1 && backTest?.macroMarketTiming?.length === 0) {
+      if (i === 1) {
         handleAddMacroMarketSettings();
       }
       if (i === 2) {
-        handleRemoveMacroMarketSettings();
+        onAllRemoveMacroMarketSettings();
       }
       setSplitMode(i);
     },
-    [
-      handleAddMacroMarketSettings,
-      backTest?.macroMarketTiming,
-      handleRemoveMacroMarketSettings,
-    ]
+    [handleAddMacroMarketSettings, onAllRemoveMacroMarketSettings]
   );
 
   // 날짜 변경
@@ -195,8 +185,6 @@ export default function BacktestSettingContainer() {
       window.location.reload();
     }
   }, []);
-
-  console.log("backtest ", backTest);
 
   // 마지막 버튼 이벤트
 
