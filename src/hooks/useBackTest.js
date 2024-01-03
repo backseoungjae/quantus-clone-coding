@@ -4,24 +4,18 @@ import {
   addMacroMarketSettings,
   allRemoveMacroMarketSettings,
   changeCalculationWeight,
-  checkedConsensusFactors,
-  checkedPriceFactors,
-  checkedQualityFactors,
-  checkedAccelerationFactors,
   changeBackTestTitle,
   changeBacktestSettings,
   changeDate,
-  checkedEvFactors,
   changeExceptSectors,
-  checkedGrowthPotentialFactors,
   changeInitialfilters,
   changeMacroMarketSettings,
   changeMonthList,
   changeReentryMarketSettings,
   changeSplitMode,
   changeUniversSettings,
-  checkedValueFactors,
   removeMacroMarketSettings,
+  checkedFactors,
   changeFactors,
 } from "store/modules/backTest";
 
@@ -54,39 +48,9 @@ export default function useBackTest() {
     dispatch(changeCalculationWeight(payload));
   }, []);
 
-  // 가치 팩터 부분
-  const handleValueFactors = useCallback((payload) => {
-    dispatch(checkedValueFactors(payload));
-  }, []);
-
-  // ev 팩터 부분
-  const handleEvFactors = useCallback((payload) => {
-    dispatch(checkedEvFactors(payload));
-  }, []);
-
-  // 퀄리티 팩터 부분
-  const handleQualityFactors = useCallback((payload) => {
-    dispatch(checkedQualityFactors(payload));
-  }, []);
-
-  // 가격 팩터 부분
-  const handlePriceFactors = useCallback((payload) => {
-    dispatch(checkedPriceFactors(payload));
-  }, []);
-
-  // 성장성 팩터 부분
-  const handleGrowthPotentialFactors = useCallback((payload) => {
-    dispatch(checkedGrowthPotentialFactors(payload));
-  }, []);
-
-  // 가속 팩터 부분
-  const handleAccelerationFactors = useCallback((payload) => {
-    dispatch(checkedAccelerationFactors(payload));
-  }, []);
-
-  // 컨센선스 팩터 부분
-  const handleConsensusFactors = useCallback((payload) => {
-    dispatch(checkedConsensusFactors(payload));
+  // 팩터 체크 박스 부분
+  const handleCheckedFactors = useCallback((factorType, payload) => {
+    dispatch(checkedFactors(factorType, payload));
   }, []);
 
   // 팩터 아래 추가 되는 부분
@@ -170,13 +134,6 @@ export default function useBackTest() {
     handleInitialfilters,
     handleExceptSectors,
     handleCalculationWeight,
-    handleValueFactors,
-    handleEvFactors,
-    handleQualityFactors,
-    handlePriceFactors,
-    handleGrowthPotentialFactors,
-    handleAccelerationFactors,
-    handleConsensusFactors,
     handleBacktestSettings,
     handleMonthList,
     handleMacroMarketSettings,
@@ -185,6 +142,7 @@ export default function useBackTest() {
     onAddMacroMarketSettings,
     onRemoveMacroMarketSettings,
     onAllRemoveMacroMarketSettings,
+    handleCheckedFactors,
     changeValueFactors,
     changeEvFactors,
     changeQualityFactors,

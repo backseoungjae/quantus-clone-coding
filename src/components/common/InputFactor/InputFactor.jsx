@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./InputFactor.module.scss";
 
@@ -6,11 +6,36 @@ const cx = classNames.bind(styles);
 
 export default function InputFactor({
   title,
+  factorType,
+  handleCheckedFactors,
   data,
   factorData,
-  onCheckedItem,
-  isChecked,
 }) {
+  const [factorsList, setFactorsList] = useState(factorData);
+
+  const onCheckedFactorItem = useCallback(
+    (list) => {
+      if (factorsList.every((el) => el.id !== list.id)) {
+        setFactorsList([...factorsList, list]);
+      } else {
+        const result = factorsList.filter((el) => el.id !== list.id);
+        setFactorsList(result);
+      }
+    },
+    [factorsList]
+  );
+
+  const isFactorChecked = useCallback(
+    (list) => {
+      return factorsList.some((el) => el.id === list.id);
+    },
+    [factorsList]
+  );
+
+  useEffect(() => {
+    handleCheckedFactors([...factorsList], factorType);
+  }, [handleCheckedFactors, factorsList, factorType]);
+
   return (
     <div className={cx("container")}>
       <p className={cx("title")}>{title}</p>
@@ -32,10 +57,10 @@ export default function InputFactor({
               </div>
               <input
                 type="checkbox"
-                onChange={() => onCheckedItem(factor)}
-                checked={isChecked(factor)}
+                onChange={() => onCheckedFactorItem(factor)}
+                checked={isFactorChecked(factor)}
                 className={cx("hide_check_box", {
-                  checked: factorData.filter((el) => el?.name === factor?.name)
+                  checked: factorsList.filter((el) => el?.name === factor?.name)
                     ?.length,
                 })}
                 id={factor.name}

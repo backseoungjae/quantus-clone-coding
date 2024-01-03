@@ -47,23 +47,8 @@ const CHANGE_EXCEPTSECTORS = "backTest/CHANGE_EXCEPTSECTORS";
 
 // 팩터 부분
 const CHANGE_CALCULATIONWEIGHT = "backTest/CHANGE_CALCULATIONWEIGHT";
+const CHECKED_FACTORS = "backTest/CHECKED_FACTORS";
 const CHANGE_FACTORS = "backTest/CHANGE_FACTORS";
-const CHECKED_VALUE_FACTORS = "backTest/CHECKED_VALUE_FACTORS";
-const CHANGE_VALUE_FACTORS = "backTest/CHANGE_VALUE_FACTORS";
-const CHECKED_EV_FACTORS = "backTest/CHECKED_EV_FACTORS";
-const CHANGE_EV_FACTORS = "backTest/CHANGE_EV_FACTORS";
-const CHECKED_QUALITY_FACTORS = "backTest/CHECKED_QUALITY_FACTORS";
-const CHANGE_QUALITY_FACTORS = "backTest/CHANGE_QUALITY_FACTORS";
-const CHECKED_PRICE_FACTORS = "backTest/CHECKED_PRICE_FACTORS";
-const CHANGE_PRICE_FACTORS = "backTest/CHANGE_PRICE_FACTORS";
-const CHECKED_GROWTH_POTENTIAL_FACTORS =
-  "backTest/CHECKED_GROWTH_POTENTIAL_FACTORS";
-const CHANGE_GROWTH_POTENTIAL_FACTORS =
-  "backTest/CHANGE_GROWTH_POTENTIAL_FACTORS";
-const CHECKED_ACCELERATION_FACTORS = "backTest/CHECKED_ACCELERATION_FACTORS";
-const CHANGE_ACCELERATION_FACTORS = "backTest/CHANGE_ACCELERATION_FACTORS";
-const CHECKED_CONSENSUS_FACTORS = "backTest/CHECKED_CONSENSUS_FACTORS";
-const CHANGE_CONSENSUS_FACTORS = "backTest/CHANGE_CONSENSUS_FACTORS";
 
 // 백테스트 설정 부분
 const CHANGE_BACKTEST_SETTINGS = "backTest/CHANGE_BACKTEST_SETTINGS";
@@ -105,102 +90,10 @@ export const changeCalculationWeight = (payload) => ({
   payload,
 });
 
-export const checkedValueFactors = (payload) => ({
-  type: CHECKED_VALUE_FACTORS,
+export const checkedFactors = (payload, factorType) => ({
+  type: CHECKED_FACTORS,
   payload,
-});
-
-export const checkedEvFactors = (payload) => ({
-  type: CHECKED_EV_FACTORS,
-  payload,
-});
-
-export const checkedQualityFactors = (payload) => ({
-  type: CHECKED_QUALITY_FACTORS,
-  payload,
-});
-
-export const checkedPriceFactors = (payload) => ({
-  type: CHECKED_PRICE_FACTORS,
-  payload,
-});
-
-export const checkedGrowthPotentialFactors = (payload) => ({
-  type: CHECKED_GROWTH_POTENTIAL_FACTORS,
-  payload,
-});
-
-export const checkedAccelerationFactors = (payload) => ({
-  type: CHECKED_ACCELERATION_FACTORS,
-  payload,
-});
-
-export const checkedConsensusFactors = (payload) => ({
-  type: CHECKED_CONSENSUS_FACTORS,
-  payload,
-});
-
-export const changeValueFactors = (index, name, value) => ({
-  type: CHANGE_VALUE_FACTORS,
-  payload: {
-    index,
-    name,
-    value,
-  },
-});
-
-export const changeEvFactors = (index, name, value) => ({
-  type: CHANGE_EV_FACTORS,
-  payload: {
-    index,
-    name,
-    value,
-  },
-});
-
-export const changeQualityFactors = (index, name, value) => ({
-  type: CHANGE_QUALITY_FACTORS,
-  payload: {
-    index,
-    name,
-    value,
-  },
-});
-
-export const changePriceFactors = (index, name, value) => ({
-  type: CHANGE_PRICE_FACTORS,
-  payload: {
-    index,
-    name,
-    value,
-  },
-});
-
-export const changeGrowthFactors = (index, name, value) => ({
-  type: CHANGE_GROWTH_POTENTIAL_FACTORS,
-  payload: {
-    index,
-    name,
-    value,
-  },
-});
-
-export const changeAccelerationFactors = (index, name, value) => ({
-  type: CHANGE_ACCELERATION_FACTORS,
-  payload: {
-    index,
-    name,
-    value,
-  },
-});
-
-export const changeConsensusFactors = (index, name, value) => ({
-  type: CHANGE_CONSENSUS_FACTORS,
-  payload: {
-    index,
-    name,
-    value,
-  },
+  factorType,
 });
 
 export const changeFactors = (factorType, index, name, value) => ({
@@ -301,60 +194,16 @@ function backTest(state = initialState, action) {
           ...action.payload,
         },
       };
-    case CHECKED_VALUE_FACTORS:
+    case CHECKED_FACTORS:
+      console.log("[action.factorType] ", [action.factorType]);
+
+      console.log("[...action.payload] ", [...action.payload]);
+
       return {
         ...state,
         factors: {
           ...state.factors,
-          valueFactors: [...action.payload],
-        },
-      };
-    case CHECKED_EV_FACTORS:
-      return {
-        ...state,
-        factors: {
-          ...state.factors,
-          evFactors: [...action.payload],
-        },
-      };
-    case CHECKED_QUALITY_FACTORS:
-      return {
-        ...state,
-        factors: {
-          ...state.factors,
-          qualityFactors: [...action.payload],
-        },
-      };
-    case CHECKED_PRICE_FACTORS:
-      return {
-        ...state,
-        factors: {
-          ...state.factors,
-          priceFactors: [...action.payload],
-        },
-      };
-    case CHECKED_GROWTH_POTENTIAL_FACTORS:
-      return {
-        ...state,
-        factors: {
-          ...state.factors,
-          growthPotentialFactors: [...action.payload],
-        },
-      };
-    case CHECKED_ACCELERATION_FACTORS:
-      return {
-        ...state,
-        factors: {
-          ...state.factors,
-          accelerationFactors: [...action.payload],
-        },
-      };
-    case CHECKED_CONSENSUS_FACTORS:
-      return {
-        ...state,
-        factors: {
-          ...state.factors,
-          consensusFactors: [...action.payload],
+          [action.factorType]: [...action.payload],
         },
       };
     case CHANGE_FACTORS: {
@@ -364,136 +213,6 @@ function backTest(state = initialState, action) {
         factors: {
           ...state.factors,
           [factorType]: state.factors[factorType].map((item, i) => {
-            if (i === index) {
-              return {
-                ...item,
-                [name]: value,
-              };
-            }
-            return item;
-          }),
-        },
-      };
-    }
-    case CHANGE_VALUE_FACTORS: {
-      const { index, name, value } = action.payload;
-      return {
-        ...state,
-        factors: {
-          ...state.factors,
-          valueFactors: state.factors.valueFactors.map((item, i) => {
-            if (i === index) {
-              return {
-                ...item,
-                [name]: value,
-              };
-            }
-            return item;
-          }),
-        },
-      };
-    }
-    case CHANGE_CONSENSUS_FACTORS: {
-      const { index, name, value } = action.payload;
-      return {
-        ...state,
-        factors: {
-          ...state.factors,
-          consensusFactors: state.factors.consensusFactors.map((item, i) => {
-            if (i === index) {
-              return {
-                ...item,
-                [name]: value,
-              };
-            }
-            return item;
-          }),
-        },
-      };
-    }
-    case CHANGE_ACCELERATION_FACTORS: {
-      const { index, name, value } = action.payload;
-      return {
-        ...state,
-        factors: {
-          ...state.factors,
-          accelerationFactors: state.factors.accelerationFactors.map(
-            (item, i) => {
-              if (i === index) {
-                return {
-                  ...item,
-                  [name]: value,
-                };
-              }
-              return item;
-            }
-          ),
-        },
-      };
-    }
-    case CHANGE_GROWTH_POTENTIAL_FACTORS: {
-      const { index, name, value } = action.payload;
-      return {
-        ...state,
-        factors: {
-          ...state.factors,
-          growthPotentialFactors: state.factors.growthPotentialFactors.map(
-            (item, i) => {
-              if (i === index) {
-                return {
-                  ...item,
-                  [name]: value,
-                };
-              }
-              return item;
-            }
-          ),
-        },
-      };
-    }
-    case CHANGE_PRICE_FACTORS: {
-      const { index, name, value } = action.payload;
-      return {
-        ...state,
-        factors: {
-          ...state.factors,
-          priceFactors: state.factors.priceFactors.map((item, i) => {
-            if (i === index) {
-              return {
-                ...item,
-                [name]: value,
-              };
-            }
-            return item;
-          }),
-        },
-      };
-    }
-    case CHANGE_QUALITY_FACTORS: {
-      const { index, name, value } = action.payload;
-      return {
-        ...state,
-        factors: {
-          ...state.factors,
-          qualityFactors: state.factors.qualityFactors.map((item, i) => {
-            if (i === index) {
-              return {
-                ...item,
-                [name]: value,
-              };
-            }
-            return item;
-          }),
-        },
-      };
-    }
-    case CHANGE_EV_FACTORS: {
-      const { index, name, value } = action.payload;
-      return {
-        ...state,
-        factors: {
-          ...state.factors,
-          evFactors: state.factors.evFactors.map((item, i) => {
             if (i === index) {
               return {
                 ...item,

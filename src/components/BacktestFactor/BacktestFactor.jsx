@@ -47,6 +47,7 @@ export default function BacktestFactor({
   handleOnChangeGrowthFactors,
   handleOnChangeAccelerationFactors,
   handleOnChangeConsensusFactors,
+  handleCheckedFactors,
   VALUE_FACTORS,
   EV_FACTORS,
   QUALITY_FACTORS,
@@ -167,11 +168,10 @@ export default function BacktestFactor({
         <div className={cx("input_factor_inner")}>
           <InputFactor
             title="가치 팩터 (Price 관련)"
+            factorType="valueFactors"
+            handleCheckedFactors={handleCheckedFactors}
             data={VALUE_FACTORS}
-            factorData={valueFactorData}
-            onCheckedItem={onCheckedValueFactorItem}
-            isChecked={isValueFactorChecked}
-            handleChange={handleOnChangeValueFactor}
+            factorData={backTest?.factors?.valueFactors}
           />
           <FactorItem
             factorData={backTest?.factors?.valueFactors}
@@ -181,10 +181,10 @@ export default function BacktestFactor({
         <div className={cx("input_factor_inner")}>
           <InputFactor
             title="가치 팩터 (EV 관련)"
+            factorType="evFactors"
+            handleCheckedFactors={handleCheckedFactors}
             data={EV_FACTORS}
-            factorData={evFactorData}
-            onCheckedItem={onCheckedEvFactorItem}
-            isChecked={isEvFactorChecked}
+            factorData={backTest?.factors?.evFactors}
           />
           <FactorItem
             factorData={backTest?.factors?.evFactors}
@@ -194,10 +194,10 @@ export default function BacktestFactor({
         <div className={cx("input_factor_inner")}>
           <InputFactor
             title="퀄리티 팩터"
+            factorType="qualityFactors"
+            handleCheckedFactors={handleCheckedFactors}
             data={QUALITY_FACTORS}
-            factorData={qualityFactorData}
-            onCheckedItem={onCheckedQualityFactorItem}
-            isChecked={isQualityFactorChecked}
+            factorData={backTest?.factors?.qualityFactors}
           />
           <FactorItem
             factorData={backTest?.factors?.qualityFactors}
@@ -207,10 +207,10 @@ export default function BacktestFactor({
         <div className={cx("input_factor_inner")}>
           <InputFactor
             title="가격 팩터"
+            factorType="priceFactors"
+            handleCheckedFactors={handleCheckedFactors}
             data={PRICE_FACTORS}
-            factorData={priceFactorData}
-            onCheckedItem={onCheckedPriceFactorItem}
-            isChecked={isPriceFactorChecked}
+            factorData={backTest?.factors?.priceFactors}
           />
           <FactorItem
             factorData={backTest?.factors?.priceFactors}
@@ -220,10 +220,10 @@ export default function BacktestFactor({
         <div className={cx("input_factor_inner")}>
           <InputFactor
             title="성장성 팩터"
+            factorType="growthPotentialFactors"
+            handleCheckedFactors={handleCheckedFactors}
             data={GROWTH_POTENTIAL_FACTORS}
-            factorData={growthFactorData}
-            onCheckedItem={onCheckedGrowthFactorItem}
-            isChecked={isGrowthFactorChecked}
+            factorData={backTest?.factors?.growthPotentialFactors}
           />
           <FactorItem
             factorData={backTest?.factors?.growthPotentialFactors}
@@ -233,10 +233,10 @@ export default function BacktestFactor({
         <div className={cx("input_factor_inner")}>
           <InputFactor
             title="가속 팩터"
+            factorType="accelerationFactors"
+            handleCheckedFactors={handleCheckedFactors}
             data={ACCELERATION_FACTORS}
-            factorData={accelerationFactorData}
-            onCheckedItem={onCheckedAccelerationFactorItem}
-            isChecked={isAccelerationFactorChecked}
+            factorData={backTest?.factors?.accelerationFactors}
           />
           <FactorItem
             factorData={backTest?.factors?.accelerationFactors}
@@ -246,10 +246,10 @@ export default function BacktestFactor({
         <div className={cx("input_factor_inner")}>
           <InputFactor
             title="컨센서스 팩터"
+            factorType="consensusFactors"
+            handleCheckedFactors={handleCheckedFactors}
             data={CONSENSUS_FACTORS}
-            factorData={consensusFactorData}
-            onCheckedItem={onCheckedConsensusFactorItem}
-            isChecked={isConsensusFactorChecked}
+            factorData={backTest?.factors?.consensusFactors}
           />
           <FactorItem
             factorData={backTest?.factors?.consensusFactors}
