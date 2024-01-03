@@ -3,25 +3,32 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   addMacroMarketSettings,
   allRemoveMacroMarketSettings,
-  chagneCalculationWeight,
-  chagneConsensusFactors,
-  chagnePriceFactors,
-  chagneQualityFactors,
-  changeAccelerationFactors,
+  changeCalculationWeight,
+  checkedConsensusFactors,
+  checkedPriceFactors,
+  checkedQualityFactors,
+  checkedAccelerationFactors,
   changeBackTestTitle,
   changeBacktestSettings,
   changeDate,
-  changeEvFactors,
+  checkedEvFactors,
   changeExceptSectors,
-  changeGrowthPotentialFactors,
+  checkedGrowthPotentialFactors,
   changeInitialfilters,
   changeMacroMarketSettings,
   changeMonthList,
   changeReentryMarketSettings,
   changeSplitMode,
   changeUniversSettings,
-  changeValueFactors,
+  checkedValueFactors,
   removeMacroMarketSettings,
+  changeValueFactors,
+  changeConsensusFactors,
+  changeAccelerationFactors,
+  changeGrowthFactors,
+  changePriceFactors,
+  changeQualityFactors,
+  changeEvFactors,
 } from "store/modules/backTest";
 
 export default function useBackTest() {
@@ -50,42 +57,71 @@ export default function useBackTest() {
 
   // 팩터 비중 선택 부분
   const handleCalculationWeight = useCallback((payload) => {
-    dispatch(chagneCalculationWeight(payload));
+    dispatch(changeCalculationWeight(payload));
   }, []);
 
   // 가치 팩터 부분
   const handleValueFactors = useCallback((payload) => {
-    dispatch(changeValueFactors(payload));
+    dispatch(checkedValueFactors(payload));
   }, []);
 
   // ev 팩터 부분
   const handleEvFactors = useCallback((payload) => {
-    dispatch(changeEvFactors(payload));
+    dispatch(checkedEvFactors(payload));
   }, []);
 
   // 퀄리티 팩터 부분
   const handleQualityFactors = useCallback((payload) => {
-    dispatch(chagneQualityFactors(payload));
+    dispatch(checkedQualityFactors(payload));
   }, []);
 
   // 가격 팩터 부분
   const handlePriceFactors = useCallback((payload) => {
-    dispatch(chagnePriceFactors(payload));
+    dispatch(checkedPriceFactors(payload));
   }, []);
 
   // 성장성 팩터 부분
   const handleGrowthPotentialFactors = useCallback((payload) => {
-    dispatch(changeGrowthPotentialFactors(payload));
+    dispatch(checkedGrowthPotentialFactors(payload));
   }, []);
 
   // 가속 팩터 부분
   const handleAccelerationFactors = useCallback((payload) => {
-    dispatch(changeAccelerationFactors(payload));
+    dispatch(checkedAccelerationFactors(payload));
   }, []);
 
   // 컨센선스 팩터 부분
   const handleConsensusFactors = useCallback((payload) => {
-    dispatch(chagneConsensusFactors(payload));
+    dispatch(checkedConsensusFactors(payload));
+  }, []);
+
+  // 팩터 아래 추가 되는 부분
+  const handleChangeValueFactors = useCallback((index, name, value) => {
+    dispatch(changeValueFactors(index, name, value));
+  }, []);
+
+  const handleChangeEvFactors = useCallback((index, name, value) => {
+    dispatch(changeEvFactors(index, name, value));
+  }, []);
+
+  const handleChangeQualityFactors = useCallback((index, name, value) => {
+    dispatch(changeQualityFactors(index, name, value));
+  }, []);
+
+  const handleChangePriceFactors = useCallback((index, name, value) => {
+    dispatch(changePriceFactors(index, name, value));
+  }, []);
+
+  const handleChangeGrowthFactors = useCallback((index, name, value) => {
+    dispatch(changeGrowthFactors(index, name, value));
+  }, []);
+
+  const handleChangeAccelerationFactors = useCallback((index, name, value) => {
+    dispatch(changeAccelerationFactors(index, name, value));
+  }, []);
+
+  const handleChangeConsensusFactors = useCallback((index, name, value) => {
+    dispatch(changeConsensusFactors(index, name, value));
   }, []);
 
   // 백테스트 설정 부분
@@ -155,6 +191,13 @@ export default function useBackTest() {
     onAddMacroMarketSettings,
     onRemoveMacroMarketSettings,
     onAllRemoveMacroMarketSettings,
+    handleChangeValueFactors,
+    handleChangeEvFactors,
+    handleChangeQualityFactors,
+    handleChangePriceFactors,
+    handleChangeGrowthFactors,
+    handleChangeAccelerationFactors,
+    handleChangeConsensusFactors,
     handleDate,
   };
 }

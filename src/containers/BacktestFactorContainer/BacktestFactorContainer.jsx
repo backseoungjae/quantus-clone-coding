@@ -23,6 +23,13 @@ export default function BacktestFactorContainer() {
     handleGrowthPotentialFactors,
     handleAccelerationFactors,
     handleConsensusFactors,
+    handleChangeValueFactors,
+    handleChangeEvFactors,
+    handleChangeQualityFactors,
+    handleChangePriceFactors,
+    handleChangeGrowthFactors,
+    handleChangeAccelerationFactors,
+    handleChangeConsensusFactors,
   } = useBackTest();
 
   // 팩터 선택 셀럭터 토글 이벤트
@@ -252,6 +259,65 @@ export default function BacktestFactorContainer() {
     handleConsensusFactors([...consensusFactorsList]);
   }, [handleConsensusFactors, consensusFactorsList]);
 
+  // 팩터 하단에 나오는 리스트 이벤트
+  const handleOnChangeValueFactor = useCallback(
+    (e, index) => {
+      const { name, value } = e.target;
+      handleChangeValueFactors(index, name, value);
+    },
+    [handleChangeValueFactors]
+  );
+
+  const handleOnChangeEvFactors = useCallback(
+    (e, index) => {
+      const { name, value } = e.target;
+      handleChangeEvFactors(index, name, value);
+    },
+    [handleChangeEvFactors]
+  );
+
+  const handleOnChangeQualityFactors = useCallback(
+    (e, index) => {
+      const { name, value } = e.target;
+      handleChangeQualityFactors(index, name, value);
+    },
+    [handleChangeQualityFactors]
+  );
+
+  const handleOnChangePriceFactors = useCallback(
+    (e, index) => {
+      const { name, value } = e.target;
+      handleChangePriceFactors(index, name, value);
+    },
+    [handleChangePriceFactors]
+  );
+
+  const handleOnChangeGrowthFactors = useCallback(
+    (e, index) => {
+      const { name, value } = e.target;
+      handleChangeGrowthFactors(index, name, value);
+    },
+    [handleChangeGrowthFactors]
+  );
+
+  const handleOnChangeAccelerationFactors = useCallback(
+    (e, index) => {
+      const { name, value } = e.target;
+      handleChangeAccelerationFactors(index, name, value);
+    },
+    [handleChangeAccelerationFactors]
+  );
+
+  const handleOnChangeConsensusFactors = useCallback(
+    (e, index) => {
+      const { name, value } = e.target;
+      handleChangeConsensusFactors(index, name, value);
+    },
+    [handleChangeConsensusFactors]
+  );
+
+  console.log("backTest ", backTest?.factors);
+
   return (
     <BacktestFactor
       backTest={backTest}
@@ -282,6 +348,13 @@ export default function BacktestFactorContainer() {
       isConsensusFactorChecked={isConsensusFactorChecked}
       customToggle={customToggle}
       handleCustomToggle={handleCustomToggle}
+      handleOnChangeValueFactor={handleOnChangeValueFactor}
+      handleOnChangeEvFactors={handleOnChangeEvFactors}
+      handleOnChangeQualityFactors={handleOnChangeQualityFactors}
+      handleOnChangePriceFactors={handleOnChangePriceFactors}
+      handleOnChangeGrowthFactors={handleOnChangeGrowthFactors}
+      handleOnChangeAccelerationFactors={handleOnChangeAccelerationFactors}
+      handleOnChangeConsensusFactors={handleOnChangeConsensusFactors}
       VALUE_FACTORS={VALUE_FACTORS}
       EV_FACTORS={EV_FACTORS}
       QUALITY_FACTORS={QUALITY_FACTORS}

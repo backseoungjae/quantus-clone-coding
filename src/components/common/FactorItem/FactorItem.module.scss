@@ -1,0 +1,89 @@
+.container {
+  margin-top: 30px;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px 0;
+}
+
+.item_box {
+  width: calc(100% / 3);
+}
+
+.item_name {
+  margin-bottom: 18px;
+  color: rgb(252, 252, 252);
+  font-size: 16px;
+}
+
+.input_box {
+  width: 80%;
+  margin-bottom: 15px;
+}
+
+.input {
+  outline: 0;
+  width: 100%;
+  padding: 20px 0;
+  box-sizing: border-box;
+  background: rgb(14, 14, 14);
+  border: 1px solid rgb(159, 159, 159);
+  border-radius: 6px;
+  text-align: center;
+  font-size: 16px;
+  color: rgb(230, 230, 230);
+  margin-bottom: 10px;
+  &:focus {
+    border: 1px solid rgb(236, 97, 38);
+  }
+}
+
+.button_box {
+  display: flex;
+  align-items: center;
+}
+
+.button,
+.active_button {
+  cursor: pointer;
+  outline: 0;
+  width: 50%;
+  border: 1px solid rgb(159, 159, 159);
+  border-radius: 6px 0 0 6px;
+  background-color: rgb(14, 14, 14);
+  padding: 15px 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-weight: 300;
+  color: rgb(159, 159, 159);
+  &:last-child {
+    border-radius: 0 6px 6px 0;
+  }
+}
+
+.active_button {
+  border: 1px solid rgb(236, 97, 38);
+  color: rgb(236, 97, 38);
+}
+
+.warning_text {
+  color: rgb(159, 159, 159);
+  font-size: 12px;
+}
+
+// 인풋 넘버 화살표 지우기
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}

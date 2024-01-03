@@ -7,6 +7,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { FACTORS } from "mocks/subData";
 import InputFactor from "components/common/InputFactor";
 import Popup from "components/common/Popup";
+import FactorItem from "components/common/FactorItem";
 
 const cx = classNames.bind(styles);
 
@@ -39,6 +40,13 @@ export default function BacktestFactor({
   isConsensusFactorChecked,
   customToggle,
   handleCustomToggle,
+  handleOnChangeValueFactor,
+  handleOnChangeEvFactors,
+  handleOnChangeQualityFactors,
+  handleOnChangePriceFactors,
+  handleOnChangeGrowthFactors,
+  handleOnChangeAccelerationFactors,
+  handleOnChangeConsensusFactors,
   VALUE_FACTORS,
   EV_FACTORS,
   QUALITY_FACTORS,
@@ -163,6 +171,11 @@ export default function BacktestFactor({
             factorData={valueFactorData}
             onCheckedItem={onCheckedValueFactorItem}
             isChecked={isValueFactorChecked}
+            handleChange={handleOnChangeValueFactor}
+          />
+          <FactorItem
+            factorData={backTest?.factors?.valueFactors}
+            handleChange={handleOnChangeValueFactor}
           />
         </div>
         <div className={cx("input_factor_inner")}>
@@ -173,6 +186,10 @@ export default function BacktestFactor({
             onCheckedItem={onCheckedEvFactorItem}
             isChecked={isEvFactorChecked}
           />
+          <FactorItem
+            factorData={backTest?.factors?.evFactors}
+            handleChange={handleOnChangeEvFactors}
+          />
         </div>
         <div className={cx("input_factor_inner")}>
           <InputFactor
@@ -181,6 +198,10 @@ export default function BacktestFactor({
             factorData={qualityFactorData}
             onCheckedItem={onCheckedQualityFactorItem}
             isChecked={isQualityFactorChecked}
+          />
+          <FactorItem
+            factorData={backTest?.factors?.qualityFactors}
+            handleChange={handleOnChangeQualityFactors}
           />
         </div>
         <div className={cx("input_factor_inner")}>
@@ -191,6 +212,10 @@ export default function BacktestFactor({
             onCheckedItem={onCheckedPriceFactorItem}
             isChecked={isPriceFactorChecked}
           />
+          <FactorItem
+            factorData={backTest?.factors?.priceFactors}
+            handleChange={handleOnChangePriceFactors}
+          />
         </div>
         <div className={cx("input_factor_inner")}>
           <InputFactor
@@ -199,6 +224,10 @@ export default function BacktestFactor({
             factorData={growthFactorData}
             onCheckedItem={onCheckedGrowthFactorItem}
             isChecked={isGrowthFactorChecked}
+          />
+          <FactorItem
+            factorData={backTest?.factors?.growthPotentialFactors}
+            handleChange={handleOnChangeGrowthFactors}
           />
         </div>
         <div className={cx("input_factor_inner")}>
@@ -209,6 +238,10 @@ export default function BacktestFactor({
             onCheckedItem={onCheckedAccelerationFactorItem}
             isChecked={isAccelerationFactorChecked}
           />
+          <FactorItem
+            factorData={backTest?.factors?.accelerationFactors}
+            handleChange={handleOnChangeAccelerationFactors}
+          />
         </div>
         <div className={cx("input_factor_inner")}>
           <InputFactor
@@ -217,6 +250,10 @@ export default function BacktestFactor({
             factorData={consensusFactorData}
             onCheckedItem={onCheckedConsensusFactorItem}
             isChecked={isConsensusFactorChecked}
+          />
+          <FactorItem
+            factorData={backTest?.factors?.consensusFactors}
+            handleChange={handleOnChangeConsensusFactors}
           />
         </div>
         <div className={cx("add_button_box")}>
