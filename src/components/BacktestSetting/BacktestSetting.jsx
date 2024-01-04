@@ -636,7 +636,7 @@ export default function BacktestSetting({
         )}
         <div className={cx("sub_inner")}>
           <DateBox
-            backTest={backTest}
+            initialDate={backTest?.period}
             dateStart={dateStart}
             dateEnd={dateEnd}
             startMinDate={startMinDate}

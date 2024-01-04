@@ -5,16 +5,35 @@ import StrategyHeader from "components/common/StrategyHeader";
 import { IoIosArrowDown } from "react-icons/io";
 import DateBox from "components/DateBox";
 import ResetButton from "components/common/ResetButton";
+import OptionItem from "components/common/OptionItem";
 
 const cx = classNames.bind(styles);
 
 export default function PartnershipMagicSplit({
-  splitMode,
-  handleChagneSplit,
+  partner,
+  partnerSetting,
+  split,
+  handleChangeStrategy,
+  handleChangeSplit,
+  handleChangeSingleStockOptiomizationSettings,
+  handleChangeRiskFree,
+  // 기간설정부분
+  dateStart,
+  dateEnd,
+  startMinDate,
+  endMinDate,
+  handleStartDateToggle,
+  handleEndDateToggle,
+  handleChangeStartDate,
+  handleChangeEndDate,
 }) {
   return (
     <div className={cx("container")}>
-      <StrategyHeader title="하단으로 이동" />
+      <StrategyHeader
+        strategy={partner?.strategy}
+        handleChangeTitle={handleChangeStrategy}
+        title="하단으로 이동"
+      />
       <div className={cx("wrapper")}>
         <ResetButton />
         <p className={cx("title")}>매직스플릿 모드</p>
@@ -23,45 +42,104 @@ export default function PartnershipMagicSplit({
             <input
               type="checkbox"
               id="exchange_rate"
-              className={cx("hide_check_box", { checked: splitMode === 1 })}
-              onClick={() => handleChagneSplit(1)}
+              className={cx("hide_check_box", { checked: split === 1 })}
+              onClick={() => handleChangeSplit(1)}
             />
             <label className={cx("check_box_label")} htmlFor="exchange_rate">
-              <div className={cx("check_box")}>
-                <div className={cx("check_box_checked")}></div>
-              </div>
-              <b className={cx("check_text")}>단일 종목</b>
-            </label>
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              id="exchange_rates"
-              className={cx("hide_check_box", { checked: splitMode === 2 })}
-              onClick={() => handleChagneSplit(2)}
-            />
-            <label className={cx("check_box_label")} htmlFor="exchange_rates">
               <div className={cx("check_box")}>
                 <div className={cx("check_box_checked")}></div>
               </div>
               <b className={cx("check_text")}>단일 종목 최적화</b>
             </label>
           </div>
+          <div>
+            <input
+              type="checkbox"
+              id="exchange_rates"
+              className={cx("hide_check_box", { checked: split === 2 })}
+              onClick={() => handleChangeSplit(2)}
+            />
+            <label className={cx("check_box_label")} htmlFor="exchange_rates">
+              <div className={cx("check_box")}>
+                <div className={cx("check_box_checked")}></div>
+              </div>
+              <b className={cx("check_text")}>단일 종목</b>
+            </label>
+          </div>
         </div>
         <div className={cx("option_wrapper")}>
-          <div className={cx("option_box")}>
-            <p className={cx("option_text")}>초기 투자 금액</p>
-            <div className={cx("option_input_box")}>
-              <input
-                type="number"
-                name="initialInvestment"
-                placeholder="초기 투자 금액을 입력해 주세요."
-                className={cx("option_input")}
-              />
-              <p className={cx("option_input_text")}>만원</p>
-            </div>
-          </div>
-          {splitMode === 1 && (
+          {split === 1 && (
+            <>
+              <div className={cx("option_inner")}>
+                <OptionItem
+                  title="매수 기준"
+                  category="purchaseCriteria"
+                  prevField="prevCriteria"
+                  nextField="nextCriteria"
+                  intervalFiled="criteriaInterval"
+                  prevValue={partnerSetting?.purchaseCriteria?.prevCriteria}
+                  nextValue={partnerSetting?.purchaseCriteria?.nextCriteria}
+                  intervalValue={
+                    partnerSetting?.purchaseCriteria?.criteriaInterval
+                  }
+                  handleChangeSingleStockOptiomizationSettings={
+                    handleChangeSingleStockOptiomizationSettings
+                  }
+                />
+                <OptionItem
+                  title="매도 기준"
+                  category="sellingCriteria"
+                  prevField="prevCriteria"
+                  nextField="nextCriteria"
+                  intervalFiled="criteriaInterval"
+                  prevValue={partnerSetting?.sellingCriteria?.prevCriteria}
+                  nextValue={partnerSetting?.sellingCriteria?.nextCriteria}
+                  intervalValue={
+                    partnerSetting?.sellingCriteria?.criteriaInterval
+                  }
+                  handleChangeSingleStockOptiomizationSettings={
+                    handleChangeSingleStockOptiomizationSettings
+                  }
+                />
+                <OptionItem
+                  title="진입 금액 비율"
+                  category="divisionOrder"
+                  prevField="prevCriteria"
+                  nextField="nextCriteria"
+                  intervalFiled="criteriaInterval"
+                  prevValue={partnerSetting?.divisionOrder?.prevCriteria}
+                  nextValue={partnerSetting?.divisionOrder?.nextCriteria}
+                  intervalValue={
+                    partnerSetting?.divisionOrder?.criteriaInterval
+                  }
+                  handleChangeSingleStockOptiomizationSettings={
+                    handleChangeSingleStockOptiomizationSettings
+                  }
+                />
+              </div>
+              <div className={cx("option_box")}>
+                <p className={cx("option_text")}>무위험 이자 수익</p>
+                <div className={cx("option_input_box")}>
+                  <input
+                    type="number"
+                    name="riskFreeInterestIncome"
+                    value={partnerSetting?.riskFreeInterestIncome}
+                    onChange={handleChangeRiskFree}
+                    className={cx("option_input")}
+                  />
+                  <p
+                    className={cx("option_input_text", "option_input_percent")}
+                  >
+                    %
+                  </p>
+                  <p className={cx("warning_text")}>
+                    0 ~ 100 까지 입력할 수 있습니다.
+                  </p>
+                </div>
+              </div>
+            </>
+          )}
+          {split === 2 && (
             <>
               <div className={cx("option_box")}>
                 <p className={cx("option_text")}>매수 기준</p>
@@ -137,221 +215,6 @@ export default function PartnershipMagicSplit({
               </div>
             </>
           )}
-          {splitMode === 2 && (
-            <>
-              <div className={cx("option_inner")}>
-                <div className={cx("option_item_inner")}>
-                  <div className={cx("option_item_left_box")}>
-                    <p className={cx("option_text")}>매수 기준</p>
-                    <div className={cx("option_item_box")}>
-                      <div className={cx("option_item")}>
-                        <input
-                          type="number"
-                          name=""
-                          className={cx("option_input")}
-                        />
-                        <p
-                          className={cx(
-                            "option_input_text",
-                            "option_input_percent"
-                          )}
-                        >
-                          %
-                        </p>
-                        <p className={cx("warning_text")}>
-                          0 ~ 100 까지 입력할 수 있습니다.
-                        </p>
-                      </div>
-                      <p className={cx("option_item_space")}>~</p>
-                      <div className={cx("option_item")}>
-                        <input
-                          type="number"
-                          name=""
-                          className={cx("option_input")}
-                        />
-                        <p
-                          className={cx(
-                            "option_input_text",
-                            "option_input_percent"
-                          )}
-                        >
-                          %
-                        </p>
-                        <p className={cx("warning_text")}>
-                          0 ~ 100 까지 입력할 수 있습니다.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className={cx("option_item_right_box")}>
-                    <p className={cx("option_text")}>간격</p>
-                    <div className={cx("option_interval_item")}>
-                      <input
-                        type="number"
-                        name=""
-                        className={cx("option_input")}
-                      />
-                      <p
-                        className={cx(
-                          "option_input_text",
-                          "option_input_percent"
-                        )}
-                      >
-                        %
-                      </p>
-                      <p className={cx("warning_text")}>
-                        간격은 범위를 벗어날 수 없습니다.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className={cx("option_item_inner")}>
-                  <div className={cx("option_item_left_box")}>
-                    <p className={cx("option_text")}>매도 기준</p>
-                    <div className={cx("option_item_box")}>
-                      <div className={cx("option_item")}>
-                        <input
-                          type="number"
-                          name=""
-                          className={cx("option_input")}
-                        />
-                        <p
-                          className={cx(
-                            "option_input_text",
-                            "option_input_percent"
-                          )}
-                        >
-                          %
-                        </p>
-                        <p className={cx("warning_text")}>
-                          0 ~ 100 까지 입력할 수 있습니다.
-                        </p>
-                      </div>
-                      <p className={cx("option_item_space")}>~</p>
-                      <div className={cx("option_item")}>
-                        <input
-                          type="number"
-                          name=""
-                          className={cx("option_input")}
-                        />
-                        <p
-                          className={cx(
-                            "option_input_text",
-                            "option_input_percent"
-                          )}
-                        >
-                          %
-                        </p>
-                        <p className={cx("warning_text")}>
-                          0 ~ 100 까지 입력할 수 있습니다.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className={cx("option_item_right_box")}>
-                    <p className={cx("option_text")}>간격</p>
-                    <div className={cx("option_interval_item")}>
-                      <input
-                        type="number"
-                        name=""
-                        className={cx("option_input")}
-                      />
-                      <p
-                        className={cx(
-                          "option_input_text",
-                          "option_input_percent"
-                        )}
-                      >
-                        %
-                      </p>
-                      <p className={cx("warning_text")}>
-                        간격은 범위를 벗어날 수 없습니다.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className={cx("option_item_inner")}>
-                  <div className={cx("option_item_left_box")}>
-                    <p className={cx("option_text")}>진입 금액 비율</p>
-                    <div className={cx("option_item_box")}>
-                      <div className={cx("option_item")}>
-                        <input
-                          type="number"
-                          name=""
-                          className={cx("option_input")}
-                        />
-                        <p
-                          className={cx(
-                            "option_input_text",
-                            "option_input_percent"
-                          )}
-                        >
-                          %
-                        </p>
-                        <p className={cx("warning_text")}>
-                          0 ~ 100 까지 입력할 수 있습니다.
-                        </p>
-                      </div>
-                      <p className={cx("option_item_space")}>~</p>
-                      <div className={cx("option_item")}>
-                        <input
-                          type="number"
-                          name=""
-                          className={cx("option_input")}
-                        />
-                        <p
-                          className={cx(
-                            "option_input_text",
-                            "option_input_percent"
-                          )}
-                        >
-                          %
-                        </p>
-                        <p className={cx("warning_text")}>
-                          0 ~ 100 까지 입력할 수 있습니다.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className={cx("option_item_right_box")}>
-                    <p className={cx("option_text")}>간격</p>
-                    <div className={cx("option_interval_item")}>
-                      <input
-                        type="number"
-                        name=""
-                        className={cx("option_input")}
-                      />
-                      <p
-                        className={cx(
-                          "option_input_text",
-                          "option_input_percent"
-                        )}
-                      >
-                        %
-                      </p>
-                      <p className={cx("warning_text")}>
-                        간격은 범위를 벗어날 수 없습니다.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className={cx("option_box")}>
-                <p className={cx("option_text")}>무위험 이자 수익</p>
-                <div className={cx("option_input_box")}>
-                  <input type="number" name="" className={cx("option_input")} />
-                  <p
-                    className={cx("option_input_text", "option_input_percent")}
-                  >
-                    %
-                  </p>
-                  <p className={cx("warning_text")}>
-                    0 ~ 100 까지 입력할 수 있습니다.
-                  </p>
-                </div>
-              </div>
-            </>
-          )}
           {/* <IoIosArrowDown
           className={cx(assetClass ? "active_open_arrow" : "open_arrow")}
         /> */}
@@ -377,7 +240,17 @@ export default function PartnershipMagicSplit({
               </div>
             </div>
           </div>
-          <DateBox />
+          <DateBox
+            initialDate={partner?.period}
+            dateStart={dateStart}
+            dateEnd={dateEnd}
+            startMinDate={startMinDate}
+            endMinDate={endMinDate}
+            handleStartDateToggle={handleStartDateToggle}
+            handleEndDateToggle={handleEndDateToggle}
+            handleChangeStartDate={handleChangeStartDate}
+            handleChangeEndDate={handleChangeEndDate}
+          />
           <div className={cx("button_box")}>
             <button className={cx("invest_button", "active_button")}>
               투자하기

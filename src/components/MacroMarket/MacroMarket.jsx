@@ -9,15 +9,12 @@ const cx = classNames.bind(styles);
 export default function MacroMarket({
   i,
   macro,
-  hadnleEx,
   macroToggle,
   handleMacroToggle,
   handleChangeMacroMarketSettings,
   handleAddMacroMarketSettings,
   handleRemoveMacroMarketSettings,
 }) {
-  console.log("i ", i);
-
   return (
     <div className={cx("split_inner")}>
       <div className={cx("split_box")}>

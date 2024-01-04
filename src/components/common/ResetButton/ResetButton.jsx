@@ -7,7 +7,6 @@ const cx = classNames.bind(styles);
 
 export default function ResetButton({ index }) {
   const location = useLocation();
-  console.log("location ", location);
 
   const isHiden = location.pathname.includes("/backtest" || "/port");
 

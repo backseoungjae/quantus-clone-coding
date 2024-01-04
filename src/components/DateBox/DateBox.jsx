@@ -7,7 +7,7 @@ import CalendarBox from "components/common/CalendarBox";
 const cx = classNames.bind(styles);
 
 export default function DateBox({
-  backTest,
+  initialDate,
   dateStart,
   dateEnd,
   startMinDate,
@@ -30,8 +30,8 @@ export default function DateBox({
             className={cx("date_toggle_box")}
           >
             <button className={cx("date_button")}>
-              {backTest?.period?.startDate
-                ? backTest?.period?.startDate
+              {initialDate?.startDate
+                ? initialDate?.startDate
                 : dayjs(startMinDate).format("YYYY.MM.DD")}
             </button>
             <img
@@ -43,8 +43,8 @@ export default function DateBox({
           {dateStart && (
             <CalendarBox
               minDate={startMinDate}
-              date={backTest?.period?.startDate}
-              startDate={backTest?.period?.startDate}
+              date={initialDate?.startDate}
+              startDate={initialDate?.startDate}
               handleChangeDate={handleChangeStartDate}
             />
           )}
@@ -53,7 +53,7 @@ export default function DateBox({
           <p className={cx("date_text")}>종료일 설정</p>
           <div onClick={handleEndDateToggle} className={cx("date_toggle_box")}>
             <button className={cx("date_button")}>
-              {backTest?.period?.endDate ? backTest?.period?.endDate : today}
+              {initialDate?.endDate ? initialDate?.endDate : today}
             </button>
             <img
               className={cx("date_img")}
@@ -64,8 +64,8 @@ export default function DateBox({
           {dateEnd && (
             <CalendarBox
               minDate={endMinDate}
-              date={backTest?.period?.endDate}
-              endDate={backTest?.period?.endDate}
+              date={initialDate?.endDate}
+              endDate={initialDate?.endDate}
               handleChangeDate={handleChangeEndDate}
             />
           )}

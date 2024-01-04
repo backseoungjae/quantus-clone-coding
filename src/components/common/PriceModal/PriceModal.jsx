@@ -14,8 +14,6 @@ export default function PriceModal({
   handleChagnePurchaseSettings,
   handleAmount,
 }) {
-  console.log("tabType ", tabType);
-
   return (
     <div className={cx("modal_inner")}>
       <div className={cx("modal_bg")} onClick={handleToggle} />

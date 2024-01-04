@@ -1,27 +1,3 @@
-// 설정 값 초기화 버튼
-
-.reset_button {
-  float: right;
-  position: sticky;
-  top: 290px;
-  right: 0;
-  z-index: 1;
-  cursor: pointer;
-  padding: 10px 20px;
-  box-sizing: border-box;
-  border: 1px solid rgb(62, 62, 62);
-  border-radius: 6px;
-  color: rgb(207, 207, 207);
-  font-size: 14px;
-  font-weight: 300;
-  background-color: rgb(14, 14, 14);
-  font-family: Noto Sans KR, sans-serif;
-}
-
-.reset_img {
-  margin-right: 10px;
-}
-
 // 자산배분 설정 부분
 
 .wrapper {
@@ -36,7 +12,7 @@
   margin-bottom: 28px;
 }
 
-// 전체 환율 반영 체크 박스 부분
+// 스플릿 모드 체크박스 부분
 
 .exchange_rate_box {
   display: flex;
@@ -91,6 +67,10 @@
   font-size: 16px;
   font-weight: 500;
   color: rgb(252, 252, 252);
+}
+
+.option_inner {
+  width: 84%;
 }
 
 // 옵션 선택 박스
@@ -291,62 +271,3 @@ input[type="number"] {
 //   color: #fff;
 //   background: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0));
 // }
-
-// 옵션박스 split 2 부분
-
-.option_inner {
-  width: 90%;
-}
-
-.option_item_inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 30px;
-}
-
-.option_item_left_box {
-  width: 60%;
-}
-
-.option_item_right_box {
-  width: 33%;
-}
-
-.option_item_box {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.option_item {
-  position: relative;
-  width: 45%;
-}
-
-.option_interval_item {
-  position: relative;
-  width: 80%;
-}
-
-.option_item_label {
-  margin-bottom: 18px;
-  color: rgb(252, 252, 252);
-  font-size: 16px;
-  font-weight: 300;
-}
-
-.option_item_space {
-  position: absolute;
-  left: 50%;
-  top: 40%;
-  transform: translate(-50%, -50%);
-  font-size: 14px;
-  font-weight: 300;
-  color: rgb(252, 252, 252);
-}
-
-.option_item_input {
-  width: 100%;
-}
