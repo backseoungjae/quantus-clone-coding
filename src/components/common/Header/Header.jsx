@@ -86,8 +86,7 @@ export default function Header() {
             {NAV_MENU.map((nav) => (
               <Link
                 className={cx(
-                  nav.path === location?.pathname ||
-                    location?.pathname.includes(nav.path)
+                  nav.path.includes(location.pathname.split("/", 2)[1])
                     ? "active_nav_link"
                     : "nav_link"
                 )}
