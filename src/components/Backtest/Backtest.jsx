@@ -9,6 +9,7 @@ import Popup from "components/common/Popup";
 import BacktestRankingItem from "components/BacktestRankingItem";
 import BacktestInitialFilter from "components/BacktestInitialFilter";
 import BacktestExceptSector from "components/BacktestExceptSector";
+import ResetButton from "components/common/ResetButton";
 
 const cx = classNames.bind(styles);
 
@@ -75,31 +76,7 @@ export default function Backtest({
         handleChangeTitle={handleChangeBackTestTitle}
         title="백테스트"
       />
-      <div className={cx("side_button_box")}>
-        <button className={cx("view_button")}>
-          <img
-            className={cx("view_img")}
-            src="/images/view.svg"
-            alt="한눈에 보기 이미지"
-          />
-          한눈에 보기
-        </button>
-        <button className={cx("reset_button")}>
-          <img
-            className={cx("reset_img")}
-            src="/images/reset.svg"
-            alt="초기화 버튼 아이콘"
-          />
-          설정 값 초기화
-        </button>
-        <div className={cx("step_box")}>
-          <p className={cx("step_number", "active_step_number")}>1</p>
-          <hr className={cx("step_line", "active_step_line")} />
-          <p className={cx("step_number")}>2</p>
-          <hr className={cx("step_line")} />
-          <p className={cx("step_number")}>3</p>
-        </div>
-      </div>
+      <ResetButton index={1} />
       <div className={cx("inner")}>
         <div className={cx("inner_nav_box")}>
           <Link
@@ -193,7 +170,7 @@ export default function Backtest({
               />
             )}
           </div>
-          {initialCheckList?.length && (
+          {initialCheckList?.length ? (
             <div>
               <div className={cx("check_list_title_box")}>
                 <p className={cx("check_list_title")}>필터 순위 지정</p>
@@ -227,7 +204,7 @@ export default function Backtest({
                 />
               ))}
             </div>
-          )}
+          ) : null}
         </div>
         <div className={cx("button_box")}>
           <Link

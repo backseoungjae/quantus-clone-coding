@@ -178,14 +178,6 @@ export default function BacktestSettingContainer() {
     [handleDate]
   );
 
-  // 설정 값 초기화 이벤트
-  const handleReset = useCallback(() => {
-    if (window.confirm("설정 값을 초기화 하시겠습니까?")) {
-      sessionStorage.clear();
-      window.location.reload();
-    }
-  }, []);
-
   // 마지막 버튼 이벤트
 
   const handleVerification = useCallback((text) => {
@@ -220,9 +212,6 @@ export default function BacktestSettingContainer() {
       handleEndDateToggle={handleEndDateToggle}
       handleChangeStartDate={handleChangeStartDate}
       handleChangeEndDate={handleChangeEndDate}
-      handleReset={handleReset}
-      // ex={ex}
-      // hadnleEx={handleChangeMacroMarketSettings}
     />
   );
 }

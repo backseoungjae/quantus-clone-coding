@@ -4,6 +4,7 @@ import styles from "./PartnershipMagicSplit.module.scss";
 import StrategyHeader from "components/common/StrategyHeader";
 import { IoIosArrowDown } from "react-icons/io";
 import DateBox from "components/DateBox";
+import ResetButton from "components/common/ResetButton";
 
 const cx = classNames.bind(styles);
 
@@ -15,14 +16,7 @@ export default function PartnershipMagicSplit({
     <div className={cx("container")}>
       <StrategyHeader title="하단으로 이동" />
       <div className={cx("wrapper")}>
-        <button className={cx("reset_button")}>
-          <img
-            className={cx("reset_img")}
-            src="/images/reset.svg"
-            alt="초기화 버튼 아이콘"
-          />
-          설정 값 초기화
-        </button>
+        <ResetButton />
         <p className={cx("title")}>매직스플릿 모드</p>
         <div className={cx("exchange_rate_box")}>
           <div>

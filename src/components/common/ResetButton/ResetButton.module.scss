@@ -1,0 +1,91 @@
+// 설정 값 초기화 버튼
+
+.side_button_box {
+  float: right;
+  position: sticky;
+  top: 290px;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid rgb(62, 62, 62);
+  border-radius: 6px;
+}
+
+.view_button {
+  cursor: pointer;
+  position: relative;
+  border: 0;
+  width: 100%;
+  padding-left: 15px;
+  box-sizing: border-box;
+  color: rgb(207, 207, 207);
+  font-size: 14px;
+  font-weight: 300;
+  background-color: rgb(14, 14, 14);
+  margin-bottom: 20px;
+}
+
+.view_img {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+}
+
+.reset_button {
+  cursor: pointer;
+  border: 0;
+  color: rgb(207, 207, 207);
+  font-size: 14px;
+  font-weight: 300;
+  background-color: rgb(14, 14, 14);
+  // margin-bottom: 20px;
+}
+
+.reset_img {
+  margin-right: 10px;
+}
+
+// 프로그래스 바 부분
+
+.step_box {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.step_number,
+.active_step_number {
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgb(159, 159, 159);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 3px;
+  box-sizing: border-box;
+  color: rgb(159, 159, 159);
+  font-weight: 500;
+}
+
+.active_step_number {
+  border: 1px solid rgb(236, 97, 38);
+  color: rgb(236, 97, 38);
+}
+
+.step_line,
+.active_step_line {
+  margin: 0;
+  border: 0.5px solid rgb(159, 159, 159);
+  height: 30px;
+}
+
+.active_step_line {
+  border: 0.5px solid rgb(236, 97, 38);
+}

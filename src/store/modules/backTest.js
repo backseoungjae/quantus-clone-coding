@@ -195,10 +195,6 @@ function backTest(state = initialState, action) {
         },
       };
     case CHECKED_FACTORS:
-      console.log("[action.factorType] ", [action.factorType]);
-
-      console.log("[...action.payload] ", [...action.payload]);
-
       return {
         ...state,
         factors: {
