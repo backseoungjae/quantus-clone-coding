@@ -7,6 +7,10 @@ const initialState = {
     divisionOrder: getCriteriaInitialState(),
     riskFreeInterestIncome: "",
   },
+  assetClassSettings: {
+    kind: "한국 ETF",
+    assetClass: "",
+  },
   singleStockSettings: {},
   period: {
     startDate: null,
@@ -32,6 +36,9 @@ const CHANGE_SPLIT = "partner/CHANGE_SPLIT";
 const CHANGE_SINGLE_STOCK_OPTIMIZATION_SETTINGS =
   "partner/CHANGE_SINGLE_STOCK_OPTIMIZATION_SETTINGS";
 const CHANGE_RISK_FREE = "partner/CHANGE_RISK_FREE";
+
+// 자산군 부분
+const CHANGE_ASSET_SETTINGS = "partner/CHANGE_ASSET_SETTINGS";
 
 // 날짜 부분
 const CHANGE_DATE = "partner/CHANGE_DATE";
@@ -61,6 +68,11 @@ export const changeSingleStockOptiomizationSettings = (
 
 export const changeRiskFree = (payload) => ({
   type: CHANGE_RISK_FREE,
+  payload,
+});
+
+export const changeAssetClassSettings = (payload) => ({
+  type: CHANGE_ASSET_SETTINGS,
   payload,
 });
 
@@ -98,6 +110,14 @@ function partner(state = initialState, action) {
         ...state,
         singleStockOptimizationSettings: {
           ...state.singleStockOptimizationSettings,
+          ...action.payload,
+        },
+      };
+    case CHANGE_ASSET_SETTINGS:
+      return {
+        ...state,
+        assetClassSettings: {
+          ...state.assetClassSettings,
           ...action.payload,
         },
       };

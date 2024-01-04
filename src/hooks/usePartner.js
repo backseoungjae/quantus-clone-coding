@@ -6,6 +6,7 @@ import {
   changeRiskFree,
   changeSplit,
   changeDate,
+  changeAssetClassSettings,
 } from "store/modules/partner";
 
 export default function usePartner() {
@@ -34,6 +35,10 @@ export default function usePartner() {
     dispatch(changeRiskFree(payload));
   }, []);
 
+  const handleAssetClassSettings = useCallback((payload) => {
+    dispatch(changeAssetClassSettings(payload));
+  }, []);
+
   // 날짜 변경 부분
   const handleDate = useCallback((payload) => {
     dispatch(changeDate(payload));
@@ -45,6 +50,7 @@ export default function usePartner() {
     handleSplit,
     handleSingleStockOptiomizationSettings,
     handleRiskFree,
+    handleAssetClassSettings,
     handleDate,
   };
 }

@@ -196,18 +196,6 @@ input[type="number"] {
   border-radius: 12px;
 }
 
-.open_arrow,
-.active_open_arrow {
-  color: #ec6127;
-  width: 15px;
-  height: 15px;
-  transition: all 0.3s ease-in-out;
-}
-
-.active_open_arrow {
-  transform: rotate(180deg);
-}
-
 .asset_class_option_box {
   margin-bottom: 30px;
   &:last-child {
@@ -267,7 +255,41 @@ input[type="number"] {
   border: 1px solid #ec6127;
 }
 
-// .active_button {
-//   color: #fff;
-//   background: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0));
-// }
+// 선택 했을 때 나오는 박스
+
+.hide_box {
+  list-style: none;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  margin-top: 10px;
+  background: rgb(14, 14, 14);
+  border-radius: 6px;
+  border: 1px solid rgb(62, 62, 62);
+  max-height: 500px;
+  overflow: hidden auto;
+}
+
+.hide_input,
+.active_hide_input {
+  cursor: pointer;
+  outline: none;
+  width: 100%;
+  border-radius: 6px;
+  text-align: center;
+  padding: 15px 0;
+  box-sizing: border-box;
+  background: rgb(14, 14, 14);
+  border: 0;
+  color: rgb(230, 230, 230);
+  font-size: 16px;
+  font-weight: 300;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+.active_hide_input {
+  background: rgba(236, 97, 38, 0.3) !important;
+}

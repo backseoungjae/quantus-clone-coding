@@ -1363,3 +1363,14 @@ export const MACRO_MARKET_LIST = [
     name: "나스닥 이격도 (200일)",
   },
 ];
+
+export const PARTNER_ASSET_LIST = [
+  {
+    id: 1,
+    name: "한국 ETF",
+  },
+  {
+    id: 2,
+    name: "한국 주식",
+  },
+];

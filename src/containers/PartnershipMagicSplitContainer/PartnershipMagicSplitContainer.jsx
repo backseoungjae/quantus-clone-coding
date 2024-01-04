@@ -1,7 +1,8 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import PartnershipMagicSplit from "components/PartnershipMagicSplit";
 import usePartner from "hooks/usePartner";
 import dayjs from "dayjs";
+import * as api from "apis";
 
 export default function PartnershipMagicSplitContainer() {
   const {
@@ -10,8 +11,21 @@ export default function PartnershipMagicSplitContainer() {
     handleSplit,
     handleSingleStockOptiomizationSettings,
     handleRiskFree,
+    handleAssetClassSettings,
     handleDate,
   } = usePartner();
+
+  const [toggle, setToggle] = useState({
+    kind: false,
+    assetClass: false,
+  });
+
+  const handleToggle = (key) => {
+    setToggle((prevToggle) => ({
+      ...prevToggle,
+      [key]: !prevToggle[key],
+    }));
+  };
 
   // 전략 이름 이벤트
   const handleChangeStrategy = useCallback(
@@ -46,6 +60,32 @@ export default function PartnershipMagicSplitContainer() {
     },
     [handleRiskFree]
   );
+
+  // 자산군 선택 부분
+  const handleChangeAssetClassSettings = useCallback(
+    (e) => {
+      handleAssetClassSettings({
+        [e.target.name]: e.target.value,
+      });
+    },
+    [handleAssetClassSettings]
+  );
+
+  // 자산군 데이터 불러오는 곳
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await api.getStockList();
+        setData(res?.data?.stocks);
+      } catch (error) {
+        console.error(error);
+      }
+    })();
+  }, []);
+
+  console.log("data ", data);
 
   // 날짜 변경
   const [dateStart, setDateStart] = useState(false);
@@ -92,12 +132,15 @@ export default function PartnershipMagicSplitContainer() {
       partner={partner}
       partnerSetting={partner?.singleStockOptimizationSettings}
       split={partner?.magicSplit}
+      toggle={toggle}
       handleChangeStrategy={handleChangeStrategy}
       handleChangeSplit={handleChangeSplit}
       handleChangeSingleStockOptiomizationSettings={
         handleChangeSingleStockOptiomizationSettings
       }
       handleChangeRiskFree={handleChangeRiskFree}
+      handleToggle={handleToggle}
+      handleChangeAssetClassSettings={handleChangeAssetClassSettings}
       // 기간설정부분
       dateStart={dateStart}
       dateEnd={dateEnd}

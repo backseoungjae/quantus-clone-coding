@@ -6,6 +6,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import DateBox from "components/DateBox";
 import ResetButton from "components/common/ResetButton";
 import OptionItem from "components/common/OptionItem";
+import { PARTNER_ASSET_LIST } from "mocks/subData";
 
 const cx = classNames.bind(styles);
 
@@ -13,10 +14,13 @@ export default function PartnershipMagicSplit({
   partner,
   partnerSetting,
   split,
+  toggle,
   handleChangeStrategy,
   handleChangeSplit,
   handleChangeSingleStockOptiomizationSettings,
   handleChangeRiskFree,
+  handleToggle,
+  handleChangeAssetClassSettings,
   // 기간설정부분
   dateStart,
   dateEnd,
@@ -226,16 +230,85 @@ export default function PartnershipMagicSplit({
               </div>
               <div className={cx("asset_class_option_box")}>
                 <p className={cx("asset_class_option")}>종류</p>
-                <div className={cx("option_input_box")}>
-                  <input className={cx("option_input")} type="text" readOnly />
-                  <IoIosArrowDown className={cx("option_select_arrow")} />
+                <div
+                  onClick={() => handleToggle("kind")}
+                  className={cx("option_input_box")}
+                >
+                  <input
+                    className={cx("option_input")}
+                    type="text"
+                    value={partner?.assetClassSettings?.kind}
+                    readOnly
+                  />
+                  <IoIosArrowDown
+                    className={cx(
+                      toggle.kind
+                        ? "active_option_select_arrow"
+                        : "option_select_arrow"
+                    )}
+                  />
+                  {toggle.kind && (
+                    <ul className={cx("hide_box")}>
+                      {PARTNER_ASSET_LIST.map((list) => (
+                        <li key={list.id}>
+                          <input
+                            name="kind"
+                            value={list.name}
+                            onClick={handleChangeAssetClassSettings}
+                            className={cx(
+                              partner?.assetClassSettings?.kind === list.name
+                                ? "active_hide_input"
+                                : "hide_input"
+                            )}
+                            type="text"
+                            readOnly
+                          />
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               </div>
               <div className={cx("asset_class_option_box")}>
                 <p className={cx("asset_class_option")}>자산군</p>
-                <div className={cx("option_input_box")}>
-                  <input className={cx("option_input")} type="text" readOnly />
-                  <IoIosArrowDown className={cx("option_select_arrow")} />
+                <div
+                  onClick={() => handleToggle("assetClass")}
+                  className={cx("option_input_box")}
+                >
+                  <input
+                    className={cx("option_input")}
+                    type="text"
+                    value={partner?.assetClassSettings?.assetClass}
+                    readOnly
+                  />
+                  <IoIosArrowDown
+                    className={cx(
+                      toggle.assetClass
+                        ? "active_option_select_arrow"
+                        : "option_select_arrow"
+                    )}
+                  />
+                  {toggle.assetClass && (
+                    <ul className={cx("hide_box")}>
+                      {PARTNER_ASSET_LIST.map((list) => (
+                        <li key={list.id}>
+                          <input
+                            name="kind"
+                            value={list.name}
+                            onClick={handleChangeAssetClassSettings}
+                            className={cx(
+                              partner?.assetClassSettings?.assetClass ===
+                                list.name
+                                ? "active_hide_input"
+                                : "hide_input"
+                            )}
+                            type="text"
+                            readOnly
+                          />
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               </div>
             </div>
