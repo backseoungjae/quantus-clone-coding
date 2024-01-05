@@ -9,6 +9,8 @@ import InputFactor from "components/common/InputFactor";
 import Popup from "components/common/Popup";
 import FactorItem from "components/common/FactorItem";
 import ResetButton from "components/common/ResetButton";
+import ButtonBox from "components/common/ButtonBox";
+import NavBox from "components/common/NavBox";
 
 const cx = classNames.bind(styles);
 
@@ -18,27 +20,6 @@ export default function BacktestFactor({
   handleToggle,
   handleChangeBackTestTitle,
   handleChangeCalculationWeight,
-  valueFactorData,
-  evFactorData,
-  qualityFactorData,
-  priceFactorData,
-  growthFactorData,
-  accelerationFactorData,
-  consensusFactorData,
-  onCheckedValueFactorItem,
-  isValueFactorChecked,
-  onCheckedEvFactorItem,
-  isEvFactorChecked,
-  onCheckedQualityFactorItem,
-  isQualityFactorChecked,
-  onCheckedPriceFactorItem,
-  isPriceFactorChecked,
-  onCheckedGrowthFactorItem,
-  isGrowthFactorChecked,
-  onCheckedAccelerationFactorItem,
-  isAccelerationFactorChecked,
-  onCheckedConsensusFactorItem,
-  isConsensusFactorChecked,
   customToggle,
   handleCustomToggle,
   handleOnChangeValueFactor,
@@ -61,38 +42,22 @@ export default function BacktestFactor({
 
   return (
     <div className={cx("container")}>
-      <div className={cx("nav_box")}>
-        <Link
-          className={cx("active_nav_item")}
-          to={
-            location.pathname.includes("backtest/backtest")
-              ? "/backtest/backtest/universe"
-              : "/backtest/decile/universe"
-          }
-        >
-          유니버스 선택
-        </Link>
-        <Link
-          className={cx("active_nav_item")}
-          to={
-            location.pathname.includes("backtest/backtest")
-              ? "/backtest/backtest/factors"
-              : "/backtest/decile/factors"
-          }
-        >
-          팩터 선택
-        </Link>
-        <Link
-          className={cx("nav_item")}
-          to={
-            location.pathname.includes("backtest/backtest")
-              ? "/backtest/backtest/backtest"
-              : "/backtest/decile/backtest"
-          }
-        >
-          백테스트 셜졍
-        </Link>
-      </div>
+      {location.pathname.includes("/backtest/backtest") && (
+        <NavBox
+          index={2}
+          universLink="/backtest/backtest/universe"
+          factorLink="/backtest/backtest/factors"
+          settingLink="/backtest/backtest/backtest"
+        />
+      )}
+      {location.pathname.includes("/backtest/decile") && (
+        <NavBox
+          index={2}
+          universLink="/backtest/decile/universe"
+          factorLink="/backtest/decile/factors"
+          settingLink="/backtest/decile/backtest"
+        />
+      )}
       <StrategyHeader
         strategy={backTest?.strategy}
         handleChangeTitle={handleChangeBackTestTitle}
@@ -247,36 +212,18 @@ export default function BacktestFactor({
           )}
         </div>
         <div className={cx("button_box")}>
-          <Link
-            to={
-              location.pathname.includes("backtest/backtest")
-                ? "/backtest/backtest/universe"
-                : "/backtest/decile/universe"
-            }
-            className={cx("button", "prev_button")}
-          >
-            <img
-              className={cx("prev_button_img")}
-              src="/images/prev_img.svg"
-              alt="다음 버튼 화살표 이미지"
+          {location.pathname === "/backtest/backtest/factors" && (
+            <ButtonBox
+              prevNav="/backtest/backtest/universe"
+              nextNav="/backtest/backtest/backtest"
             />
-            이전
-          </Link>
-          <Link
-            to={
-              location.pathname.includes("backtest/backtest")
-                ? "/backtest/backtest/backtest"
-                : "/backtest/decile/backtest"
-            }
-            className={cx("button")}
-          >
-            다음
-            <img
-              className={cx("button_img")}
-              src="/images/next_button.svg"
-              alt="다음 버튼 화살표 이미지"
+          )}
+          {location.pathname === "/backtest/decile/factors" && (
+            <ButtonBox
+              prevNav="/backtest/decile/universe"
+              nextNav="/backtest/decile/backtest"
             />
-          </Link>
+          )}
         </div>
       </div>
     </div>

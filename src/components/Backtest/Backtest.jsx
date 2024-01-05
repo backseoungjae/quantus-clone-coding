@@ -10,6 +10,8 @@ import BacktestRankingItem from "components/BacktestRankingItem";
 import BacktestInitialFilter from "components/BacktestInitialFilter";
 import BacktestExceptSector from "components/BacktestExceptSector";
 import ResetButton from "components/common/ResetButton";
+import ButtonBox from "components/common/ButtonBox";
+import NavBox from "components/common/NavBox";
 
 const cx = classNames.bind(styles);
 
@@ -39,38 +41,22 @@ export default function Backtest({
 
   return (
     <div className={cx("container")}>
-      <div className={cx("nav_box")}>
-        <Link
-          className={cx("active_nav_item")}
-          to={
-            location.pathname.includes("backtest/backtest")
-              ? "/backtest/backtest/universe"
-              : "/backtest/decile/universe"
-          }
-        >
-          유니버스 선택
-        </Link>
-        <Link
-          className={cx("nav_item")}
-          to={
-            location.pathname.includes("backtest/backtest")
-              ? "/backtest/backtest/factors"
-              : "/backtest/decile/factors"
-          }
-        >
-          팩터 선택
-        </Link>
-        <Link
-          className={cx("nav_item")}
-          to={
-            location.pathname.includes("backtest/backtest")
-              ? "/backtest/backtest/backtest"
-              : "/backtest/decile/backtest"
-          }
-        >
-          백테스트 셜졍
-        </Link>
-      </div>
+      {location.pathname.includes("/backtest/backtest") && (
+        <NavBox
+          index={1}
+          universLink="/backtest/backtest/universe"
+          factorLink="/backtest/backtest/factors"
+          settingLink="/backtest/backtest/backtest"
+        />
+      )}
+      {location.pathname.includes("/backtest/decile") && (
+        <NavBox
+          index={1}
+          universLink="/backtest/decile/universe"
+          factorLink="/backtest/decile/factors"
+          settingLink="/backtest/decile/backtest"
+        />
+      )}
       <StrategyHeader
         strategy={backTest?.strategy}
         handleChangeTitle={handleChangeBackTestTitle}
@@ -207,21 +193,12 @@ export default function Backtest({
           ) : null}
         </div>
         <div className={cx("button_box")}>
-          <Link
-            to={
-              location.pathname.includes("backtest/backtest")
-                ? "/backtest/backtest/factors"
-                : "/backtest/decile/factors"
-            }
-            className={cx("button")}
-          >
-            다음
-            <img
-              className={cx("button_img")}
-              src="/images/next_button.svg"
-              alt="다음 버튼 화살표 이미지"
-            />
-          </Link>
+          {location.pathname === "/backtest/backtest/universe" && (
+            <ButtonBox nextNav="/backtest/backtest/factors" />
+          )}
+          {location.pathname === "/backtest/decile/universe" && (
+            <ButtonBox nextNav="/backtest/decile/factors" />
+          )}
         </div>
       </div>
     </div>

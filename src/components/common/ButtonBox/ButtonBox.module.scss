@@ -1,0 +1,37 @@
+.button,
+.prev_button {
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  text-align: center;
+  width: 20%;
+  color: rgb(14, 14, 14);
+  font-size: 18px;
+  font-weight: 600;
+  position: relative;
+  border: 0;
+  border-radius: 6px;
+  padding: 20px 0;
+  box-sizing: border-box;
+  background: linear-gradient(to right, rgb(236, 97, 38), rgb(236, 38, 38));
+}
+
+.prev_button {
+  background: rgb(14, 14, 14);
+  border: 1px solid #ec6127;
+  color: rgb(252, 252, 252);
+  margin-right: 100px;
+}
+
+.button_img,
+.prev_button_img {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+}
+
+.prev_button_img {
+  right: initial;
+  left: 10px;
+}
