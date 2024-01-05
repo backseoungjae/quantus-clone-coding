@@ -7,6 +7,7 @@ import {
   DecileBacktestFactorPage,
   DecileBacktestPage,
   DecileBacktestSettingPage,
+  HomePage,
   PartnershipMagicSplitPage,
   PartnershipPage,
   PurchaseLicensePage,
@@ -17,11 +18,8 @@ import {
 function App() {
   return (
     <Routes>
-      <Route
-        exact
-        path="/backtest/backtest/universe"
-        element={<BacktestPage />}
-      />
+      <Route path="/" element={<HomePage />} />
+      <Route path="/backtest/backtest/universe" element={<BacktestPage />} />
       <Route path="/alloc/static_alloc" element={<StaticAllocPage />} />
       <Route
         path="/backtest/decile/universe"
