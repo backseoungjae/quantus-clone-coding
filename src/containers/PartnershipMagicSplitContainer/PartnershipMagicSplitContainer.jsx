@@ -11,6 +11,7 @@ export default function PartnershipMagicSplitContainer() {
     handleSplit,
     handleSingleStockOptiomizationSettings,
     handleRiskFree,
+    handleSingleStockSettings,
     handleAssetClassSettings,
     handleDate,
   } = usePartner();
@@ -61,6 +62,16 @@ export default function PartnershipMagicSplitContainer() {
     [handleRiskFree]
   );
 
+  // 단일 종목 부분
+  const handleChangeSingleStockSettings = useCallback(
+    (e) => {
+      handleSingleStockSettings({
+        [e.target.name]: e.target.value,
+      });
+    },
+    [handleSingleStockSettings]
+  );
+
   // 자산군 선택 부분
   const handleChangeAssetClassSettings = useCallback(
     (e) => {
@@ -97,10 +108,6 @@ export default function PartnershipMagicSplitContainer() {
   const [dateStart, setDateStart] = useState(false);
   const [dateEnd, setDateEnd] = useState(false);
 
-  // 최소 날짜 선택
-  const startMinDate = new Date(
-    dayjs().clone().startOf("year").format("YYYY-MM-DD")
-  );
   const endMinDate = new Date(partner?.period?.startDate);
 
   const handleStartDateToggle = useCallback(() => {
@@ -117,8 +124,26 @@ export default function PartnershipMagicSplitContainer() {
         startDate: dayjs(selectDate).format("YYYY.MM.DD"),
       });
       setDateStart(false);
+      setSelected(null);
     },
     [handleDate]
+  );
+
+  // 최근 날짜 변경 부분
+  const [startMinDate, setStartMinDate] = useState(
+    new Date(dayjs().subtract(1, "year"))
+  );
+  const [selected, setSelected] = useState(null);
+
+  const handleChangeLastYears = useCallback(
+    (i) => {
+      setStartMinDate(new Date(dayjs().subtract(i, "year")));
+      setSelected(i);
+      handleDate({
+        startDate: dayjs(startMinDate).format("YYYY.MM.DD"),
+      });
+    },
+    [handleDate, startMinDate]
   );
 
   const handleChangeEndDate = useCallback(
@@ -131,7 +156,10 @@ export default function PartnershipMagicSplitContainer() {
     [handleDate]
   );
 
-  console.log("partner ", partner);
+  // 마지막 버튼 이벤트
+  const handleVerification = useCallback((text) => {
+    alert(text);
+  }, []);
 
   return (
     <PartnershipMagicSplit
@@ -145,18 +173,22 @@ export default function PartnershipMagicSplitContainer() {
         handleChangeSingleStockOptiomizationSettings
       }
       handleChangeRiskFree={handleChangeRiskFree}
+      handleChangeSingleStockSettings={handleChangeSingleStockSettings}
       handleToggle={handleToggle}
       handleChangeAssetClassSettings={handleChangeAssetClassSettings}
       filterData={filterData}
+      handleVerification={handleVerification}
       // 기간설정부분
       dateStart={dateStart}
       dateEnd={dateEnd}
-      startMinDate={startMinDate}
       endMinDate={endMinDate}
+      startMinDate={startMinDate}
+      selected={selected}
       handleStartDateToggle={handleStartDateToggle}
       handleEndDateToggle={handleEndDateToggle}
       handleChangeStartDate={handleChangeStartDate}
       handleChangeEndDate={handleChangeEndDate}
+      handleChangeLastYears={handleChangeLastYears}
     />
   );
 }

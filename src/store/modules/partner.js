@@ -1,3 +1,5 @@
+import dayjs from "dayjs";
+
 const initialState = {
   strategy: "",
   magicSplit: 1,
@@ -5,16 +7,21 @@ const initialState = {
     purchaseCriteria: getCriteriaInitialState(),
     sellingCriteria: getCriteriaInitialState(),
     divisionOrder: getCriteriaInitialState(),
-    riskFreeInterestIncome: "",
+    riskFreeInterestIncome: 0,
   },
   assetClassSettings: {
     kind: "한국 ETF",
     assetClass: "",
   },
-  singleStockSettings: {},
+  singleStockSettings: {
+    purchaseCriteria: 0,
+    sellingCriteria: 0,
+    entryAmountRatio: 0,
+    riskFreeInterestIncome: 0,
+  },
   period: {
     startDate: null,
-    endDate: null,
+    endDate: dayjs(new Date()).format("YYYY.MM.DD"),
   },
 };
 
@@ -36,6 +43,9 @@ const CHANGE_SPLIT = "partner/CHANGE_SPLIT";
 const CHANGE_SINGLE_STOCK_OPTIMIZATION_SETTINGS =
   "partner/CHANGE_SINGLE_STOCK_OPTIMIZATION_SETTINGS";
 const CHANGE_RISK_FREE = "partner/CHANGE_RISK_FREE";
+
+// 단일 종목 부분
+const CHANGE_SINGLE_STOCK_SETTINGS = "partner/CHANGE_SINGLE_STOCK_SETTINGS";
 
 // 자산군 부분
 const CHANGE_ASSET_SETTINGS = "partner/CHANGE_ASSET_SETTINGS";
@@ -68,6 +78,11 @@ export const changeSingleStockOptiomizationSettings = (
 
 export const changeRiskFree = (payload) => ({
   type: CHANGE_RISK_FREE,
+  payload,
+});
+
+export const changeSingleStockSettings = (payload) => ({
+  type: CHANGE_SINGLE_STOCK_SETTINGS,
   payload,
 });
 
@@ -110,6 +125,14 @@ function partner(state = initialState, action) {
         ...state,
         singleStockOptimizationSettings: {
           ...state.singleStockOptimizationSettings,
+          ...action.payload,
+        },
+      };
+    case CHANGE_SINGLE_STOCK_SETTINGS:
+      return {
+        ...state,
+        singleStockSettings: {
+          ...state.singleStockSettings,
           ...action.payload,
         },
       };

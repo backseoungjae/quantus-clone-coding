@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   changeStrategy,
   changeSingleStockOptiomizationSettings,
+  changeSingleStockSettings,
   changeRiskFree,
   changeSplit,
   changeDate,
@@ -35,6 +36,12 @@ export default function usePartner() {
     dispatch(changeRiskFree(payload));
   }, []);
 
+  // 단일 종목 부분
+  const handleSingleStockSettings = useCallback((payload) => {
+    dispatch(changeSingleStockSettings(payload));
+  }, []);
+
+  // 자산군 부분
   const handleAssetClassSettings = useCallback((payload) => {
     dispatch(changeAssetClassSettings(payload));
   }, []);
@@ -50,6 +57,7 @@ export default function usePartner() {
     handleSplit,
     handleSingleStockOptiomizationSettings,
     handleRiskFree,
+    handleSingleStockSettings,
     handleAssetClassSettings,
     handleDate,
   };

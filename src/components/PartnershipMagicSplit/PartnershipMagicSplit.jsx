@@ -8,6 +8,7 @@ import ResetButton from "components/common/ResetButton";
 import OptionItem from "components/common/OptionItem";
 import { PARTNER_ASSET_LIST } from "mocks/subData";
 import VirtualScroll from "components/common/VirtualScroll";
+import SingleOptionItem from "components/common/SingleOptionItem";
 
 const cx = classNames.bind(styles);
 
@@ -20,18 +21,22 @@ export default function PartnershipMagicSplit({
   handleChangeSplit,
   handleChangeSingleStockOptiomizationSettings,
   handleChangeRiskFree,
+  handleChangeSingleStockSettings,
   handleToggle,
   handleChangeAssetClassSettings,
   filterData,
+  handleVerification,
   // 기간설정부분
   dateStart,
   dateEnd,
-  startMinDate,
   endMinDate,
+  startMinDate,
+  selected,
   handleStartDateToggle,
   handleEndDateToggle,
   handleChangeStartDate,
   handleChangeEndDate,
+  handleChangeLastYears,
 }) {
   return (
     <div className={cx("container")}>
@@ -147,83 +152,34 @@ export default function PartnershipMagicSplit({
           )}
           {split === 2 && (
             <>
-              <div className={cx("option_box")}>
-                <p className={cx("option_text")}>매수 기준</p>
-                <div className={cx("option_input_box")}>
-                  <input
-                    type="number"
-                    name="initialInvestment"
-                    className={cx("option_input")}
-                  />
-                  <p
-                    className={cx("option_input_text", "option_input_percent")}
-                  >
-                    %
-                  </p>
-                  <p className={cx("warning_text")}>
-                    0 ~ 100 까지 입력할 수 있습니다.
-                  </p>
-                </div>
-              </div>
-              <div className={cx("option_box")}>
-                <p className={cx("option_text")}>매도 기준</p>
-                <div className={cx("option_input_box")}>
-                  <input
-                    type="number"
-                    name="initialInvestment"
-                    className={cx("option_input")}
-                  />
-                  <p
-                    className={cx("option_input_text", "option_input_percent")}
-                  >
-                    %
-                  </p>
-                  <p className={cx("warning_text")}>
-                    0 ~ 100 까지 입력할 수 있습니다.
-                  </p>
-                </div>
-              </div>
-              <div className={cx("option_box")}>
-                <p className={cx("option_text")}>진입 금액 비율</p>
-                <div className={cx("option_input_box")}>
-                  <input
-                    type="number"
-                    name="initialInvestment"
-                    className={cx("option_input")}
-                  />
-                  <p
-                    className={cx("option_input_text", "option_input_percent")}
-                  >
-                    %
-                  </p>
-                  <p className={cx("warning_text")}>
-                    0 ~ 100 까지 입력할 수 있습니다.
-                  </p>
-                </div>
-              </div>
-              <div className={cx("option_box")}>
-                <p className={cx("option_text")}>무위험 이자 수익</p>
-                <div className={cx("option_input_box")}>
-                  <input
-                    type="number"
-                    name="initialInvestment"
-                    className={cx("option_input")}
-                  />
-                  <p
-                    className={cx("option_input_text", "option_input_percent")}
-                  >
-                    %
-                  </p>
-                  <p className={cx("warning_text")}>
-                    0 ~ 100 까지 입력할 수 있습니다.
-                  </p>
-                </div>
-              </div>
+              <SingleOptionItem
+                handleChange={handleChangeSingleStockSettings}
+                singleValue={partner?.singleStockSettings?.purchaseCriteria}
+                title="매수 기준"
+                name="purchaseCriteria"
+              />
+              <SingleOptionItem
+                handleChange={handleChangeSingleStockSettings}
+                singleValue={partner?.singleStockSettings?.sellingCriteria}
+                title="매도기준"
+                name="sellingCriteria"
+              />
+              <SingleOptionItem
+                handleChange={handleChangeSingleStockSettings}
+                singleValue={partner?.singleStockSettings?.entryAmountRatio}
+                title="진입 금액 비율"
+                name="entryAmountRatio"
+              />
+              <SingleOptionItem
+                handleChange={handleChangeSingleStockSettings}
+                singleValue={
+                  partner?.singleStockSettings?.riskFreeInterestIncome
+                }
+                title="무위험 이자 수익"
+                name="riskFreeInterestIncome"
+              />
             </>
           )}
-          {/* <IoIosArrowDown
-          className={cx(assetClass ? "active_open_arrow" : "open_arrow")}
-        /> */}
           <div className={cx("asset_class_wrapper")}>
             <p className={cx("title")}>자산군</p>
             <div className={cx("asset_class_box")}>
@@ -309,18 +265,28 @@ export default function PartnershipMagicSplit({
             initialDate={partner?.period}
             dateStart={dateStart}
             dateEnd={dateEnd}
-            startMinDate={startMinDate}
             endMinDate={endMinDate}
+            startMinDate={startMinDate}
+            selected={selected}
             handleStartDateToggle={handleStartDateToggle}
             handleEndDateToggle={handleEndDateToggle}
             handleChangeStartDate={handleChangeStartDate}
             handleChangeEndDate={handleChangeEndDate}
+            handleChangeLastYears={handleChangeLastYears}
           />
           <div className={cx("button_box")}>
-            <button className={cx("invest_button", "active_button")}>
+            <button
+              onClick={() => handleVerification("아직 준비중 입니다.")}
+              className={cx("invest_button", "active_button")}
+            >
               투자하기
             </button>
-            <button className={cx("button", "active_button")}>백테스트</button>
+            <button
+              onClick={() => handleVerification("백테스트가 완료 되었습니다.")}
+              className={cx("button", "active_button")}
+            >
+              백테스트
+            </button>
           </div>
         </div>
       </div>

@@ -1,0 +1,84 @@
+.option_box {
+  position: relative;
+  width: 62%;
+  margin-bottom: 38px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.option_text {
+  color: rgb(252, 252, 252);
+  font-size: 16px;
+  font-weight: 300;
+  margin-bottom: 18px;
+}
+
+.option_input_box {
+  position: relative;
+}
+
+.option_input {
+  outline: none;
+  width: 100%;
+  text-align: center;
+  background: rgb(14, 14, 14);
+  border: 1px solid rgb(159, 159, 159);
+  border-radius: 6px;
+  padding: 14px 0;
+  box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
+  color: rgb(252, 252, 252);
+  font-size: 16px;
+  font-weight: 300;
+  &::placeholder {
+    transition: all 0.3s ease-in-out;
+    color: rgb(252, 252, 252);
+    font-size: 16px;
+    font-weight: 300;
+  }
+  &:focus::placeholder {
+    color: transparent;
+  }
+  &:hover {
+    border: 1px solid rgb(252, 252, 252);
+  }
+  &:focus {
+    border: 1px solid #ec6127;
+  }
+}
+
+// input창 부분
+
+.option_input_text {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 28px;
+  color: rgb(230, 230, 230);
+  font-size: 16px;
+}
+
+.option_input_percent {
+  top: 35%;
+}
+
+.warning_text {
+  color: rgb(159, 159, 159);
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+// 인풋 넘버 화살표 지우기
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}

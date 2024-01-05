@@ -56,26 +56,6 @@
   right: 20px;
 }
 
-// .date_input {
-//   cursor: pointer;
-//   outline: none;
-//   width: 100%;
-//   padding: 10px 20px;
-//   box-sizing: border-box;
-//   background: rgb(14, 14, 14);
-//   background: url(../../../public/images/date.svg) no-repeat right 20px center /
-//     20px auto;
-//   border: 1px solid rgb(159, 159, 159);
-//   border-radius: 6px;
-//   font-size: 16px;
-//   font-weight: 300;
-//   color: rgb(230, 230, 230);
-//   text-align: center;
-//   &:focus {
-//     border: 1px solid #ec6127;
-//   }
-// }
-
 // 하단 파트너쉽 기간 설정 버튼
 
 .period_button_box {
@@ -103,4 +83,32 @@
     color: rgb(14, 14, 14);
     border: 1px solid #ec6127;
   }
+}
+
+// 하단 기간 설정 버튼
+
+.year_button_box {
+  width: 90%;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.year_button {
+  cursor: pointer;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgb(252, 252, 252);
+  background-color: rgb(14, 14, 14);
+  border: 1px solid rgb(159, 159, 159);
+  border-radius: 6px;
+}
+
+.year_button.selected {
+  background-color: rgb(236, 97, 38);
+  border: 1px solid rgb(236, 97, 38);
+  color: rgb(14, 14, 14);
 }
