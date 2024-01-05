@@ -1,0 +1,90 @@
+// 선택 했을 때 나오는 박스
+
+// .hide_box {
+//   list-style: none;
+//   position: absolute;
+//   z-index: 1;
+//   width: 100%;
+//   margin-top: 10px;
+//   background: rgb(14, 14, 14);
+//   border-radius: 6px;
+//   border: 1px solid rgb(62, 62, 62);
+//   max-height: 400px;
+//   overflow-y: auto;
+// }
+
+.hide_input,
+.active_hide_input {
+  cursor: pointer;
+  outline: rgb(159, 159, 159) solid 1px;
+  width: 100%;
+  text-align: center;
+  padding: 15px 0;
+  box-sizing: border-box;
+  background: rgb(14, 14, 14);
+  border: 0;
+  color: rgb(230, 230, 230);
+  font-size: 16px;
+  font-weight: 300;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+.active_hide_input {
+  background: rgba(236, 97, 38, 0.3) !important;
+}
+
+.virtual_list_box {
+  position: relative;
+}
+
+.virtual_list {
+  position: absolute;
+  top: 60px;
+  z-index: 1;
+  max-width: 100%;
+  background: rgb(14, 14, 14);
+  border-radius: 6px;
+  border: 1px solid rgb(62, 62, 62);
+  max-height: 400px;
+}
+
+// 검색창 부분
+
+.search_box {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.search_img {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.search_input {
+  outline: none;
+  border: 1px solid rgb(159, 159, 159);
+  border-radius: 6px;
+  width: 100%;
+  padding: 20px 40px;
+  box-sizing: border-box;
+  background-color: rgb(30, 30, 30);
+  font-size: 16px;
+  color: rgb(230, 230, 230);
+  &::placeholder {
+    font-size: 16px;
+    color: rgb(230, 230, 230);
+    transition: all 0.3s ease-in-out;
+  }
+  &:focus::placeholder {
+    color: transparent;
+  }
+  &:focus {
+    border: 1px solid #ec6127;
+  }
+}

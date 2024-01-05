@@ -67,6 +67,10 @@ export default function PartnershipMagicSplitContainer() {
       handleAssetClassSettings({
         [e.target.name]: e.target.value,
       });
+      setToggle((prevToggle) => ({
+        ...prevToggle,
+        [e.target.name]: !prevToggle[e.target.name],
+      }));
     },
     [handleAssetClassSettings]
   );
@@ -85,7 +89,9 @@ export default function PartnershipMagicSplitContainer() {
     })();
   }, []);
 
-  console.log("data ", data);
+  const filterData = data?.filter(
+    (item) => item?.category === partner.assetClassSettings.kind
+  );
 
   // 날짜 변경
   const [dateStart, setDateStart] = useState(false);
@@ -141,6 +147,7 @@ export default function PartnershipMagicSplitContainer() {
       handleChangeRiskFree={handleChangeRiskFree}
       handleToggle={handleToggle}
       handleChangeAssetClassSettings={handleChangeAssetClassSettings}
+      filterData={filterData}
       // 기간설정부분
       dateStart={dateStart}
       dateEnd={dateEnd}

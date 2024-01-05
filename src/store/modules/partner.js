@@ -20,9 +20,9 @@ const initialState = {
 
 function getCriteriaInitialState() {
   return {
-    prevCriteria: "",
-    nextCriteria: "",
-    criteriaInterval: "",
+    prevCriteria: 0,
+    nextCriteria: 0,
+    criteriaInterval: 0,
   };
 }
 

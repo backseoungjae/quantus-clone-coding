@@ -7,6 +7,7 @@ import DateBox from "components/DateBox";
 import ResetButton from "components/common/ResetButton";
 import OptionItem from "components/common/OptionItem";
 import { PARTNER_ASSET_LIST } from "mocks/subData";
+import VirtualScroll from "components/common/VirtualScroll";
 
 const cx = classNames.bind(styles);
 
@@ -21,6 +22,7 @@ export default function PartnershipMagicSplit({
   handleChangeRiskFree,
   handleToggle,
   handleChangeAssetClassSettings,
+  filterData,
   // 기간설정부분
   dateStart,
   dateEnd,
@@ -247,6 +249,8 @@ export default function PartnershipMagicSplit({
                         : "option_select_arrow"
                     )}
                   />
+                </div>
+                <div className={cx("hide_kind")}>
                   {toggle.kind && (
                     <ul className={cx("hide_box")}>
                       {PARTNER_ASSET_LIST.map((list) => (
@@ -288,28 +292,16 @@ export default function PartnershipMagicSplit({
                         : "option_select_arrow"
                     )}
                   />
-                  {toggle.assetClass && (
-                    <ul className={cx("hide_box")}>
-                      {PARTNER_ASSET_LIST.map((list) => (
-                        <li key={list.id}>
-                          <input
-                            name="kind"
-                            value={list.name}
-                            onClick={handleChangeAssetClassSettings}
-                            className={cx(
-                              partner?.assetClassSettings?.assetClass ===
-                                list.name
-                                ? "active_hide_input"
-                                : "hide_input"
-                            )}
-                            type="text"
-                            readOnly
-                          />
-                        </li>
-                      ))}
-                    </ul>
-                  )}
                 </div>
+                {toggle.assetClass && (
+                  <VirtualScroll
+                    data={filterData}
+                    partner={partner}
+                    handleChangeAssetClassSettings={
+                      handleChangeAssetClassSettings
+                    }
+                  />
+                )}
               </div>
             </div>
           </div>
