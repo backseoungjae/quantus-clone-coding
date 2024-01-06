@@ -1374,3 +1374,14 @@ export const PARTNER_ASSET_LIST = [
     name: "한국 주식",
   },
 ];
+
+export const STRATEGY_REBALNCINGS = [
+  {
+    id: 1,
+    name: "전량 매수/매도",
+  },
+  {
+    id: 2,
+    name: "분할 매수/매도",
+  },
+];

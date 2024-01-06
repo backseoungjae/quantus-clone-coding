@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames/bind";
 import styles from "./BacktestFactor.module.scss";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import StrategyHeader from "components/common/StrategyHeader";
 import { IoIosArrowDown } from "react-icons/io";
 import { FACTORS } from "mocks/subData";
@@ -45,6 +45,9 @@ export default function BacktestFactor({
       {location.pathname.includes("/backtest/backtest") && (
         <NavBox
           index={2}
+          universPathname="유니버스 선택"
+          factorPathname="팩터 선택"
+          settingPathname="백테스트 셜졍"
           universLink="/backtest/backtest/universe"
           factorLink="/backtest/backtest/factors"
           settingLink="/backtest/backtest/backtest"
@@ -53,9 +56,34 @@ export default function BacktestFactor({
       {location.pathname.includes("/backtest/decile") && (
         <NavBox
           index={2}
+          universPathname="유니버스 선택"
+          factorPathname="팩터 선택"
+          settingPathname="백테스트 셜졍"
           universLink="/backtest/decile/universe"
           factorLink="/backtest/decile/factors"
           settingLink="/backtest/decile/backtest"
+        />
+      )}
+      {location.pathname.includes("/port/trade") && (
+        <NavBox
+          index={2}
+          universPathname="유니버스 선택"
+          factorPathname="팩터 선택"
+          settingPathname="트레이딩 설정 셜졍"
+          universLink="/port/trade/universe"
+          factorLink="/port/trade/factors"
+          settingLink="/port/trade/port"
+        />
+      )}
+      {location.pathname.includes("/port/past") && (
+        <NavBox
+          index={2}
+          universPathname="유니버스 선택"
+          factorPathname="팩터 선택"
+          settingPathname="트레이딩 설정 셜졍"
+          universLink="/port/past/universe"
+          factorLink="/port/past/factors"
+          settingLink="/port/past/port"
         />
       )}
       <StrategyHeader
@@ -222,6 +250,18 @@ export default function BacktestFactor({
             <ButtonBox
               prevNav="/backtest/decile/universe"
               nextNav="/backtest/decile/backtest"
+            />
+          )}
+          {location.pathname === "/port/trade/factors" && (
+            <ButtonBox
+              prevNav="/port/trade/universe"
+              nextNav="/port/trade/port"
+            />
+          )}
+          {location.pathname === "/port/past/factors" && (
+            <ButtonBox
+              prevNav="/port/past/universe"
+              nextNav="/port/past/port"
             />
           )}
         </div>

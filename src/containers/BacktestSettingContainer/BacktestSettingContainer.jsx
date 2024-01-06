@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import BacktestSetting from "components/BacktestSetting";
 import useBackTest from "hooks/useBackTest";
 import dayjs from "dayjs";
+import { useLocation } from "react-router-dom";
 
 export default function BacktestSettingContainer() {
   const {
@@ -18,9 +19,13 @@ export default function BacktestSettingContainer() {
     handleDate,
   } = useBackTest();
 
+  const location = useLocation();
+
   // 토글 이벤트 부분
   const [rebalancingToggle, setRebalancingToggle] = useState(false);
   const [specificControlToggle, setSpecificControlToggle] = useState(false);
+  const [strategyRebalancingToggle, setStrategyRebalancingToggle] =
+    useState(false);
 
   const handleRebalancingToggle = useCallback(() => {
     setRebalancingToggle((prev) => !prev);
@@ -28,6 +33,10 @@ export default function BacktestSettingContainer() {
 
   const handleSpecificControlToggle = useCallback(() => {
     setSpecificControlToggle((prev) => !prev);
+  }, []);
+
+  const handleStrategyRebalancingToggleToggle = useCallback(() => {
+    setStrategyRebalancingToggle((prev) => !prev);
   }, []);
 
   // 제목 변경 부분
@@ -44,6 +53,7 @@ export default function BacktestSettingContainer() {
       handleBacktestSettings({ [e.target.name]: e.target.value });
       setRebalancingToggle(false);
       setSpecificControlToggle(false);
+      setStrategyRebalancingToggle(false);
     },
     [handleBacktestSettings]
   );
@@ -66,6 +76,20 @@ export default function BacktestSettingContainer() {
     },
     [handleMonthList, backTest?.backtestSettings?.seasonalityMonthList]
   );
+
+  // 시즈널리티 선택 안되게 하기
+  useEffect(() => {
+    if (
+      location.pathname === "/backtest/decile/backtest" &&
+      backTest?.backtestSettings?.backtestRebalancing === "시즈널리티"
+    ) {
+      handleBacktestSettings({ backtestRebalancing: "" });
+    }
+  }, [
+    location.pathname,
+    backTest?.backtestSettings?.backtestRebalancing,
+    handleBacktestSettings,
+  ]);
 
   // 마켓 타이밍 이벤트 부분
   const [macroToggle, setMacroToggle] = useState(false);
@@ -104,6 +128,7 @@ export default function BacktestSettingContainer() {
       marketTimingList: "",
       marketTimingFilter: "",
       marketTimingValue: "",
+      marketTimingRangeValue: "",
     };
 
     onAddMacroMarketSettings(addMacroMarket);
@@ -187,6 +212,7 @@ export default function BacktestSettingContainer() {
   return (
     <BacktestSetting
       backTest={backTest}
+      setting={backTest?.backtestSettings}
       rebalancingToggle={rebalancingToggle}
       specificControlToggle={specificControlToggle}
       splitMode={splitMode}
@@ -203,6 +229,10 @@ export default function BacktestSettingContainer() {
       handleAddMacroMarketSettings={handleAddMacroMarketSettings}
       handleRemoveMacroMarketSettings={handleRemoveMacroMarketSettings}
       handleVerification={handleVerification}
+      strategyRebalancingToggle={strategyRebalancingToggle}
+      handleStrategyRebalancingToggleToggle={
+        handleStrategyRebalancingToggleToggle
+      }
       // 기간설정부분
       dateStart={dateStart}
       dateEnd={dateEnd}

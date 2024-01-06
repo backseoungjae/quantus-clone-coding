@@ -10,6 +10,12 @@ import {
   HomePage,
   PartnershipMagicSplitPage,
   PartnershipPage,
+  PortExtractionFactorPage,
+  PortExtractionPage,
+  PortExtractionPastFactorPage,
+  PortExtractionPastPage,
+  PortExtractionPastSettingPage,
+  PortExtractionSettingPage,
   PurchaseLicensePage,
   StaticAllocPage,
   StrategyExamplePage,
@@ -48,6 +54,21 @@ function App() {
       <Route
         path="/partnership/magic_split"
         element={<PartnershipMagicSplitPage />}
+      />
+      <Route path="/port/trade/universe" element={<PortExtractionPage />} />
+      <Route
+        path="/port/trade/factors"
+        element={<PortExtractionFactorPage />}
+      />
+      <Route path="/port/trade/port" element={<PortExtractionSettingPage />} />
+      <Route path="/port/past/universe" element={<PortExtractionPastPage />} />
+      <Route
+        path="/port/past/factors"
+        element={<PortExtractionPastFactorPage />}
+      />
+      <Route
+        path="/port/past/port"
+        element={<PortExtractionPastSettingPage />}
       />
     </Routes>
   );

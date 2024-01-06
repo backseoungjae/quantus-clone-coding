@@ -8,7 +8,9 @@ const cx = classNames.bind(styles);
 export default function ResetButton({ index }) {
   const location = useLocation();
 
-  const isHiden = location.pathname.includes("/backtest" || "/port");
+  const isHidden =
+    location.pathname.includes("/backtest") ||
+    location.pathname.includes("/port");
 
   // 설정 값 초기화 이벤트
   const handleReset = useCallback(() => {
@@ -20,7 +22,7 @@ export default function ResetButton({ index }) {
 
   return (
     <div className={cx("side_button_box")}>
-      {isHiden ? (
+      {isHidden ? (
         <>
           <button className={cx("view_button")}>
             <img

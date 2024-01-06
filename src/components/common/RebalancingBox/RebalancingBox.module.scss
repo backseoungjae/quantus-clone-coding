@@ -1,5 +1,18 @@
-.inner {
-  margin-top: 50px;
+.sub_inner {
+  margin-bottom: 80px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.title_box {
+  margin-bottom: 28px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
 }
 
 // 옵션 선택하는 부분
@@ -15,16 +28,9 @@
 
 .option_text {
   color: rgb(252, 252, 252);
-  font-size: 18px;
-  font-weight: 500;
-  margin-bottom: 18px;
-}
-
-.option_sub_text {
-  margin: 28px 0 18px;
-  color: rgb(252, 252, 252);
   font-size: 16px;
   font-weight: 300;
+  margin-bottom: 18px;
 }
 
 .option_input_box {
@@ -93,8 +99,7 @@
 }
 
 .hide_input,
-.active_hide_input,
-.disabled_input {
+.active_hide_input {
   cursor: pointer;
   outline: none;
   width: 100%;
@@ -117,51 +122,84 @@
   background: rgba(236, 97, 38, 0.3) !important;
 }
 
-.disabled_input {
-  color: rgb(110, 110, 110);
-  &:hover {
-    background: rgb(14, 14, 14);
-  }
+// input창 부분
+
+.option_input_text {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 28px;
+  color: rgb(230, 230, 230);
+  font-size: 16px;
 }
 
-// 하단 체크박스 inner
-
-.input_factor_inner {
-  width: 80%;
-  padding: 40px 0;
-  box-sizing: border-box;
-  border-bottom: 1px solid rgb(62, 62, 62);
+.option_input_percent {
+  top: 35%;
 }
 
-// 커스텀 필터 버튼 부분
-
-.add_button_box {
-  position: relative;
-  margin: 100px 0 80px;
+.warning_text {
+  color: rgb(159, 159, 159);
+  font-size: 12px;
+  margin-top: 10px;
 }
 
-.add_button_text {
-  margin-bottom: 30px;
+// 인풋 넘버 화살표 지우기
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-.add_button {
-  cursor: pointer;
-  outline: 0;
-  border: 0;
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+// 시즈널리티 선택 시 나오는 기간 박스
+
+.month_list_wrapper {
+  width: 100%;
+  margin-top: 18px;
+}
+
+.month_list_inner {
+  display: flex;
+  align-items: center;
+  background-color: rgb(30, 30, 30);
   border-radius: 6px;
-  padding: 15px 30px;
-  box-sizing: border-box;
-  color: rgb(14, 14, 14);
-  font-size: 14px;
-  font-weight: 400;
-  background-color: rgb(236, 97, 38);
 }
 
-// 다음 이전 버튼
-
-.button_box {
+.month_list_box,
+.active_month_list_box {
+  cursor: pointer;
+  width: calc(100% / 12);
+  height: 48px;
+  background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 80px;
+  transition: all 0.3s ease-in-out;
+  border-radius: 6px;
+}
+
+.active_month_list_box {
+  background-color: rgb(236, 97, 38);
+}
+
+.month_list_text,
+.active_month_list_text {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgb(230, 230, 230);
+  transition: all 0.3s ease-in-out;
+}
+
+.active_month_list_text {
+  color: rgb(14, 14, 14);
+}
+
+.warning_box {
+  margin-top: 10px;
 }

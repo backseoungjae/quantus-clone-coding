@@ -16,9 +16,10 @@ const initialState = {
     consensusFactors: [],
   },
   backtestSettings: {
-    initialInvestmentAmount: 0,
+    initialInvestmentAmount: "초기 투자 금액을 입력해주세요.",
     transactionFee: 0,
     backtestRebalancing: "",
+    strategyRebalancing: "",
     specificGravityControl: "동일 비중",
     rebalancingItems: 0,
     seasonalityMonthList: [],

@@ -7,6 +7,9 @@ const cx = classNames.bind(styles);
 
 export default function NavBox({
   index,
+  universPathname,
+  factorPathname,
+  settingPathname,
   universLink,
   factorLink,
   settingLink,
@@ -16,39 +19,39 @@ export default function NavBox({
       {index === 1 && (
         <div className={cx("nav_box")}>
           <Link className={cx("active_nav_item")} to={universLink}>
-            유니버스 선택
+            {universPathname}
           </Link>
           <Link className={cx("nav_item")} to={factorLink}>
-            팩터 선택
+            {factorPathname}
           </Link>
           <Link className={cx("nav_item")} to={settingLink}>
-            백테스트 셜졍
+            {settingPathname}
           </Link>
         </div>
       )}
       {index === 2 && (
         <div className={cx("nav_box")}>
           <Link className={cx("active_nav_item")} to={universLink}>
-            유니버스 선택
+            {universPathname}
           </Link>
           <Link className={cx("active_nav_item")} to={factorLink}>
-            팩터 선택
+            {factorPathname}
           </Link>
           <Link className={cx("nav_item")} to={settingLink}>
-            백테스트 셜졍
+            {settingPathname}
           </Link>
         </div>
       )}
       {index === 3 && (
         <div className={cx("nav_box")}>
           <Link className={cx("active_nav_item")} to={universLink}>
-            유니버스 선택
+            {universPathname}
           </Link>
           <Link className={cx("active_nav_item")} to={factorLink}>
-            팩터 선택
+            {factorPathname}
           </Link>
           <Link className={cx("active_nav_item")} to={settingLink}>
-            백테스트 셜졍
+            {settingPathname}
           </Link>
         </div>
       )}

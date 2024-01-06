@@ -44,6 +44,9 @@ export default function Backtest({
       {location.pathname.includes("/backtest/backtest") && (
         <NavBox
           index={1}
+          universPathname="유니버스 선택"
+          factorPathname="팩터 선택"
+          settingPathname="백테스트 셜졍"
           universLink="/backtest/backtest/universe"
           factorLink="/backtest/backtest/factors"
           settingLink="/backtest/backtest/backtest"
@@ -52,9 +55,34 @@ export default function Backtest({
       {location.pathname.includes("/backtest/decile") && (
         <NavBox
           index={1}
+          universPathname="유니버스 선택"
+          factorPathname="팩터 선택"
+          settingPathname="백테스트 셜졍"
           universLink="/backtest/decile/universe"
           factorLink="/backtest/decile/factors"
           settingLink="/backtest/decile/backtest"
+        />
+      )}
+      {location.pathname.includes("/port/trade") && (
+        <NavBox
+          index={1}
+          universPathname="유니버스 선택"
+          factorPathname="팩터 선택"
+          settingPathname="트레이딩 설정 셜졍"
+          universLink="/port/trade/universe"
+          factorLink="/port/trade/factors"
+          settingLink="/port/trade/port"
+        />
+      )}
+      {location.pathname.includes("/port/past") && (
+        <NavBox
+          index={1}
+          universPathname="유니버스 선택"
+          factorPathname="팩터 선택"
+          settingPathname="트레이딩 설정 셜졍"
+          universLink="/port/past/universe"
+          factorLink="/port/past/factors"
+          settingLink="/port/past/port"
         />
       )}
       <StrategyHeader
@@ -64,29 +92,56 @@ export default function Backtest({
       />
       <ResetButton index={1} />
       <div className={cx("inner")}>
-        <div className={cx("inner_nav_box")}>
-          <Link
-            className={cx(
-              location.pathname.includes("backtest/backtest")
-                ? "active_inner_nav"
-                : "inner_nav"
-            )}
-            to="/backtest/backtest/universe"
-          >
-            백테스트
-          </Link>
-          <Link
-            className={cx(
-              location.pathname.includes("backtest/decile")
-                ? "active_inner_nav"
-                : "inner_nav"
-            )}
-            to="/backtest/decile/universe"
-          >
-            10분위 테스트
-          </Link>
-          <hr className={cx("bottom_hr")} />
-        </div>
+        {location.pathname.includes("backtest/backtest") ||
+        location.pathname.includes("backtest/decile") ? (
+          <div className={cx("inner_nav_box")}>
+            <Link
+              className={cx(
+                location.pathname.includes("backtest/backtest")
+                  ? "active_inner_nav"
+                  : "inner_nav"
+              )}
+              to="/backtest/backtest/universe"
+            >
+              백테스트
+            </Link>
+            <Link
+              className={cx(
+                location.pathname.includes("backtest/decile")
+                  ? "active_inner_nav"
+                  : "inner_nav"
+              )}
+              to="/backtest/decile/universe"
+            >
+              10분위 테스트
+            </Link>
+            <hr className={cx("bottom_hr")} />
+          </div>
+        ) : (
+          <div className={cx("inner_nav_box")}>
+            <Link
+              className={cx(
+                location.pathname.includes("port/trade")
+                  ? "active_inner_nav"
+                  : "inner_nav"
+              )}
+              to="/port/trade/universe"
+            >
+              포트 추출
+            </Link>
+            <Link
+              className={cx(
+                location.pathname.includes("port/past")
+                  ? "active_inner_nav"
+                  : "inner_nav"
+              )}
+              to="/port/past/universe"
+            >
+              과거 거래내역 보기
+            </Link>
+            <hr className={cx("bottom_hr")} />
+          </div>
+        )}
         <div className={cx("option_box")}>
           <p className={cx("option_text")}>유니버스 선택</p>
           <div onClick={handleToggle} className={cx("option_input_box")}>
@@ -198,6 +253,12 @@ export default function Backtest({
           )}
           {location.pathname === "/backtest/decile/universe" && (
             <ButtonBox nextNav="/backtest/decile/factors" />
+          )}
+          {location.pathname === "/port/trade/universe" && (
+            <ButtonBox nextNav="/port/trade/factors" />
+          )}
+          {location.pathname === "/port/past/universe" && (
+            <ButtonBox nextNav="/port/past/factors" />
           )}
         </div>
       </div>
