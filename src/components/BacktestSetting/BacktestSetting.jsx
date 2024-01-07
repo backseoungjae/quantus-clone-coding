@@ -122,8 +122,7 @@ export default function BacktestSetting({
               fieldName="initialInvestmentAmount"
               settingValue={setting?.initialInvestmentAmount}
               pathname={location.pathname}
-              handleChangeBacktestSettings={handleChangeBacktestSettings}
-              readOnly={false}
+              handleChangeSettings={handleChangeBacktestSettings}
             />
           )}
           {(location.pathname === "/backtest/backtest/backtest" ||
@@ -136,8 +135,7 @@ export default function BacktestSetting({
               fieldName="transactionFee"
               settingValue={setting?.transactionFee}
               pathname={location.pathname}
-              handleChangeBacktestSettings={handleChangeBacktestSettings}
-              readOnly={false}
+              handleChangeSettings={handleChangeBacktestSettings}
             />
           )}
         </div>
@@ -164,7 +162,7 @@ export default function BacktestSetting({
               handleAddMonthList={handleAddMonthList}
               handleToggle={handleRebalancingToggle}
               handleSpecificControlToggle={handleSpecificControlToggle}
-              handleChangeBacktestSettings={handleChangeBacktestSettings}
+              handleChangeSettings={handleChangeBacktestSettings}
             />
           )}
           {location?.pathname === "/backtest/backtest/backtest" && (
@@ -177,7 +175,7 @@ export default function BacktestSetting({
               pathname={location.pathname}
               toggle={specificControlToggle}
               handleToggle={handleSpecificControlToggle}
-              handleChangeBacktestSettings={handleChangeBacktestSettings}
+              handleChangeSettings={handleChangeBacktestSettings}
             />
           )}
           {location?.pathname !== "/backtest/decile/backtest" && (
@@ -189,7 +187,7 @@ export default function BacktestSetting({
               fieldName="rebalancingItems"
               settingValue={setting?.rebalancingItems}
               pathname={location.pathname}
-              handleChangeBacktestSettings={handleChangeBacktestSettings}
+              handleChangeSettings={handleChangeBacktestSettings}
               readOnly={true}
             />
           )}
@@ -203,7 +201,7 @@ export default function BacktestSetting({
               pathname={location.pathname}
               toggle={strategyRebalancingToggle}
               handleToggle={handleStrategyRebalancingToggleToggle}
-              handleChangeBacktestSettings={handleChangeBacktestSettings}
+              handleChangeSettings={handleChangeBacktestSettings}
             />
           )}
         </div>
@@ -221,7 +219,7 @@ export default function BacktestSetting({
               fieldName="stopStandard"
               settingValue={setting?.stopStandard}
               pathname={location.pathname}
-              handleChangeBacktestSettings={handleChangeBacktestSettings}
+              handleChangeSettings={handleChangeBacktestSettings}
             />
             <SettingBox
               title="익절 기준"
@@ -231,7 +229,7 @@ export default function BacktestSetting({
               fieldName="lossStandard"
               settingValue={setting?.lossStandard}
               pathname={location.pathname}
-              handleChangeBacktestSettings={handleChangeBacktestSettings}
+              handleChangeSettings={handleChangeBacktestSettings}
             />
           </div>
         )}

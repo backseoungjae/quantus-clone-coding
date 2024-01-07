@@ -16,7 +16,7 @@ export default function RebalancingBox({
   toggle,
   handleAddMonthList,
   handleToggle,
-  handleChangeBacktestSettings,
+  handleChangeSettings,
 }) {
   return (
     <div className={cx("option_box")}>
@@ -43,7 +43,7 @@ export default function RebalancingBox({
               <input
                 name={name}
                 value={list.name}
-                onClick={handleChangeBacktestSettings}
+                onClick={handleChangeSettings}
                 className={cx(
                   list.name === settingValue
                     ? "active_hide_input"

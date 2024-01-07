@@ -12,7 +12,7 @@ export default function SettingBox({
   fieldName,
   settingValue,
   pathname,
-  handleChangeBacktestSettings,
+  handleChangeSettings,
 }) {
   return (
     <div className={cx("option_box")}>
@@ -21,7 +21,7 @@ export default function SettingBox({
         <input
           type={type}
           name={fieldName}
-          onChange={handleChangeBacktestSettings}
+          onChange={handleChangeSettings}
           value={settingValue}
           placeholder="초기 투자 금액을 입력해 주세요."
           className={cx("option_input")}
