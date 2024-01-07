@@ -26,6 +26,8 @@ export default function PartnershipMagicSplit({
   handleChangeAssetClassSettings,
   filterData,
   handleVerification,
+  scrollRef,
+  scrollToBottom,
   // 기간설정부분
   dateStart,
   dateEnd,
@@ -39,10 +41,11 @@ export default function PartnershipMagicSplit({
   handleChangeLastYears,
 }) {
   return (
-    <div className={cx("container")}>
+    <div ref={scrollRef} className={cx("container")}>
       <StrategyHeader
         strategy={partner?.strategy}
         handleChangeTitle={handleChangeStrategy}
+        handleClick={scrollToBottom}
         title="하단으로 이동"
       />
       <div className={cx("wrapper")}>

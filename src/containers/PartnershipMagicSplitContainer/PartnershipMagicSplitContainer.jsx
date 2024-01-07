@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import PartnershipMagicSplit from "components/PartnershipMagicSplit";
 import usePartner from "hooks/usePartner";
 import dayjs from "dayjs";
@@ -161,6 +161,19 @@ export default function PartnershipMagicSplitContainer() {
     alert(text);
   }, []);
 
+  // 하단으로 이동 스크롤 이벤트
+  const scrollRef = useRef(null);
+
+  const scrollToBottom = () => {
+    if (scrollRef.current) {
+      const scrollHeight = scrollRef.current.scrollHeight;
+      window.scrollTo({
+        top: scrollHeight,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <PartnershipMagicSplit
       partner={partner}
@@ -178,6 +191,8 @@ export default function PartnershipMagicSplitContainer() {
       handleChangeAssetClassSettings={handleChangeAssetClassSettings}
       filterData={filterData}
       handleVerification={handleVerification}
+      scrollRef={scrollRef}
+      scrollToBottom={scrollToBottom}
       // 기간설정부분
       dateStart={dateStart}
       dateEnd={dateEnd}

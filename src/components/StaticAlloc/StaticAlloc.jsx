@@ -27,6 +27,8 @@ export default function StaticAlloc({
   handleAddMonthList,
   handleCheckedAllEntireExchangeRate,
   handleCheckedReflectExchangeRate,
+  scrollRef,
+  scrollToBottom,
   // 자산군 부분
   data,
   assetClass,
@@ -49,10 +51,11 @@ export default function StaticAlloc({
   handleChangeEndDate,
 }) {
   return (
-    <div className={cx("container")}>
+    <div ref={scrollRef} className={cx("container")}>
       <StrategyHeader
         strategy={alloc?.strategy}
         handleChangeTitle={handleChangeAllocTitle}
+        handleClick={scrollToBottom}
         title="하단으로 이동"
       />
       <ResetButton />

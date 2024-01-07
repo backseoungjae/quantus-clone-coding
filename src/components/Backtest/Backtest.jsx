@@ -36,6 +36,7 @@ export default function Backtest({
   dragStart,
   dragEnter,
   drop,
+  handleVerification,
 }) {
   const location = useLocation();
 
@@ -88,7 +89,13 @@ export default function Backtest({
       <StrategyHeader
         strategy={backTest?.strategy}
         handleChangeTitle={handleChangeBackTestTitle}
-        title="백테스트"
+        handleClick={handleVerification}
+        title={
+          (location.pathname === "/backtest/backtest/universe" && "백테스트") ||
+          (location.pathname === "/backtest/decile/universe" && "검증") ||
+          (location.pathname === "/port/trade/universe" && "포트 추출") ||
+          (location.pathname === "/port/past/universe" && "과거 거래내역 보기")
+        }
       />
       <ResetButton index={1} />
       <div className={cx("inner")}>

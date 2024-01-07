@@ -137,6 +137,10 @@ export default function BacktestContainer() {
     [initialCheckList]
   );
 
+  const handleVerification = useCallback((text) => {
+    alert(`${text}이(가) 완료 되었습니다.`);
+  }, []);
+
   return (
     <Backtest
       backTest={backTest}
@@ -156,6 +160,7 @@ export default function BacktestContainer() {
       dragStart={dragStart}
       dragEnter={dragEnter}
       drop={drop}
+      handleVerification={handleVerification}
       INITIAL_FITERS={INITIAL_FITERS}
       EXCEPT_SECTORS={EXCEPT_SECTORS}
     />

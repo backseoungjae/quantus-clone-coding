@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import StaticAlloc from "components/StaticAlloc";
 import useAlloc from "hooks/useAlloc";
 import dayjs from "dayjs";
@@ -213,6 +213,19 @@ export default function StaticAllocContainer() {
     [onCheckedReflectExchangeRate]
   );
 
+  // 하단으로 이동 스크롤 이벤트
+  const scrollRef = useRef(null);
+
+  const scrollToBottom = () => {
+    if (scrollRef.current) {
+      const scrollHeight = scrollRef.current.scrollHeight;
+      window.scrollTo({
+        top: scrollHeight,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <StaticAlloc
       alloc={alloc}
@@ -226,6 +239,8 @@ export default function StaticAllocContainer() {
       handleAddMonthList={handleAddMonthList}
       handleCheckedAllEntireExchangeRate={handleCheckedAllEntireExchangeRate}
       handleCheckedReflectExchangeRate={handleCheckedReflectExchangeRate}
+      scrollRef={scrollRef}
+      scrollToBottom={scrollToBottom}
       // 자산군 부분
       data={filterData}
       assetClass={assetClass}
