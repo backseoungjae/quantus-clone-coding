@@ -1385,3 +1385,111 @@ export const STRATEGY_REBALNCINGS = [
     name: "분할 매수/매도",
   },
 ];
+
+export const STRATEGY_ALLOCACTION_LIST = [
+  {
+    id: 1,
+    name: "전략배분 (정적자산배분)",
+  },
+  {
+    id: 2,
+    name: "듀얼모멘텀",
+  },
+  {
+    id: 3,
+    name: "VAA",
+  },
+  {
+    id: 4,
+    name: "DAA",
+  },
+  {
+    id: 5,
+    name: "BAA 공격형",
+  },
+  {
+    id: 6,
+    name: "BAA 중도형",
+  },
+  {
+    id: 7,
+    name: "LAA",
+  },
+  {
+    id: 8,
+    name: "HAA",
+  },
+  {
+    id: 9,
+    name: "변형듀얼모멘텀",
+  },
+  {
+    id: 10,
+    name: "가속듀얼모멘텀",
+  },
+];
+
+export const PERIODICALLOCBALANCINGLIST = [
+  {
+    id: 1,
+    name: "월별",
+  },
+  {
+    id: 2,
+    name: "분기별",
+  },
+  {
+    id: 3,
+    name: "반기별",
+  },
+  {
+    id: 4,
+    name: "매년",
+  },
+  {
+    id: 5,
+    name: "시즈널리티",
+  },
+  {
+    id: 6,
+    name: "하지 않음 (Buy-and-Hold)",
+  },
+];
+
+export const STRATEGYLIST = [
+  {
+    id: 1,
+    kind: "한국 자산군",
+    value: "KR",
+  },
+  {
+    id: 2,
+    kind: "미국 자산군",
+    value: "US",
+  },
+  {
+    id: 3,
+    kind: "전략",
+    value: "",
+  },
+  {
+    id: 4,
+    kind: "한국 ETF",
+    value: "KR",
+  },
+  {
+    id: 5,
+    kind: "미국 ETF",
+    value: "US",
+  },
+  {
+    id: 6,
+    kind: "한국 주식",
+    value: "KR",
+  },
+  {
+    id: 7,
+    kind: "미국 주식",
+    value: "US",
+  },
+];

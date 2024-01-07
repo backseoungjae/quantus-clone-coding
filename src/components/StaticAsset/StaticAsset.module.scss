@@ -1,0 +1,81 @@
+// 펼치기 전 부분
+
+.container {
+  margin-top: 48px;
+}
+
+.wrapper {
+  width: 84%;
+  padding: 36px 28px;
+  box-sizing: border-box;
+  background-color: rgb(30, 30, 30);
+  border-radius: 12px;
+}
+
+.header_box {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.text {
+  font-size: 18px;
+  font-weight: 500;
+  color: rgb(252, 252, 252);
+}
+
+.open_box {
+  display: flex;
+  align-items: center;
+}
+
+.button {
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+  font-weight: 300;
+  font-size: 14px;
+  color: rgb(236, 97, 38);
+  background-color: transparent;
+}
+
+.open_arrow,
+.active_open_arrow {
+  color: #ec6127;
+  width: 15px;
+  height: 15px;
+  transition: all 0.3s ease-in-out;
+}
+
+.active_open_arrow {
+  transform: rotate(180deg);
+}
+
+// 펼치기 했을 때 추가 버튼 나오는 부분
+
+.add_inner {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px 0;
+}
+
+.add_box {
+  cursor: pointer;
+  width: 45%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px,
+    rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
+  background-color: rgb(30, 30, 30);
+  border: 1px solid rgb(159, 159, 159);
+  border-radius: 12px;
+  min-height: 200px;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background-color: rgb(38, 38, 38);
+  }
+}
