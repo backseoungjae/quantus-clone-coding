@@ -25,7 +25,7 @@ export default function BacktestSetting({
   rebalancingToggle,
   specificControlToggle,
   splitMode,
-  handleChagneSplit,
+  handleChangeSplit,
   handleChangeBackTestTitle,
   handleChangeBacktestSettings,
   handleAddMonthList,
@@ -235,18 +235,24 @@ export default function BacktestSetting({
             />
           </div>
         )}
-        <MacroMarketBox
-          backTest={backTest}
-          splitMode={splitMode}
-          macroToggle={macroToggle}
-          pathname={location.pathname}
-          handleChagneSplit={handleChagneSplit}
-          handleChangeReentryMarketSettings={handleChangeReentryMarketSettings}
-          handleMacroToggle={handleMacroToggle}
-          handleChangeMacroMarketSettings={handleChangeMacroMarketSettings}
-          handleRemoveMacroMarketSettings={handleRemoveMacroMarketSettings}
-          handleAddMacroMarketSettings={handleAddMacroMarketSettings}
-        />
+        <div className={cx("sub_inner")}>
+          <div className={cx("title_box")}>
+            <p className={cx("title")}>마켓 타이밍 설정</p>
+          </div>
+          <MacroMarketBox
+            setting={backTest}
+            splitMode={splitMode}
+            macroToggle={macroToggle}
+            handleChangeSplit={handleChangeSplit}
+            handleChangeReentryMarketSettings={
+              handleChangeReentryMarketSettings
+            }
+            handleMacroToggle={handleMacroToggle}
+            handleChangeMacroMarketSettings={handleChangeMacroMarketSettings}
+            handleRemoveMacroMarketSettings={handleRemoveMacroMarketSettings}
+            handleAddMacroMarketSettings={handleAddMacroMarketSettings}
+          />
+        </div>
         {location.pathname !== "/port/trade/port" && (
           <div className={cx("sub_inner")}>
             <DateBox
