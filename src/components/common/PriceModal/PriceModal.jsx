@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classNames from "classnames/bind";
 import styles from "./PriceModal.module.scss";
 import { Link } from "react-router-dom";
@@ -7,6 +7,7 @@ const cx = classNames.bind(styles);
 
 export default function PriceModal({
   tabType,
+  toggle,
   handleToggle,
   step,
   handleStep,
@@ -14,6 +15,20 @@ export default function PriceModal({
   handleChagnePurchaseSettings,
   handleAmount,
 }) {
+  useEffect(() => {
+    // 모달이 열릴 때, body에 스타일 추가
+    if (toggle) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    // 컴포넌트가 언마운트될 때 스타일 제거
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [toggle]);
+
   return (
     <div className={cx("modal_inner")}>
       <div className={cx("modal_bg")} onClick={handleToggle} />
@@ -184,7 +199,7 @@ export default function PriceModal({
                   {purchase?.purchaseSettings?.period === "1년권" &&
                     purchase?.purchaseSettings?.nation === "글로벌" &&
                     "총 379,000원"}
-                  {purchase?.purchaseSettings?.period === "3개월" &&
+                  {purchase?.purchaseSettings?.period === "3개월권" &&
                     purchase?.purchaseSettings?.nation === "글로벌" &&
                     "총 139,000원"}
                 </b>
