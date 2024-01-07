@@ -152,7 +152,7 @@ export default function BacktestSettingContainer() {
   );
 
   // 스플릿 변경
-  const handleChagneSplit = useCallback(
+  const handleChangeSplit = useCallback(
     (i) => {
       if (i === 1) {
         handleAddMacroMarketSettings();
@@ -216,7 +216,7 @@ export default function BacktestSettingContainer() {
       rebalancingToggle={rebalancingToggle}
       specificControlToggle={specificControlToggle}
       splitMode={splitMode}
-      handleChagneSplit={handleChagneSplit}
+      handleChangeSplit={handleChangeSplit}
       handleChangeBackTestTitle={handleChangeBackTestTitle}
       handleChangeBacktestSettings={handleChangeBacktestSettings}
       handleAddMonthList={handleAddMonthList}

@@ -16,6 +16,8 @@ export default function StaticAllocContainer() {
     handleDate,
     onCheckedAllEntireExchangeRate,
     onCheckedReflectExchangeRate,
+    handleReentryMarketSettings,
+    handleSplitMode,
   } = useAlloc();
 
   // 토글 이벤트
@@ -213,6 +215,24 @@ export default function StaticAllocContainer() {
     [onCheckedReflectExchangeRate]
   );
 
+  // 마켓 부분
+  const handleChangeReentryMarketSettings = useCallback(
+    (e) => {
+      handleReentryMarketSettings({
+        [e.target.name]: e.target.value,
+      });
+    },
+    [handleReentryMarketSettings]
+  );
+
+  // 스플릿 변경
+  const handleChangeSplit = useCallback(
+    (i) => {
+      handleSplitMode(i);
+    },
+    [handleSplitMode]
+  );
+
   // 하단으로 이동 스크롤 이벤트
   const scrollRef = useRef(null);
 
@@ -239,6 +259,8 @@ export default function StaticAllocContainer() {
       handleAddMonthList={handleAddMonthList}
       handleCheckedAllEntireExchangeRate={handleCheckedAllEntireExchangeRate}
       handleCheckedReflectExchangeRate={handleCheckedReflectExchangeRate}
+      handleChangeReentryMarketSettings={handleChangeReentryMarketSettings}
+      handleChangeSplit={handleChangeSplit}
       scrollRef={scrollRef}
       scrollToBottom={scrollToBottom}
       // 자산군 부분

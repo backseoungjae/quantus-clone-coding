@@ -12,6 +12,7 @@ import {
 } from "mocks/subData";
 import DateBox from "components/DateBox";
 import StaticAsset from "components/StaticAsset";
+import MacroMarketBox from "components/common/MacroMarketBox";
 
 const cx = classNames.bind(styles);
 
@@ -27,6 +28,8 @@ export default function StaticAlloc({
   handleAddMonthList,
   handleCheckedAllEntireExchangeRate,
   handleCheckedReflectExchangeRate,
+  handleChangeReentryMarketSettings,
+  handleChangeSplit,
   scrollRef,
   scrollToBottom,
   // 자산군 부분
@@ -52,12 +55,14 @@ export default function StaticAlloc({
 }) {
   return (
     <div ref={scrollRef} className={cx("container")}>
-      <StrategyHeader
-        strategy={alloc?.strategy}
-        handleChangeTitle={handleChangeAllocTitle}
-        handleClick={scrollToBottom}
-        title="하단으로 이동"
-      />
+      <div className={cx("fixed_box")}>
+        <StrategyHeader
+          strategy={alloc?.strategy}
+          handleChangeTitle={handleChangeAllocTitle}
+          handleClick={scrollToBottom}
+          title="하단으로 이동"
+        />
+      </div>
       <ResetButton />
       <div className={cx("inner")}>
         <div className={cx("sub_inner")}>
@@ -127,20 +132,35 @@ export default function StaticAlloc({
             </div>
           </div>
         </div>
-        <StaticAsset
-          data={data}
-          alloc={alloc}
-          assetClass={assetClass}
-          kindToggle={kindToggle}
-          assetClassToggle={assetClassToggle}
-          handleAssetToggle={handleAssetToggle}
-          handleKindToggle={handleKindToggle}
-          handleAssetClassToggle={handleAssetClassToggle}
-          handleAddAssetList={handleAddAssetList}
-          handleChangeAsset={handleChangeAsset}
-          handleRemoveAssetClass={handleRemoveAssetClass}
-          handleCheckedReflectExchangeRate={handleCheckedReflectExchangeRate}
-        />
+        <div className={cx("sub_inner")}>
+          <StaticAsset
+            data={data}
+            alloc={alloc}
+            assetClass={assetClass}
+            kindToggle={kindToggle}
+            assetClassToggle={assetClassToggle}
+            handleAssetToggle={handleAssetToggle}
+            handleKindToggle={handleKindToggle}
+            handleAssetClassToggle={handleAssetClassToggle}
+            handleAddAssetList={handleAddAssetList}
+            handleChangeAsset={handleChangeAsset}
+            handleRemoveAssetClass={handleRemoveAssetClass}
+            handleCheckedReflectExchangeRate={handleCheckedReflectExchangeRate}
+          />
+        </div>
+        <div className={cx("sub_inner")}>
+          <div className={cx("title_box")}>
+            <p className={cx("title")}>마켓 타이밍 설정</p>
+          </div>
+          <MacroMarketBox
+            setting={alloc}
+            splitMode={alloc?.splitMode}
+            handleChangeSplit={handleChangeSplit}
+            handleChangeReentryMarketSettings={
+              handleChangeReentryMarketSettings
+            }
+          />
+        </div>
         <div className={cx("sub_inner")}>
           <DateBox
             initialDate={alloc?.period}

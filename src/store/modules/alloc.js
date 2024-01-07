@@ -9,10 +9,15 @@ const initialState = {
     isReflectEntireExchangeRate: false,
   },
   assetList: [],
+  reentryMarketTiming: {
+    movingAverageLine: "",
+    movingAverageLineDate: 20,
+  },
   period: {
     startDate: null,
     endDate: null,
   },
+  splitMode: 0,
 };
 
 export const CHANGE_STRATEGY = "alloc/CHANGE_STRATEGY";
@@ -24,6 +29,8 @@ export const REMOVE_ASSET = "alloc/REMOVE_ASSET";
 export const CHANGE_DATE = "alloc/CHANGE_DATE";
 export const CHECKED_ALL_EXCHANGE_RATE = "alloc/CHECKED_ALL_EXCHANGE_RATE";
 export const CHECKED_EXCHANGE_RATE = "alloc/CHECKED_EXCHANGE_RATE";
+const CHANGE_REENTRY_MARKET_SETTINGS = "backTest/REENTRY_MARKET_SETTINGS";
+const CHANGE_SPLITMODE = "backTest/CHANGE_SPLITMODE";
 
 export const chagneStrategy = (payload) => ({
   type: CHANGE_STRATEGY,
@@ -70,6 +77,17 @@ export const checkedAllEntireExchangeRate = () => ({
 
 export const checkedReflectExchangeRate = (payload) => ({
   type: CHECKED_EXCHANGE_RATE,
+  payload,
+});
+
+// 마켓 부분
+export const changeReentryMarketSettings = (payload) => ({
+  type: CHANGE_REENTRY_MARKET_SETTINGS,
+  payload,
+});
+
+export const changeSplitMode = (payload) => ({
+  type: CHANGE_SPLITMODE,
   payload,
 });
 
@@ -163,6 +181,19 @@ function alloc(state = initialState, action) {
           isReflectEntireExchangeRate: !unChecked,
         },
         assetList: isChecked,
+      };
+    case CHANGE_REENTRY_MARKET_SETTINGS:
+      return {
+        ...state,
+        reentryMarketTiming: {
+          ...state.reentryMarketTiming,
+          ...action.payload,
+        },
+      };
+    case CHANGE_SPLITMODE:
+      return {
+        ...state,
+        splitMode: action.payload,
       };
     default:
       return state;

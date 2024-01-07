@@ -10,6 +10,9 @@ import {
   removeAsset,
   checkedAllEntireExchangeRate,
   checkedReflectExchangeRate,
+  changeMacroMarketSettings,
+  changeReentryMarketSettings,
+  changeSplitMode,
 } from "store/modules/alloc";
 
 export default function useAlloc() {
@@ -57,9 +60,28 @@ export default function useAlloc() {
   );
 
   // 자산군 삭제
-  const handleRemoveAsset = useCallback((payload) => {
-    dispatch(removeAsset(payload));
-  }, []);
+  const handleRemoveAsset = useCallback(
+    (payload) => {
+      dispatch(removeAsset(payload));
+    },
+    [dispatch]
+  );
+
+  // 재진입 마켓 타이밍 부분
+  const handleReentryMarketSettings = useCallback(
+    (payload) => {
+      dispatch(changeReentryMarketSettings(payload));
+    },
+    [dispatch]
+  );
+
+  // 스플릿 모드
+  const handleSplitMode = useCallback(
+    (payload) => {
+      dispatch(changeSplitMode(payload));
+    },
+    [dispatch]
+  );
 
   // 기간 설정
   const handleDate = useCallback(
@@ -72,12 +94,15 @@ export default function useAlloc() {
   // 전체 환율 반영
   const onCheckedAllEntireExchangeRate = useCallback(() => {
     dispatch(checkedAllEntireExchangeRate());
-  }, []);
+  }, [dispatch]);
 
   // 개별 환율 반영
-  const onCheckedReflectExchangeRate = useCallback((payload) => {
-    dispatch(checkedReflectExchangeRate(payload));
-  }, []);
+  const onCheckedReflectExchangeRate = useCallback(
+    (payload) => {
+      dispatch(checkedReflectExchangeRate(payload));
+    },
+    [dispatch]
+  );
 
   return {
     alloc,
@@ -90,5 +115,7 @@ export default function useAlloc() {
     handleDate,
     onCheckedAllEntireExchangeRate,
     onCheckedReflectExchangeRate,
+    handleReentryMarketSettings,
+    handleSplitMode,
   };
 }
