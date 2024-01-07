@@ -54,55 +54,57 @@ export default function BacktestSetting({
 
   return (
     <div className={cx("container")}>
-      {location.pathname.includes("/backtest/backtest") && (
-        <NavBox
-          index={3}
-          universPathname="유니버스 선택"
-          factorPathname="팩터 선택"
-          settingPathname="백테스트 셜졍"
-          universLink="/backtest/backtest/universe"
-          factorLink="/backtest/backtest/factors"
-          settingLink="/backtest/backtest/backtest"
+      <div className={cx("fixed_box")}>
+        {location.pathname.includes("/backtest/backtest") && (
+          <NavBox
+            index={3}
+            universPathname="유니버스 선택"
+            factorPathname="팩터 선택"
+            settingPathname="백테스트 셜졍"
+            universLink="/backtest/backtest/universe"
+            factorLink="/backtest/backtest/factors"
+            settingLink="/backtest/backtest/backtest"
+          />
+        )}
+        {location.pathname.includes("/backtest/decile") && (
+          <NavBox
+            index={3}
+            universPathname="유니버스 선택"
+            factorPathname="팩터 선택"
+            settingPathname="백테스트 셜졍"
+            universLink="/backtest/decile/universe"
+            factorLink="/backtest/decile/factors"
+            settingLink="/backtest/decile/backtest"
+          />
+        )}
+        {location.pathname.includes("/port/trade") && (
+          <NavBox
+            index={3}
+            universPathname="유니버스 선택"
+            factorPathname="팩터 선택"
+            settingPathname="트레이딩 설정 셜졍"
+            universLink="/port/trade/universe"
+            factorLink="/port/trade/factors"
+            settingLink="/port/trade/port"
+          />
+        )}
+        {location.pathname.includes("/port/past") && (
+          <NavBox
+            index={3}
+            universPathname="유니버스 선택"
+            factorPathname="팩터 선택"
+            settingPathname="트레이딩 설정 셜졍"
+            universLink="/port/past/universe"
+            factorLink="/port/past/factors"
+            settingLink="/port/past/port"
+          />
+        )}
+        <StrategyHeader
+          strategy={backTest?.strategy}
+          handleChangeTitle={handleChangeBackTestTitle}
+          title="백테스트"
         />
-      )}
-      {location.pathname.includes("/backtest/decile") && (
-        <NavBox
-          index={3}
-          universPathname="유니버스 선택"
-          factorPathname="팩터 선택"
-          settingPathname="백테스트 셜졍"
-          universLink="/backtest/decile/universe"
-          factorLink="/backtest/decile/factors"
-          settingLink="/backtest/decile/backtest"
-        />
-      )}
-      {location.pathname.includes("/port/trade") && (
-        <NavBox
-          index={3}
-          universPathname="유니버스 선택"
-          factorPathname="팩터 선택"
-          settingPathname="트레이딩 설정 셜졍"
-          universLink="/port/trade/universe"
-          factorLink="/port/trade/factors"
-          settingLink="/port/trade/port"
-        />
-      )}
-      {location.pathname.includes("/port/past") && (
-        <NavBox
-          index={3}
-          universPathname="유니버스 선택"
-          factorPathname="팩터 선택"
-          settingPathname="트레이딩 설정 셜졍"
-          universLink="/port/past/universe"
-          factorLink="/port/past/factors"
-          settingLink="/port/past/port"
-        />
-      )}
-      <StrategyHeader
-        strategy={backTest?.strategy}
-        handleChangeTitle={handleChangeBackTestTitle}
-        title="백테스트"
-      />
+      </div>
       <ResetButton index={3} />
       <div className={cx("inner")}>
         <div className={cx("sub_inner")}>
