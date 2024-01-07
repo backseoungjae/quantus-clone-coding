@@ -36,8 +36,6 @@ export default function MacroMarketBox({
   handleRemoveMacroMarketSettings,
   handleAddMacroMarketSettings,
 }) {
-  console.log("backTest ", backTest);
-
   return (
     <div className={cx("sub_inner")}>
       <div className={cx("check_inner")}>

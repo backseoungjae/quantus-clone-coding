@@ -11,7 +11,6 @@ export default function SettingBox({
   warningText,
   fieldName,
   settingValue,
-  pathname,
   handleChangeSettings,
 }) {
   return (
