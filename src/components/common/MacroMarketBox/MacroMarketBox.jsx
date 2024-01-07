@@ -3,6 +3,7 @@ import classNames from "classnames/bind";
 import styles from "./MacroMarketBox.module.scss";
 import { IoIosArrowDown } from "react-icons/io";
 import { MACRO_MARKET_LIST } from "mocks/subData";
+import { useLocation } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
@@ -25,17 +26,18 @@ const radio_inputs = [
 ];
 
 export default function MacroMarketBox({
-  backTest,
+  setting,
   splitMode,
   macroToggle,
-  pathname,
-  handleChagneSplit,
+  handleChangeSplit,
   handleChangeReentryMarketSettings,
   handleMacroToggle,
   handleChangeMacroMarketSettings,
   handleRemoveMacroMarketSettings,
   handleAddMacroMarketSettings,
 }) {
+  const location = useLocation();
+
   return (
     <div className={cx("sub_inner")}>
       <div className={cx("check_inner")}>
@@ -52,7 +54,8 @@ export default function MacroMarketBox({
             type="checkbox"
             className={cx("hide_check_box", { checked: splitMode === 1 })}
             id="macro_timing"
-            onClick={() => handleChagneSplit(1)}
+            onClick={() => handleChangeSplit(1)}
+            disabled={location?.pathname === "/alloc/static_alloc"}
           />
           <label className={cx("check_box_label")} htmlFor="macro_timing">
             <div className={cx("check_box")}>
@@ -75,8 +78,8 @@ export default function MacroMarketBox({
             type="checkbox"
             className={cx("hide_check_box", { checked: splitMode === 2 })}
             id="reentry_timing"
-            onClick={() => handleChagneSplit(2)}
-            disabled={pathname === "/port/past/port"}
+            onClick={() => handleChangeSplit(2)}
+            disabled={location?.pathname === "/port/past/port"}
           />
           <label className={cx("check_box_label")} htmlFor="reentry_timing">
             <div className={cx("check_box")}>
@@ -89,7 +92,7 @@ export default function MacroMarketBox({
       </div>
       {splitMode === 1 && (
         <div className={cx("split_inner")}>
-          {backTest?.macroMarketTiming?.map((macro, i) => (
+          {setting?.macroMarketTiming?.map((macro, i) => (
             <div className={cx("split_box")} key={i}>
               <p className={cx("macro_text")}>
                 매크로 마켓 타이밍 필터 {String(i + 1).padStart(2, "0")}
@@ -245,7 +248,7 @@ export default function MacroMarketBox({
                   className={cx("radio_input", {
                     checked:
                       reentry.name ===
-                      backTest?.reentryMarketTiming?.movingAverageLine,
+                      setting?.reentryMarketTiming?.movingAverageLine,
                   })}
                   type="checkbox"
                   id={reentry.name}
@@ -279,7 +282,7 @@ export default function MacroMarketBox({
                 name="movingAverageLineDate"
                 onChange={handleChangeReentryMarketSettings}
                 value={
-                  backTest?.reentryMarketTiming?.movingAverageLineDate || 20
+                  setting?.reentryMarketTiming?.movingAverageLineDate || 20
                 }
                 className={cx("option_input")}
               />
