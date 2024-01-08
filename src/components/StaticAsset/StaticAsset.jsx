@@ -20,6 +20,8 @@ export default function StaticAsset({
   handleRemoveAssetClass,
   handleCheckedReflectExchangeRate,
 }) {
+  console.log("alloc?.assetList ", alloc?.assetList);
+
   return (
     <div className={cx("container")}>
       <div className={cx("wrapper")}>
@@ -34,6 +36,30 @@ export default function StaticAsset({
             />
           </div>
         </div>
+        {alloc?.assetList.length > 0 && !assetClass && (
+          <div className={cx("asset_preview_inner")}>
+            {alloc?.assetList?.map((asset, i) => (
+              <div className={cx("asset_preview_box")} key={i}>
+                <p className={cx("asset_preview_text")}>
+                  자산 {String(i + 1).padStart(2, "0")}
+                </p>
+                {asset?.assetClass?.length > 0 ? (
+                  <div className={cx("asset_preview_selected_box")}>
+                    <p className={cx("asset_preview_selected_text")}>
+                      {asset?.assetClass}
+                    </p>
+                  </div>
+                ) : (
+                  <div className={cx("asset_preview_un_selected_box")}>
+                    <p className={cx("asset_preview_selected_text")}>
+                      선택 안함
+                    </p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
         {assetClass && (
           <div className={cx("add_inner")}>
             {alloc?.assetList?.map((asset, i) => (

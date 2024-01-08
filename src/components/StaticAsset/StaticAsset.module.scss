@@ -79,3 +79,46 @@
     background-color: rgb(38, 38, 38);
   }
 }
+
+// 자산군 생성 되었을 떄 나오는 부분
+
+.asset_preview_inner {
+  margin-top: 40px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.asset_preview_box {
+  width: calc(100% / 6);
+}
+
+.asset_preview_text {
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  color: rgb(252, 252, 252);
+}
+
+.asset_preview_selected_box,
+.asset_preview_un_selected_box {
+  padding: 15px 20px;
+  box-sizing: border-box;
+  background-color: rgb(14, 14, 14);
+  border-radius: 20px;
+}
+
+.asset_preview_un_selected_box {
+  background-color: rgb(62, 62, 62);
+}
+
+.asset_preview_selected_text {
+  font-size: 16px;
+  font-weight: 300;
+  color: rgb(252, 252, 252);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

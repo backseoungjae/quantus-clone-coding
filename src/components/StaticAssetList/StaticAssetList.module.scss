@@ -81,12 +81,15 @@
   background-color: rgb(30, 30, 30);
   border: 1px solid rgb(159, 159, 159);
   border-radius: 6px;
-  padding: 14px 0;
+  padding: 14px 80px;
   box-sizing: border-box;
   transition: all 0.3s ease-in-out;
   color: rgb(252, 252, 252);
   font-size: 16px;
   font-weight: 300;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   &::placeholder {
     transition: all 0.3s ease-in-out;
     color: rgb(252, 252, 252);

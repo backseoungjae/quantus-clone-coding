@@ -101,7 +101,7 @@ export default function StaticAllocContainer() {
   const handleAddAssetList = useCallback(() => {
     const addListItem = {
       kind: "전략",
-      class: "",
+      assetClass: "",
       ratio: 0,
       isReflectExchangeRate: false,
     };

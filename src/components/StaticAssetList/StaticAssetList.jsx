@@ -4,6 +4,7 @@ import styles from "./StaticAssetList.module.scss";
 import { STRATEGYLIST } from "mocks/subData";
 import { AiOutlineClose } from "react-icons/ai";
 import { IoIosArrowDown } from "react-icons/io";
+import VirtualScroll from "components/common/VirtualScroll";
 
 const cx = classNames.bind(styles);
 
@@ -87,7 +88,7 @@ export default function StaticAssetList({
               className={cx("option_input")}
               type="text"
               readOnly
-              value={asset?.class}
+              value={asset?.assetClass || ""}
             />
             <IoIosArrowDown
               className={cx(
@@ -98,37 +99,11 @@ export default function StaticAssetList({
             />
           </div>
           {assetClassToggle[i] && (
-            <ul className={cx("hide_box")}>
-              <div className={cx("search_box")}>
-                <img
-                  className={cx("search_img")}
-                  src="/images/search.svg"
-                  alt="검색 이미지"
-                />
-                <input
-                  className={cx("search_input")}
-                  type="text"
-                  placeholder="검색어를 입력해 주세요."
-                />
-              </div>
-              {data?.map((item) => (
-                <li key={item?.label}>
-                  <input
-                    onClick={(e) => handleChangeAsset(e, i)}
-                    name="class"
-                    value={item?.label}
-                    className={cx(
-                      item?.name === asset?.class
-                        ? "active_hide_input"
-                        : "hide_input"
-                    )}
-                    type="text"
-                    readOnly
-                    placeholder={item?.label}
-                  />
-                </li>
-              ))}
-            </ul>
+            <VirtualScroll
+              data={data}
+              assetSttings={asset}
+              handleChangeAssetClassSettings={handleChangeAsset}
+            />
           )}
         </div>
         <div className={cx("option_box")}>
