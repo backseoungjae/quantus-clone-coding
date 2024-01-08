@@ -122,6 +122,7 @@ export default function BacktestSetting({
               type="number"
               warningText=""
               fieldName="initialInvestmentAmount"
+              placeholder="초기 투자 금액을 입력해 주세요."
               settingValue={setting?.initialInvestmentAmount}
               pathname={location.pathname}
               handleChangeSettings={handleChangeBacktestSettings}

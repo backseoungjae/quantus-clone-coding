@@ -9,6 +9,7 @@ export default function SettingBox({
   text,
   type,
   warningText,
+  placeholder,
   fieldName,
   settingValue,
   handleChangeSettings,
@@ -22,7 +23,7 @@ export default function SettingBox({
           name={fieldName}
           onChange={handleChangeSettings}
           value={settingValue}
-          placeholder="초기 투자 금액을 입력해 주세요."
+          placeholder={placeholder}
           className={cx("option_input")}
         />
         <p

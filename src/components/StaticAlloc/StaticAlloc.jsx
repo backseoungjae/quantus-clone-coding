@@ -85,6 +85,7 @@ export default function StaticAlloc({
             type="number"
             warningText=""
             fieldName="initialInvestment"
+            placeholder="초기 투자 금액을 입력해 주세요."
             settingValue={setting?.initialInvestment}
             handleChangeSettings={handleChangeAllocSetting}
           />
@@ -106,6 +107,7 @@ export default function StaticAlloc({
             type="number"
             warningText="0 ~ 100 까지 입력할 수 있습니다. (0 입력시 비활성화)"
             fieldName="bandRebalancing"
+            placeholder="밴드 리밸런싱 기준을 입력해주세요."
             settingValue={setting?.bandRebalancing}
             handleChangeSettings={handleChangeAllocSetting}
           />
