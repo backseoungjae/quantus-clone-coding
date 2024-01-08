@@ -1,70 +1,27 @@
-# Getting Started with Create React App
+# QuantusCloneCoding
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+클론코딩 주소 - https://www.quantus.kr
 
-## Available Scripts
+## 프로젝트 설명
 
-In the project directory, you can run:
+클론코딩 이유
 
-### `npm start`
+  전체 데이터를 한번에 가져와 가상 스크롤을 이용하여 정상적으로 동작하는 것을 보고 선택하게 되었고, 가상 스크롤을 사용해 본적이 없어 선택하게 되었습니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Frontend
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+  사용기술 : react, redux, msw, scss
 
-### `npm test`
+해당 사이트는 localstorage에 데이터를 저장하는데 클론코딩에서는 사용자가 사이트를 종료하면 더 이상 데이터를 가지고 있을 필요가 없다고 판단하여 sessionstorage를 사용 하였습니다.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+mock데이터를 만들어서 그냥 가져와 쓰는 것이 아니라 msw를 사용하여 실제 api를 사용하는 것처럼 네트워크 수준에서 mocking을 하고 싶어 msw를 선택 하였습니다.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 아쉬운 점
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  + 클론코딩을 처음 하다 보니 많이 부족해 제대로 구현하지 못해 아쉬운 점이 있습니다.
+  + 예외처리를 제대로 하지 못한 점이 크며 추후 시간이 생긴다면 추가 예정입니다.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 느낀 점
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  + 다음 클론코딩을 진행하게 된다면 기간을 정해놓고 구현 해보고 싶고 코드를 좀 더 효율적으로 작성할 수 있도록 하고 싶습니다.
