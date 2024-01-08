@@ -11,7 +11,7 @@ const initialState = {
   },
   assetClassSettings: {
     kind: "한국 ETF",
-    assetClass: "",
+    class: "",
   },
   singleStockSettings: {
     purchaseCriteria: 0,

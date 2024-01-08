@@ -5,7 +5,11 @@ import { List } from "react-virtualized";
 
 const cx = classNames.bind(styles);
 
-const VirtualScroll = ({ data, partner, handleChangeAssetClassSettings }) => {
+const VirtualScroll = ({
+  data,
+  assetSttings,
+  handleChangeAssetClassSettings,
+}) => {
   // 검색기능
   const [search, setSearch] = useState("");
   const filteredData = data.filter((item) =>
@@ -22,13 +26,13 @@ const VirtualScroll = ({ data, partner, handleChangeAssetClassSettings }) => {
       return null;
     }
     return (
-      <div key={key} style={style}>
+      <div className={cx("hide_box")} key={key} style={style}>
         <input
           name="assetClass"
           value={item.label}
-          onClick={handleChangeAssetClassSettings}
+          onClick={(e) => handleChangeAssetClassSettings(e, index)}
           className={cx(
-            partner?.assetClassSettings?.assetClass === item.label
+            assetSttings?.assetClass === item.label
               ? "active_hide_input"
               : "hide_input"
           )}

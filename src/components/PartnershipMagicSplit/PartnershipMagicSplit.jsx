@@ -241,7 +241,7 @@ export default function PartnershipMagicSplit({
                   <input
                     className={cx("option_input")}
                     type="text"
-                    value={partner?.assetClassSettings?.assetClass}
+                    value={partner?.assetClassSettings?.assetClass || ""}
                     readOnly
                   />
                   <IoIosArrowDown
@@ -255,7 +255,7 @@ export default function PartnershipMagicSplit({
                 {toggle.assetClass && (
                   <VirtualScroll
                     data={filterData}
-                    partner={partner}
+                    assetSttings={partner?.assetClassSettings}
                     handleChangeAssetClassSettings={
                       handleChangeAssetClassSettings
                     }
