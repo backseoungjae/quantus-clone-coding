@@ -50,7 +50,11 @@ export default function BacktestSettingContainer() {
   // 하위 백테스트 설정 변경 부분
   const handleChangeBacktestSettings = useCallback(
     (e) => {
-      handleBacktestSettings({ [e.target.name]: e.target.value });
+      const value =
+        e.target.type === "number"
+          ? parseFloat(e.target.value)
+          : e.target.value;
+      handleBacktestSettings({ [e.target.name]: value });
       setRebalancingToggle(false);
       setSpecificControlToggle(false);
       setStrategyRebalancingToggle(false);

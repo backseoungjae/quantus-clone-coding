@@ -20,8 +20,6 @@ export default function StaticAsset({
   handleRemoveAssetClass,
   handleCheckedReflectExchangeRate,
 }) {
-  console.log("alloc?.assetList ", alloc?.assetList);
-
   return (
     <div className={cx("container")}>
       <div className={cx("wrapper")}>

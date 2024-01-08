@@ -43,8 +43,13 @@ export default function StaticAllocContainer() {
   // 자산배분 설정 부분
   const handleChangeAllocSetting = useCallback(
     (e) => {
+      const value =
+        e.target.type === "number"
+          ? parseFloat(e.target.value)
+          : e.target.value;
+
       handleAllocSetting({
-        [e.target.name]: e.target.value,
+        [e.target.name]: value,
       });
       setDistributionToggle(false);
       setRebalancingToggle(false);

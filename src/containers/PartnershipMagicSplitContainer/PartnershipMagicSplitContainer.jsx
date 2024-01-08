@@ -65,8 +65,12 @@ export default function PartnershipMagicSplitContainer() {
   // 단일 종목 부분
   const handleChangeSingleStockSettings = useCallback(
     (e) => {
+      const value =
+        e.target.type === "number"
+          ? parseFloat(e.target.value)
+          : e.target.value;
       handleSingleStockSettings({
-        [e.target.name]: e.target.value,
+        [e.target.name]: value,
       });
     },
     [handleSingleStockSettings]
